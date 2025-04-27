@@ -1,0 +1,15 @@
+{
+  "name": "rest-assured-automation-framework",
+  "version": "1.0.0",
+  "description": "Robust REST Assured automation framework with design patterns and reporting",
+  "private": true,
+  "scripts": {
+    "test": "mvn test",
+    "build": "mvn clean package",
+    "docker-build": "docker build -t rest-automation .",
+    "docker-run": "docker run -it rest-automation"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
