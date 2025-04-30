@@ -55,22 +55,20 @@ public class TestListener implements ITestListener {
     }
     
     @Override
-    public void onTestFailure(ITestResult result) {
-        LoggerUtil.error("Test failed: {}", result.getName());
-        // Log the failed test
-        ExtentTest test = ExtentReportManager.getTest();
-        test.log(Status.FAIL, MarkupHelper.createLabel("Test Failed", ExtentColor.RED));
-        
-        // Log the exception
-        if (result.getThrowable() != null) {
-            test.log(Status.FAIL, result.getThrowable());
-            String stackTrace = exceptionStackTraceToString(result.getThrowable());
-            test.log(Status.FAIL, MarkupHelper.createCodeBlock(stackTrace, CodeLanguage.JAVA));
-        }
-        
-        // Add execution time
-        test.info("Test execution time: " + (result.getEndMillis() - result.getStartMillis()) + "ms");
+public void onTestFailure(ITestResult result) {
+    LoggerUtil.error("Test failed: {}", result.getName());
+    ExtentTest test = ExtentReportManager.getTest();
+    test.log(Status.FAIL, MarkupHelper.createLabel("Test Failed", ExtentColor.RED));
+
+    if (result.getThrowable() != null) {
+        test.log(Status.FAIL, result.getThrowable());
+        String stackTrace = exceptionStackTraceToString(result.getThrowable());
+        // Use string instead of enum for language
+        test.log(Status.FAIL, MarkupHelper.createCodeBlock(stackTrace, "java"));
     }
+
+    test.info("Test execution time: " + (result.getEndMillis() - result.getStartMillis()) + "ms");
+}
     
     @Override
     public void onTestSkipped(ITestResult result) {
