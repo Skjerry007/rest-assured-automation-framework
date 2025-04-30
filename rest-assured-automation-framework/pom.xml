@@ -19,7 +19,7 @@
         <lombok.version>1.18.28</lombok.version>
         <log4j.version>2.20.0</log4j.version>
         <aws.version>2.20.98</aws.version>
-        <wiremock.version>3.0.0-beta-10</wiremock.version>
+        <wiremock.version>2.35.0</wiremock.version>
     </properties>
 
     <dependencies>
@@ -80,11 +80,17 @@
         
         <!-- WireMock for Mock API -->
         <dependency>
-            <groupId>org.wiremock</groupId>
-            <artifactId>wiremock</artifactId>
+           <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
             <version>${wiremock.version}</version>
             <scope>test</scope>
         </dependency>
+
+       <dependency>
+       <groupId>io.rest-assured</groupId>
+       <artifactId>json-schema-validator</artifactId>
+        <version>5.4.0</version> <!-- DO NOT use ${rest-assured.version} as 5.3.1 doesn't exist--> 
+      </dependency>
     </dependencies>
 
     <build>

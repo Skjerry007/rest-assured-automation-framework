@@ -10,6 +10,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import static io.restassured.config.ConnectionConfig.connectionConfig;
+import static io.restassured.config.HttpClientConfig.httpClientConfig;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -34,32 +36,30 @@ public class BaseAPI {
      * Initialize request specification with common settings
      */
     private void initializeRequestSpec() {
-        LoggerUtil.info("Initializing request specification");
-        
-        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
-            .setBaseUri(config.getBaseUrl())
-            .setContentType(ContentType.JSON)
-            .setAccept(ContentType.JSON);
-            
-        // Set SSL relaxation if configured
-        if (!config.isSslVerificationEnabled()) {
-            requestSpecBuilder.setRelaxedHTTPSValidation();
-        }
-        
-        // Set timeouts
-        requestSpecBuilder.setConfig(RestAssured.config()
-            .connectionConfig(RestAssured.config().connectionConfig()
-                .closeIdleConnectionsAfterEachResponse()
-                .connectionTimeout(config.getTimeout(), TimeUnit.SECONDS))
-            .httpClient(RestAssured.config().httpClient()
-                .setParam("http.socket.timeout", config.getTimeout() * 1000)
-                .setParam("http.connection.timeout", config.getTimeout() * 1000)));
-        
-        // Log request details
-        requestSpecBuilder.log(LogDetail.ALL);
-        
-        requestSpec = requestSpecBuilder.build();
+    LoggerUtil.info("Initializing request specification");
+
+    RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
+        .setBaseUri(config.getBaseUrl())
+        .setContentType(ContentType.JSON)
+        .setAccept(ContentType.JSON);
+
+    // Set SSL relaxation if configured
+    if (!config.isSslVerificationEnabled()) {
+        requestSpecBuilder.setRelaxedHTTPSValidation();
     }
+
+    // Set timeouts using proper config chaining
+    RestAssured.config = RestAssured.config()
+        .connectionConfig(connectionConfig().closeIdleConnectionsAfterEachResponse())
+        .httpClient(httpClientConfig()
+            .setParam("http.connection.timeout", config.getTimeout() * 1000)
+            .setParam("http.socket.timeout", config.getTimeout() * 1000));
+
+    // Log request details
+    requestSpecBuilder.log(LogDetail.ALL);
+
+    requestSpec = requestSpecBuilder.build();
+}
     
     /**
      * Initialize response specification with common settings

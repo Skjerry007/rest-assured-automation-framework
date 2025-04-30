@@ -4,6 +4,8 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
 
 /**
  * ResponseValidator - Utility for validating API responses
@@ -94,13 +96,21 @@ public class ResponseValidator {
      * @param schemaPath path to JSON schema file
      */
     public static void validateSchema(Response response, String schemaPath) {
-        LoggerUtil.info("Validating response schema using: {}", schemaPath);
-        try {
-            response.then().assertThat().body(io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath(schemaPath));
-            LoggerUtil.info("Schema validation passed");
-        } catch (Exception e) {
-            LoggerUtil.error("Schema validation failed: {}", e.getMessage());
-            Assert.fail("Schema validation failed: " + e.getMessage());
-        }
+    LoggerUtil.info("Validating response schema using: {}", schemaPath);
+    
+    if (schemaPath == null || schemaPath.trim().isEmpty()) {
+        LoggerUtil.error("Schema path is null or empty.");
+        Assert.fail("Schema path cannot be null or empty.");
     }
+
+    try {
+        response.then()
+                .assertThat()
+                .body(matchesJsonSchemaInClasspath(schemaPath));
+        LoggerUtil.info("Schema validation passed");
+    } catch (Exception e) {
+        LoggerUtil.error("Schema validation failed: {}", e.getMessage());
+        Assert.fail("Schema validation failed: " + e.getMessage());
+    }
+}
 }
