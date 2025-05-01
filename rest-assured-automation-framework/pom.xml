@@ -16,7 +16,7 @@
         <testng.version>7.8.0</testng.version>
         <extentreports.version>5.0.9</extentreports.version>
         <jackson.version>2.15.2</jackson.version>
-        <lombok.version>1.18.28</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <log4j.version>2.20.0</log4j.version>
         <aws.version>2.20.98</aws.version>
         <wiremock.version>2.35.0</wiremock.version>

@@ -2,7 +2,7 @@ package com.seleniumautomation.base;
 
 import com.seleniumautomation.config.ConfigManager;
 import com.seleniumautomation.driver.DriverManager;
-import com.seleniumautomation.utils.LoggerUtil;
+import com.restautomation.utils.LoggerUtil;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
