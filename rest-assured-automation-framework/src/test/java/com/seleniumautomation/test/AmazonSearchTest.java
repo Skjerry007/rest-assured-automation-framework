@@ -4,7 +4,7 @@ import com.seleniumautomation.base.BaseTest;
 import com.seleniumautomation.pages.AmazonHomePage;
 import com.seleniumautomation.pages.AmazonSearchResultsPage;
 import com.seleniumautomation.pages.AmazonProductPage;
-import com.seleniumautomation.utils.LoggerUtil;
+import com.restautomation.utils.LoggerUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

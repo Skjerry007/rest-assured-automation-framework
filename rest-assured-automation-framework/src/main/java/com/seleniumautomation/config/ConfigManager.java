@@ -13,7 +13,7 @@ import java.util.Properties;
 public class ConfigManager {
     private static ConfigManager instance;
     private Properties properties;
-    
+
     private ConfigManager() {
         properties = new Properties();
         try {

@@ -1,6 +1,5 @@
 package com.seleniumautomation.keywords;
 
-import com.seleniumautomation.config.ConfigManager;
 import com.seleniumautomation.driver.DriverManager;
 import com.restautomation.utils.LoggerUtil;
 import com.seleniumautomation.utils.WaitUtil;
@@ -9,28 +8,43 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 /**
  * SeleniumKeywords - Common Selenium operations wrapped in reusable methods
  */
 public class SeleniumKeywords {
+
     private final WebDriver driver;
     private final JavascriptExecutor js;
     private final WaitUtil wait;
-    
+
     public SeleniumKeywords() {
         this.driver = DriverManager.getInstance().getDriver();
-        this.js = (JavascriptExecutor) driver;
+        this.js = (JavascriptExecutor) this.driver;
         this.wait = new WaitUtil();
     }
-    
+
+    // Overload for clickElement using By
+public void clickElement(By locator) {
+    WebElement element = driver.findElement(locator);
+    clickElement(element);
+}
+
+// Overload for typeText using By
+public void typeText(By locator, String text) {
+    WebElement element = driver.findElement(locator);
+    typeText(element, text);
+}
+
+// Overload for isElementDisplayed using By
+public boolean isElementDisplayed(By locator) {
+    WebElement element = driver.findElement(locator);
+    return isElementDisplayed(element);
+}
+
     /**
-     * Navigate to URL
-     * @param url URL to navigate to
+     * Navigate to a given URL
      */
     public void navigateToUrl(String url) {
         try {
@@ -41,10 +55,9 @@ public class SeleniumKeywords {
             throw new RuntimeException("Failed to navigate to URL: " + url, e);
         }
     }
-    
+
     /**
-     * Click element
-     * @param element WebElement to click
+     * Click the given element
      */
     public void clickElement(WebElement element) {
         try {
@@ -53,18 +66,16 @@ public class SeleniumKeywords {
             element.click();
             LoggerUtil.info("Clicked element: {}", element);
         } catch (ElementClickInterceptedException e) {
-            LoggerUtil.info("Element click intercepted, trying JavaScript click");
+            LoggerUtil.warn("Click intercepted. Trying JavaScript click.");
             js.executeScript("arguments[0].click();", element);
         } catch (Exception e) {
-            LoggerUtil.error("Error clicking element: {}", e.getMessage());
+            LoggerUtil.error("Click failed: {}", e.getMessage());
             throw new RuntimeException("Failed to click element", e);
         }
     }
-    
+
     /**
-     * Type text into element
-     * @param element WebElement to type into
-     * @param text Text to type
+     * Type text into the given element
      */
     public void typeText(WebElement element, String text) {
         try {
@@ -73,51 +84,50 @@ public class SeleniumKeywords {
             element.sendKeys(text);
             LoggerUtil.info("Typed text '{}' into element: {}", text, element);
         } catch (Exception e) {
-            LoggerUtil.error("Error typing text: {}", e.getMessage());
+            LoggerUtil.error("Typing text failed: {}", e.getMessage());
             throw new RuntimeException("Failed to type text", e);
         }
     }
-    
+
     /**
-     * Upload file
-     * @param element File input element
-     * @param filePath Path to file
+     * Upload a file using WebElement
      */
     public void uploadFile(WebElement element, String filePath) {
         try {
             File file = new File(filePath);
-            if (!file.exists()) {
-                throw new RuntimeException("File not found: " + filePath);
-            }
+            if (!file.exists()) throw new RuntimeException("File not found: " + filePath);
             element.sendKeys(file.getAbsolutePath());
             LoggerUtil.info("Uploaded file: {}", filePath);
         } catch (Exception e) {
-            LoggerUtil.error("Error uploading file: {}", e.getMessage());
+            LoggerUtil.error("File upload failed: {}", e.getMessage());
             throw new RuntimeException("Failed to upload file", e);
         }
     }
-    
+
     /**
-     * Select option by visible text
-     * @param element Select element
-     * @param text Option text
+     * Overloaded method - Upload a file using a By locator
+     */
+    public void uploadFile(By locator, String filePath) {
+        WebElement element = driver.findElement(locator);
+        uploadFile(element, filePath);
+    }
+
+    /**
+     * Select dropdown by visible text
      */
     public void selectByVisibleText(WebElement element, String text) {
         try {
             wait.waitForElementToBeVisible(element);
-            Select select = new Select(element);
-            select.selectByVisibleText(text);
-            LoggerUtil.info("Selected option '{}' from dropdown", text);
+            new Select(element).selectByVisibleText(text);
+            LoggerUtil.info("Selected '{}' from dropdown", text);
         } catch (Exception e) {
-            LoggerUtil.error("Error selecting option: {}", e.getMessage());
+            LoggerUtil.error("Dropdown selection failed: {}", e.getMessage());
             throw new RuntimeException("Failed to select option", e);
         }
     }
-    
+
     /**
-     * Handle alert
-     * @param accept true to accept, false to dismiss
-     * @return Alert text
+     * Handle alert - accept or dismiss
      */
     public String handleAlert(boolean accept) {
         try {
@@ -125,46 +135,41 @@ public class SeleniumKeywords {
             String alertText = alert.getText();
             if (accept) {
                 alert.accept();
-                LoggerUtil.info("Accepted alert with text: {}", alertText);
+                LoggerUtil.info("Accepted alert: {}", alertText);
             } else {
                 alert.dismiss();
-                LoggerUtil.info("Dismissed alert with text: {}", alertText);
+                LoggerUtil.info("Dismissed alert: {}", alertText);
             }
             return alertText;
         } catch (Exception e) {
-            LoggerUtil.error("Error handling alert: {}", e.getMessage());
+            LoggerUtil.error("Alert handling failed: {}", e.getMessage());
             throw new RuntimeException("Failed to handle alert", e);
         }
     }
-    
+
     /**
-     * Switch to window by title
-     * @param title Window title
+     * Switch to a window by title
      */
     public void switchToWindowByTitle(String title) {
         try {
-            String currentWindow = driver.getWindowHandle();
-            Set<String> windows = driver.getWindowHandles();
-            
-            for (String window : windows) {
+            String current = driver.getWindowHandle();
+            for (String window : driver.getWindowHandles()) {
                 driver.switchTo().window(window);
                 if (driver.getTitle().equals(title)) {
                     LoggerUtil.info("Switched to window with title: {}", title);
                     return;
                 }
             }
-            
-            driver.switchTo().window(currentWindow);
+            driver.switchTo().window(current);
             throw new RuntimeException("Window with title '" + title + "' not found");
         } catch (Exception e) {
-            LoggerUtil.error("Error switching window: {}", e.getMessage());
+            LoggerUtil.error("Switching window failed: {}", e.getMessage());
             throw new RuntimeException("Failed to switch window", e);
         }
     }
-    
+
     /**
-     * Switch to frame
-     * @param element Frame element
+     * Switch to a frame
      */
     public void switchToFrame(WebElement element) {
         try {
@@ -172,11 +177,11 @@ public class SeleniumKeywords {
             driver.switchTo().frame(element);
             LoggerUtil.info("Switched to frame: {}", element);
         } catch (Exception e) {
-            LoggerUtil.error("Error switching to frame: {}", e.getMessage());
+            LoggerUtil.error("Switching to frame failed: {}", e.getMessage());
             throw new RuntimeException("Failed to switch to frame", e);
         }
     }
-    
+
     /**
      * Switch to default content
      */
@@ -185,145 +190,130 @@ public class SeleniumKeywords {
             driver.switchTo().defaultContent();
             LoggerUtil.info("Switched to default content");
         } catch (Exception e) {
-            LoggerUtil.error("Error switching to default content: {}", e.getMessage());
+            LoggerUtil.error("Switching to default content failed: {}", e.getMessage());
             throw new RuntimeException("Failed to switch to default content", e);
         }
     }
-    
+
     /**
-     * Scroll element into view
-     * @param element Element to scroll to
+     * Scroll an element into view
      */
     public void scrollIntoView(WebElement element) {
         try {
             js.executeScript("arguments[0].scrollIntoView(true);", element);
-            // Add small delay to allow scroll to complete
-            Thread.sleep(500);
-            LoggerUtil.info("Scrolled element into view: {}", element);
+            Thread.sleep(300); // Allow smooth scroll
+            LoggerUtil.info("Scrolled to element: {}", element);
         } catch (Exception e) {
-            LoggerUtil.error("Error scrolling element into view: {}", e.getMessage());
+            LoggerUtil.error("Scroll into view failed: {}", e.getMessage());
             throw new RuntimeException("Failed to scroll element into view", e);
         }
     }
-    
+
     /**
-     * Hover over element
-     * @param element Element to hover over
+     * Hover over an element
      */
     public void hoverOverElement(WebElement element) {
         try {
             wait.waitForElementToBeVisible(element);
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element).perform();
-            LoggerUtil.info("Hovered over element: {}", element);
+            new Actions(driver).moveToElement(element).perform();
+            LoggerUtil.info("Hovered on element: {}", element);
         } catch (Exception e) {
-            LoggerUtil.error("Error hovering over element: {}", e.getMessage());
+            LoggerUtil.error("Hover failed: {}", e.getMessage());
             throw new RuntimeException("Failed to hover over element", e);
         }
     }
-    
+
     /**
-     * Get element text
-     * @param element Element to get text from
-     * @return Element text
+     * Get text from element
      */
     public String getElementText(WebElement element) {
         try {
             wait.waitForElementToBeVisible(element);
             String text = element.getText();
-            LoggerUtil.info("Got text '{}' from element: {}", text, element);
+            LoggerUtil.info("Element text: '{}'", text);
             return text;
         } catch (Exception e) {
-            LoggerUtil.error("Error getting element text: {}", e.getMessage());
+            LoggerUtil.error("Getting element text failed: {}", e.getMessage());
             throw new RuntimeException("Failed to get element text", e);
         }
     }
-    
+
     /**
      * Check if element is displayed
-     * @param element Element to check
-     * @return true if displayed
      */
     public boolean isElementDisplayed(WebElement element) {
         try {
-            boolean isDisplayed = element.isDisplayed();
-            LoggerUtil.info("Element {} is {}", element, isDisplayed ? "displayed" : "not displayed");
-            return isDisplayed;
+            boolean displayed = element.isDisplayed();
+            LoggerUtil.info("Element is displayed: {}", displayed);
+            return displayed;
         } catch (Exception e) {
-            LoggerUtil.info("Element is not displayed: {}", element);
+            LoggerUtil.warn("Element not displayed or not found: {}", element);
             return false;
         }
     }
-    
+
     /**
-     * Wait for element to disappear
-     * @param element Element to wait for
+     * Wait until an element disappears
      */
     public void waitForElementToDisappear(WebElement element) {
         try {
             wait.waitForElementToDisappear(element);
             LoggerUtil.info("Element disappeared: {}", element);
         } catch (Exception e) {
-            LoggerUtil.error("Error waiting for element to disappear: {}", e.getMessage());
+            LoggerUtil.error("Element disappearance failed: {}", e.getMessage());
             throw new RuntimeException("Element did not disappear", e);
         }
     }
-    
+
     /**
-     * Set browser cookie
-     * @param name Cookie name
-     * @param value Cookie value
+     * Set a browser cookie
      */
     public void setBrowserCookie(String name, String value) {
         try {
-            Cookie cookie = new Cookie(name, value);
-            driver.manage().addCookie(cookie);
-            LoggerUtil.info("Set browser cookie: {}={}", name, value);
+            driver.manage().addCookie(new Cookie(name, value));
+            LoggerUtil.info("Set cookie: {}={}", name, value);
         } catch (Exception e) {
-            LoggerUtil.error("Error setting browser cookie: {}", e.getMessage());
-            throw new RuntimeException("Failed to set browser cookie", e);
+            LoggerUtil.error("Setting cookie failed: {}", e.getMessage());
+            throw new RuntimeException("Failed to set cookie", e);
         }
     }
-    
+
     /**
-     * Delete all cookies
+     * Delete all browser cookies
      */
     public void deleteAllCookies() {
         try {
             driver.manage().deleteAllCookies();
-            LoggerUtil.info("Deleted all browser cookies");
+            LoggerUtil.info("Deleted all cookies");
         } catch (Exception e) {
-            LoggerUtil.error("Error deleting cookies: {}", e.getMessage());
+            LoggerUtil.error("Deleting cookies failed: {}", e.getMessage());
             throw new RuntimeException("Failed to delete cookies", e);
         }
     }
-    
+
     /**
-     * Refresh page
+     * Refresh the browser
      */
     public void refreshPage() {
         try {
             driver.navigate().refresh();
-            LoggerUtil.info("Refreshed page");
+            LoggerUtil.info("Page refreshed");
         } catch (Exception e) {
-            LoggerUtil.error("Error refreshing page: {}", e.getMessage());
+            LoggerUtil.error("Page refresh failed: {}", e.getMessage());
             throw new RuntimeException("Failed to refresh page", e);
         }
     }
-    
+
     /**
-     * Execute JavaScript
-     * @param script JavaScript code
-     * @param args Script arguments
-     * @return Script result
+     * Execute custom JavaScript
      */
     public Object executeJavaScript(String script, Object... args) {
         try {
             Object result = js.executeScript(script, args);
-            LoggerUtil.info("Executed JavaScript: {}", script);
+            LoggerUtil.info("Executed JS: {}", script);
             return result;
         } catch (Exception e) {
-            LoggerUtil.error("Error executing JavaScript: {}", e.getMessage());
+            LoggerUtil.error("JS execution failed: {}", e.getMessage());
             throw new RuntimeException("Failed to execute JavaScript", e);
         }
     }

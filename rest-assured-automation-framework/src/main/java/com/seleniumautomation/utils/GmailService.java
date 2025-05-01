@@ -44,7 +44,7 @@ public class GmailService {
             .build();
 
             Credential credential = new AuthorizationCodeInstalledApp(
-                flow, new LocalServerReceiver()
+                flow, new LocalServerReceiver.Builder().setPort(60310).build()
             ).authorize("user");
 
             service = new Gmail.Builder(
