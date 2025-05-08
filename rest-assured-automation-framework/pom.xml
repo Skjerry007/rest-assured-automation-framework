@@ -23,7 +23,7 @@
         <selenium.version>4.12.1</selenium.version>
         <webdrivermanager.version>5.5.3</webdrivermanager.version>
         <framework>all</framework>
-        <testng.file>testng.xml</testng.file>
+        <!-- <testng.file>testng.xml</testng.file> -->
         <gridExecutorCapacity>0</gridExecutorCapacity>
         <mysql.version>8.0.33</mysql.version>
         <apache.commons.version>3.13.0</apache.commons.version>
