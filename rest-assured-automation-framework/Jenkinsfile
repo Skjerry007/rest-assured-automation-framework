@@ -5,62 +5,82 @@ pipeline {
             args '-v $HOME/.m2:/root/.m2'
         }
     }
-    
+
     parameters {
         choice(name: 'ENV', choices: ['dev', 'qa'], description: 'Select environment to run tests against')
         booleanParam(name: 'PARALLEL', defaultValue: true, description: 'Run tests in parallel')
-        string(name: 'TESTS', defaultValue: 'all', description: 'Specify tests to run (all, user, post, product, wiremock)')
+        string(name: 'TESTS', defaultValue: 'all', description: 'Specify groups to run (e.g., user, post, product)')
+        string(name: 'SUITE', defaultValue: 'testng-restassured.xml', description: 'Specify the TestNG suite file')
     }
-    
+
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        
+
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
             }
         }
-        
+
         stage('Test') {
             steps {
                 script {
-                    def testGroups = ''
-                    if (params.TESTS != 'all') {
-                        testGroups = "-Dgroups=${params.TESTS}"
-                    }
-                    
+                    def testGroups = params.TESTS != 'all' ? "-Dgroups=${params.TESTS}" : ''
                     def parallelFlag = params.PARALLEL ? '-Dparallel=classes -DthreadCount=3' : ''
                     
-                    sh "mvn test -Denv=${params.ENV} ${testGroups} ${parallelFlag}"
+                    echo "🔍 Running with ENV=${params.ENV}, SUITE=${params.SUITE}, TESTS=${params.TESTS}, PARALLEL=${params.PARALLEL}"
+                    
+                    sh """
+                        mvn test \
+                        -Denv=${params.ENV} \
+                        -Dtestng.file=${params.SUITE} \
+                        ${testGroups} ${parallelFlag}
+                    """
                 }
             }
         }
+
+        stage('Generate Reports') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'
+
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'test-output/reports',
+                    reportFiles: '*.html',
+                    reportName: 'API Test Report',
+                    reportTitles: 'API Test Report'
+                ])
+            }
+        }
+
+        stage('Allure Report') {
+            when {
+                expression { fileExists('target/allure-results') }
+            }
+            steps {
+                allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+            }
+        }
     }
-    
+
     post {
-        always {
-            junit '**/target/surefire-reports/*.xml'
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'test-output/reports',
-                reportFiles: '*.html',
-                reportName: 'API Test Report',
-                reportTitles: 'API Test Report'
-            ])
-        }
-        
         success {
-            echo 'API tests executed successfully!'
+            echo '✅ API tests executed successfully!'
         }
-        
+
         failure {
-            echo 'API tests failed!'
+            echo '❌ API tests failed. Please check logs and reports.'
+        }
+
+        always {
+            echo '🎯 Pipeline execution completed.'
         }
     }
 }
