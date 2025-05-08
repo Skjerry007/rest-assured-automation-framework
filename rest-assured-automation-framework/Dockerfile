@@ -39,4 +39,5 @@ ENV JAVA_OPTS="-Xmx2048m"
 ENV MAVEN_OPTS="-Xmx2048m"
 
 # Command to run tests with specified parameters
-ENTRYPOINT ["mvn", "test", "-Denv=qa"]
+ENTRYPOINT ["mvn"]
+CMD ["test"]
