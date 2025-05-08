@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerfile {
-            filename 'src/Dockerfile'
+            filename 'rest-assured-automation-framework/Dockerfile'
             args '-v $HOME/.m2:/root/.m2'
         }
     }
