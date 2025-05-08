@@ -3,7 +3,6 @@
 <suite name="REST Assured Test Suite" parallel="classes" thread-count="3">
     <listeners>
         <listener class-name="com.restautomation.listeners.TestListener"/>
-        <listener class-name="com.restautomation.listeners.RetryListener"/>
     </listeners>
     
     <test name="API Tests">
