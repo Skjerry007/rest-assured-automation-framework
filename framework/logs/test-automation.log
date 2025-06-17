@@ -1,0 +1,1313 @@
+2025-06-17 23:04:06.883 [main] INFO  com.restautomation.utils.LoggerUtil - Starting test suite: API Tests
+2025-06-17 23:04:06.917 [main] INFO  com.restautomation.utils.LoggerUtil - Created report directory: /Users/shashankawasthi/Desktop/techbyjerry/rest-assured-automation-framework/rest-assured-automation-framework/test-output/reports/
+2025-06-17 23:04:06.919 [main] INFO  com.restautomation.utils.LoggerUtil - Initializing Extent Reports at: /Users/shashankawasthi/Desktop/techbyjerry/rest-assured-automation-framework/rest-assured-automation-framework/test-output/reports/API-Test-Report-2025-06-17_23-04-06.html
+2025-06-17 23:04:07.475 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating UserAPI instance
+2025-06-17 23:04:07.478 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating ProductAPI instance
+2025-06-17 23:04:07.477 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating PostAPI instance
+2025-06-17 23:04:07.486 [TestNG-test=API Tests-1] INFO  com.restautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/dev-config.properties
+2025-06-17 23:04:07.489 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:04:07.490 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:04:07.490 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:04:08.611 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:04:08.612 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:04:08.612 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:04:08.703 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateUser
+2025-06-17 23:04:08.703 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateProduct
+2025-06-17 23:04:08.713 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreatePost
+2025-06-17 23:04:08.759 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=New Post Title, body=This is the body of the new post)
+2025-06-17 23:04:08.783 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:04:08.750 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=New Test Product, description=This is a test product, price=29.99, stock=100, category=Electronics, imageUrl=https://example.com/product.jpg)
+2025-06-17 23:04:08.788 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-17 23:04:08.791 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=John Doe, email=john.doe@example.com, username=johndoe, phone=1234567890, website=johndoe.com, address=null, company=null)
+2025-06-17 23:04:08.813 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:04:12.795 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testCreateUser for the 1 time
+2025-06-17 23:04:12.796 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateUser
+2025-06-17 23:04:12.807 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateUser
+2025-06-17 23:04:12.810 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=John Doe, email=john.doe@example.com, username=johndoe, phone=1234567890, website=johndoe.com, address=null, company=null)
+2025-06-17 23:04:12.811 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:04:12.812 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:04:12.822 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-17 23:04:12.887 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 404
+2025-06-17 23:04:12.899 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testCreateProduct for the 1 time
+2025-06-17 23:04:12.901 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateProduct
+2025-06-17 23:04:12.911 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateProduct
+2025-06-17 23:04:12.912 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=New Test Product, description=This is a test product, price=29.99, stock=100, category=Electronics, imageUrl=https://example.com/product.jpg)
+2025-06-17 23:04:12.913 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-17 23:04:13.463 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testCreateUser for the 2 time
+2025-06-17 23:04:13.463 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateUser
+2025-06-17 23:04:13.468 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateUser
+2025-06-17 23:04:13.469 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=John Doe, email=john.doe@example.com, username=johndoe, phone=1234567890, website=johndoe.com, address=null, company=null)
+2025-06-17 23:04:13.469 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:04:13.603 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 404
+2025-06-17 23:04:13.604 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testCreateProduct for the 2 time
+2025-06-17 23:04:13.604 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateProduct
+2025-06-17 23:04:13.609 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateProduct
+2025-06-17 23:04:13.611 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=New Test Product, description=This is a test product, price=29.99, stock=100, category=Electronics, imageUrl=https://example.com/product.jpg)
+2025-06-17 23:04:13.611 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-17 23:04:14.071 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: title = New Post Title
+2025-06-17 23:04:14.098 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: body = This is the body of the new post
+2025-06-17 23:04:14.118 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: userId = 1
+2025-06-17 23:04:14.157 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Created post with ID: 101
+2025-06-17 23:04:14.159 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCreatePost
+2025-06-17 23:04:14.164 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:04:14.168 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 1
+2025-06-17 23:04:14.168 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:04:14.219 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 1 time
+2025-06-17 23:04:14.220 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:04:14.224 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:04:14.226 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 1
+2025-06-17 23:04:14.226 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:04:14.259 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 2 time
+2025-06-17 23:04:14.260 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:04:14.264 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:04:14.265 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 1
+2025-06-17 23:04:14.270 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:04:14.303 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testDeletePost has reached max retry count: 2
+2025-06-17 23:04:14.304 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testDeletePost
+2025-06-17 23:04:14.319 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testCreateUser has reached max retry count: 2
+2025-06-17 23:04:14.320 [TestNG-test=API Tests-1] ERROR com.restautomation.utils.LoggerUtil - Test failed: testCreateUser
+2025-06-17 23:04:14.437 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 404
+2025-06-17 23:04:14.438 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test: testCreateProduct has reached max retry count: 2
+2025-06-17 23:04:14.438 [TestNG-test=API Tests-3] ERROR com.restautomation.utils.LoggerUtil - Test failed: testCreateProduct
+2025-06-17 23:04:14.544 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteUser
+2025-06-17 23:04:14.545 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllPosts
+2025-06-17 23:04:14.546 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting all posts
+2025-06-17 23:04:14.546 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts
+2025-06-17 23:04:14.544 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteProduct
+2025-06-17 23:04:14.547 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Deleting product with ID: 1
+2025-06-17 23:04:14.548 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /products/{id}
+2025-06-17 23:04:14.548 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Deleting user with ID: 1
+2025-06-17 23:04:14.555 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/{id}
+2025-06-17 23:04:14.578 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeleteProduct for the 1 time
+2025-06-17 23:04:14.579 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteProduct
+2025-06-17 23:04:14.586 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteProduct
+2025-06-17 23:04:14.586 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Deleting product with ID: 1
+2025-06-17 23:04:14.587 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /products/{id}
+2025-06-17 23:04:14.589 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeleteUser for the 1 time
+2025-06-17 23:04:14.589 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteUser
+2025-06-17 23:04:14.593 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteUser
+2025-06-17 23:04:14.593 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Deleting user with ID: 1
+2025-06-17 23:04:14.594 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/{id}
+2025-06-17 23:04:14.621 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeleteProduct for the 2 time
+2025-06-17 23:04:14.621 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteProduct
+2025-06-17 23:04:14.627 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteProduct
+2025-06-17 23:04:14.629 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Deleting product with ID: 1
+2025-06-17 23:04:14.629 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /products/{id}
+2025-06-17 23:04:14.654 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeleteUser for the 2 time
+2025-06-17 23:04:14.654 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteUser
+2025-06-17 23:04:14.661 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteUser
+2025-06-17 23:04:14.663 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Deleting user with ID: 1
+2025-06-17 23:04:14.663 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/{id}
+2025-06-17 23:04:14.679 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test: testDeleteProduct has reached max retry count: 2
+2025-06-17 23:04:14.679 [TestNG-test=API Tests-3] ERROR com.restautomation.utils.LoggerUtil - Test failed: testDeleteProduct
+2025-06-17 23:04:14.693 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllProducts
+2025-06-17 23:04:14.694 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Getting all products
+2025-06-17 23:04:14.695 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products
+2025-06-17 23:04:14.706 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testDeleteUser has reached max retry count: 2
+2025-06-17 23:04:14.709 [TestNG-test=API Tests-1] ERROR com.restautomation.utils.LoggerUtil - Test failed: testDeleteUser
+2025-06-17 23:04:14.720 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllUsers
+2025-06-17 23:04:14.721 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting all users
+2025-06-17 23:04:14.721 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users
+2025-06-17 23:04:15.165 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:15.170 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Response time: 570 ms (max allowed: 5000 ms)
+2025-06-17 23:04:15.172 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating content type: Expected application/json; charset=utf-8 | Actual application/json; charset=utf-8
+2025-06-17 23:04:15.276 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:15.276 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Response time: 526 ms (max allowed: 5000 ms)
+2025-06-17 23:04:15.277 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating content type: Expected application/json; charset=utf-8 | Actual application/json; charset=utf-8
+2025-06-17 23:04:15.324 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrieved 10 users
+2025-06-17 23:04:15.325 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetAllUsers
+2025-06-17 23:04:15.328 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserById
+2025-06-17 23:04:15.329 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting user with ID: 1
+2025-06-17 23:04:15.329 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/{id} with path params: {id=1}
+2025-06-17 23:04:15.364 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 100 posts
+2025-06-17 23:04:15.365 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetAllPosts
+2025-06-17 23:04:15.371 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:04:15.372 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 1
+2025-06-17 23:04:15.372 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=1}
+2025-06-17 23:04:15.530 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:15.530 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetAllProducts for the 1 time
+2025-06-17 23:04:15.531 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllProducts
+2025-06-17 23:04:15.543 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllProducts
+2025-06-17 23:04:15.544 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Getting all products
+2025-06-17 23:04:15.544 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products
+2025-06-17 23:04:16.096 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:16.096 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-17 23:04:16.114 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:16.115 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-17 23:04:16.123 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:04:16.145 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:04:16.146 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: title
+2025-06-17 23:04:16.165 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: name
+2025-06-17 23:04:16.167 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: body
+2025-06-17 23:04:16.192 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: userId
+2025-06-17 23:04:16.218 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: email
+2025-06-17 23:04:16.251 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved post with title: sunt aut facere repellat provident occaecati excepturi optio reprehenderit
+2025-06-17 23:04:16.252 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetPostById
+2025-06-17 23:04:16.256 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostComments
+2025-06-17 23:04:16.258 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting comments for post ID: 1
+2025-06-17 23:04:16.258 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id}/comments with path params: {id=1}
+2025-06-17 23:04:16.279 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrieved user with name: Leanne Graham
+2025-06-17 23:04:16.280 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetUserById
+2025-06-17 23:04:16.287 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserPosts
+2025-06-17 23:04:16.288 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting posts for user ID: 1
+2025-06-17 23:04:16.288 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:16.288 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/{id}/posts with path params: {id=1}
+2025-06-17 23:04:16.289 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetAllProducts for the 2 time
+2025-06-17 23:04:16.289 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllProducts
+2025-06-17 23:04:16.291 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllProducts
+2025-06-17 23:04:16.293 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Getting all products
+2025-06-17 23:04:16.293 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products
+2025-06-17 23:04:16.807 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:16.808 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test: testGetAllProducts has reached max retry count: 2
+2025-06-17 23:04:16.809 [TestNG-test=API Tests-3] ERROR com.restautomation.utils.LoggerUtil - Test failed: testGetAllProducts
+2025-06-17 23:04:16.812 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetProductById
+2025-06-17 23:04:16.813 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Getting product with ID: 1
+2025-06-17 23:04:16.814 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products/{id} with path params: {id=1}
+2025-06-17 23:04:16.855 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:16.863 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 5 comments for post with ID: 1
+2025-06-17 23:04:16.870 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetPostComments
+2025-06-17 23:04:16.872 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:04:16.873 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 1
+2025-06-17 23:04:16.874 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:04:16.876 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:16.904 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrieved 10 posts for user with ID: 1
+2025-06-17 23:04:16.905 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetUserPosts
+2025-06-17 23:04:16.910 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 1 time
+2025-06-17 23:04:16.910 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:04:16.926 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:04:16.927 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 1
+2025-06-17 23:04:16.928 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:04:16.910 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateUser
+2025-06-17 23:04:16.930 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating user with ID: 1
+2025-06-17 23:04:16.930 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/{id}
+2025-06-17 23:04:16.963 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 2 time
+2025-06-17 23:04:16.971 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdateUser for the 1 time
+2025-06-17 23:04:16.972 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateUser
+2025-06-17 23:04:16.964 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:04:16.977 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:04:16.978 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 1
+2025-06-17 23:04:16.979 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:04:16.980 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateUser
+2025-06-17 23:04:16.981 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating user with ID: 1
+2025-06-17 23:04:16.981 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/{id}
+2025-06-17 23:04:17.028 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdatePost has reached max retry count: 2
+2025-06-17 23:04:17.029 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testUpdatePost
+2025-06-17 23:04:17.030 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdateUser for the 2 time
+2025-06-17 23:04:17.030 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateUser
+2025-06-17 23:04:17.037 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateUser
+2025-06-17 23:04:17.037 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating user with ID: 1
+2025-06-17 23:04:17.039 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/{id}
+2025-06-17 23:04:17.044 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting WireMock server on port: 8989
+2025-06-17 23:04:17.067 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdateUser has reached max retry count: 2
+2025-06-17 23:04:17.069 [TestNG-test=API Tests-1] ERROR com.restautomation.utils.LoggerUtil - Test failed: testUpdateUser
+2025-06-17 23:04:17.082 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testConnectionTimeout
+2025-06-17 23:04:17.093 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Testing connection timeout handling
+2025-06-17 23:04:17.139 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Caught expected exception: Cannot get property 'assertionClosure' on null object
+2025-06-17 23:04:17.141 [TestNG-test=API Tests-1] ERROR com.restautomation.utils.LoggerUtil - Test failed: testConnectionTimeout
+2025-06-17 23:04:17.144 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIException
+2025-06-17 23:04:17.145 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception
+2025-06-17 23:04:17.146 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Resource not found, Status Code: 404
+2025-06-17 23:04:17.147 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIException
+2025-06-17 23:04:17.152 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIExceptionWithCause
+2025-06-17 23:04:17.153 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception with nested cause
+2025-06-17 23:04:17.153 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Failed to parse response, Cause: Invalid JSON format
+2025-06-17 23:04:17.154 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIExceptionWithCause
+2025-06-17 23:04:17.157 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testRetryMechanism
+2025-06-17 23:04:17.158 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Testing retry mechanism for transient errors
+2025-06-17 23:04:17.158 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Attempt 1: Simulating transient error
+2025-06-17 23:04:17.158 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 1)
+2025-06-17 23:04:17.653 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:17.661 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetProductById for the 1 time
+2025-06-17 23:04:17.661 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetProductById
+2025-06-17 23:04:17.663 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetProductById
+2025-06-17 23:04:17.664 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Getting product with ID: 1
+2025-06-17 23:04:17.664 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products/{id} with path params: {id=1}
+2025-06-17 23:04:18.164 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Attempt 2: Simulating transient error
+2025-06-17 23:04:18.170 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 2)
+2025-06-17 23:04:18.212 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:18.213 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetProductById for the 2 time
+2025-06-17 23:04:18.214 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetProductById
+2025-06-17 23:04:18.225 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetProductById
+2025-06-17 23:04:18.227 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Getting product with ID: 1
+2025-06-17 23:04:18.227 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products/{id} with path params: {id=1}
+2025-06-17 23:04:18.746 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:04:18.752 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:04:18.760 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockDeleteRequest
+2025-06-17 23:04:18.772 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:18.773 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test: testGetProductById has reached max retry count: 2
+2025-06-17 23:04:18.774 [TestNG-test=API Tests-3] ERROR com.restautomation.utils.LoggerUtil - Test failed: testGetProductById
+2025-06-17 23:04:18.778 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testSearchProductsByName
+2025-06-17 23:04:18.779 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Searching products with name: phone
+2025-06-17 23:04:18.779 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products with query params: {name=phone}
+2025-06-17 23:04:19.497 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/1
+2025-06-17 23:04:19.551 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:19.552 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: success = true
+2025-06-17 23:04:19.570 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: message = User deleted
+2025-06-17 23:04:19.587 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked DELETE request: {"success": true, "message": "User deleted"}
+2025-06-17 23:04:19.606 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockDeleteRequest
+2025-06-17 23:04:19.609 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockErrorResponse
+2025-06-17 23:04:19.628 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/999
+2025-06-17 23:04:19.653 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testMockErrorResponse
+2025-06-17 23:04:19.656 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockGetRequest
+2025-06-17 23:04:19.670 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/1
+2025-06-17 23:04:19.695 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:19.695 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:04:19.727 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = John Doe
+2025-06-17 23:04:19.757 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked GET request: {"id": 1, "name": "John Doe", "email": "john@example.com"}
+2025-06-17 23:04:19.780 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockGetRequest
+2025-06-17 23:04:19.786 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPostRequest
+2025-06-17 23:04:19.796 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:04:19.820 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:19.821 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testSearchProductsByName for the 1 time
+2025-06-17 23:04:19.821 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testSearchProductsByName
+2025-06-17 23:04:19.823 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testSearchProductsByName
+2025-06-17 23:04:19.824 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Searching products with name: phone
+2025-06-17 23:04:19.824 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products with query params: {name=phone}
+2025-06-17 23:04:19.828 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:04:19.828 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 101
+2025-06-17 23:04:19.853 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = New User
+2025-06-17 23:04:19.869 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked POST request: {"id": 101, "name": "New User", "email": "new@example.com"}
+2025-06-17 23:04:19.877 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPostRequest
+2025-06-17 23:04:19.879 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPutRequest
+2025-06-17 23:04:19.894 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/1
+2025-06-17 23:04:19.923 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:04:19.924 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:04:19.945 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = Updated User
+2025-06-17 23:04:19.966 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked PUT request: {"id": 1, "name": "Updated User", "email": "updated@example.com"}
+2025-06-17 23:04:19.985 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPutRequest
+2025-06-17 23:04:19.987 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Stopping WireMock server
+2025-06-17 23:04:20.174 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Attempt 3: Success
+2025-06-17 23:04:20.174 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testRetryMechanism
+2025-06-17 23:04:20.780 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:20.781 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testSearchProductsByName for the 2 time
+2025-06-17 23:04:20.781 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testSearchProductsByName
+2025-06-17 23:04:20.790 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testSearchProductsByName
+2025-06-17 23:04:20.792 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Searching products with name: phone
+2025-06-17 23:04:20.793 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /products with query params: {name=phone}
+2025-06-17 23:04:21.419 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:04:21.419 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test: testSearchProductsByName has reached max retry count: 2
+2025-06-17 23:04:21.419 [TestNG-test=API Tests-3] ERROR com.restautomation.utils.LoggerUtil - Test failed: testSearchProductsByName
+2025-06-17 23:04:21.422 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateProduct
+2025-06-17 23:04:21.423 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Updating product with ID: 1
+2025-06-17 23:04:21.423 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /products/{id}
+2025-06-17 23:04:21.447 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdateProduct for the 1 time
+2025-06-17 23:04:21.448 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateProduct
+2025-06-17 23:04:21.452 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateProduct
+2025-06-17 23:04:21.454 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Updating product with ID: 1
+2025-06-17 23:04:21.454 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /products/{id}
+2025-06-17 23:04:21.474 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdateProduct for the 2 time
+2025-06-17 23:04:21.475 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateProduct
+2025-06-17 23:04:21.477 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateProduct
+2025-06-17 23:04:21.478 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Updating product with ID: 1
+2025-06-17 23:04:21.479 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /products/{id}
+2025-06-17 23:04:21.504 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdateProduct has reached max retry count: 2
+2025-06-17 23:04:21.504 [TestNG-test=API Tests-3] ERROR com.restautomation.utils.LoggerUtil - Test failed: testUpdateProduct
+2025-06-17 23:04:21.514 [main] INFO  com.restautomation.utils.LoggerUtil - Finishing test suite: API Tests
+2025-06-17 23:04:21.995 [main] INFO  com.restautomation.utils.LoggerUtil - Extent Reports flushed successfully
+2025-06-17 23:22:06.723 [main] INFO  com.restautomation.utils.LoggerUtil - Starting test suite: API Tests
+2025-06-17 23:22:06.741 [main] INFO  com.restautomation.utils.LoggerUtil - Initializing Extent Reports at: /Users/shashankawasthi/Desktop/techbyjerry/rest-assured-automation-framework/rest-assured-automation-framework/test-output/reports/API-Test-Report-2025-06-17_23-22-06.html
+2025-06-17 23:22:07.172 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating ProductAPI instance
+2025-06-17 23:22:07.172 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating PostAPI instance
+2025-06-17 23:22:07.172 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating UserAPI instance
+2025-06-17 23:22:07.175 [TestNG-test=API Tests-2] INFO  com.restautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/dev-config.properties
+2025-06-17 23:22:07.177 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:22:07.177 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:22:07.177 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:22:08.072 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:22:08.075 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:22:08.073 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:22:08.173 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:08.193 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:08.176 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=Test Product, description=This is a test product, price=19.99, stock=10, category=TestCategory, imageUrl=https://example.com/test-product.jpg)
+2025-06-17 23:22:08.201 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-17 23:22:08.182 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=Test User, email=test.user.1750182728175@example.com, username=testuser1750182728182, phone=1234567890, website=testuser.com, address=null, company=null)
+2025-06-17 23:22:08.218 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:22:11.612 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateUser
+2025-06-17 23:22:11.632 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateUser
+2025-06-17 23:22:11.641 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteUser
+2025-06-17 23:22:11.643 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteUser
+2025-06-17 23:22:11.652 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllUsers
+2025-06-17 23:22:11.657 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllUsers
+2025-06-17 23:22:11.662 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserById
+2025-06-17 23:22:11.667 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetUserById
+2025-06-17 23:22:11.677 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserPosts
+2025-06-17 23:22:11.682 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetUserPosts
+2025-06-17 23:22:11.694 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateUser
+2025-06-17 23:22:11.700 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateUser
+2025-06-17 23:22:11.706 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting WireMock server on port: 8989
+2025-06-17 23:22:12.459 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreatePost
+2025-06-17 23:22:12.461 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=New Post Title, body=This is the body of the new post)
+2025-06-17 23:22:12.462 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:12.484 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateProduct
+2025-06-17 23:22:12.485 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateProduct
+2025-06-17 23:22:12.492 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteProduct
+2025-06-17 23:22:12.500 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteProduct
+2025-06-17 23:22:12.508 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllProducts
+2025-06-17 23:22:12.529 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllProducts
+2025-06-17 23:22:12.536 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetProductById
+2025-06-17 23:22:12.537 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetProductById
+2025-06-17 23:22:12.545 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testSearchProductsByName
+2025-06-17 23:22:12.546 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testSearchProductsByName
+2025-06-17 23:22:12.552 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateProduct
+2025-06-17 23:22:12.553 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateProduct
+2025-06-17 23:22:12.558 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testConnectionTimeout
+2025-06-17 23:22:12.559 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing connection timeout handling
+2025-06-17 23:22:12.582 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught expected exception: Cannot get property 'assertionClosure' on null object
+2025-06-17 23:22:12.582 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught NullPointerException as expected
+2025-06-17 23:22:12.584 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testConnectionTimeout
+2025-06-17 23:22:12.588 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIException
+2025-06-17 23:22:12.589 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception
+2025-06-17 23:22:12.590 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Resource not found, Status Code: 404
+2025-06-17 23:22:12.593 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIException
+2025-06-17 23:22:12.600 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIExceptionWithCause
+2025-06-17 23:22:12.602 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception with nested cause
+2025-06-17 23:22:12.602 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Failed to parse response, Cause: Invalid JSON format
+2025-06-17 23:22:12.604 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIExceptionWithCause
+2025-06-17 23:22:12.611 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testRetryMechanism
+2025-06-17 23:22:12.616 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing retry mechanism for transient errors
+2025-06-17 23:22:12.616 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 1: Simulating transient error
+2025-06-17 23:22:12.617 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 1)
+2025-06-17 23:22:13.161 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:22:13.163 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:22:13.169 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockDeleteRequest
+2025-06-17 23:22:13.617 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 2: Simulating transient error
+2025-06-17 23:22:13.618 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 2)
+2025-06-17 23:22:13.742 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/1
+2025-06-17 23:22:13.819 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:22:13.819 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: success = true
+2025-06-17 23:22:13.846 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: message = User deleted
+2025-06-17 23:22:13.869 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked DELETE request: {"success": true, "message": "User deleted"}
+2025-06-17 23:22:13.892 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockDeleteRequest
+2025-06-17 23:22:13.894 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockErrorResponse
+2025-06-17 23:22:13.907 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/999
+2025-06-17 23:22:13.932 [TestNG-test=API Tests-1] ERROR com.restautomation.utils.LoggerUtil - Test failed: testMockErrorResponse
+2025-06-17 23:22:14.141 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockGetRequest
+2025-06-17 23:22:14.152 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/1
+2025-06-17 23:22:14.209 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:22:14.210 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:22:14.238 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = John Doe
+2025-06-17 23:22:14.273 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked GET request: {"id": 1, "name": "John Doe", "email": "john@example.com"}
+2025-06-17 23:22:14.285 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockGetRequest
+2025-06-17 23:22:14.290 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPostRequest
+2025-06-17 23:22:14.304 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:22:14.357 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:22:14.357 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 101
+2025-06-17 23:22:14.392 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = New User
+2025-06-17 23:22:14.418 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked POST request: {"id": 101, "name": "New User", "email": "new@example.com"}
+2025-06-17 23:22:14.427 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPostRequest
+2025-06-17 23:22:14.432 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPutRequest
+2025-06-17 23:22:14.442 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/1
+2025-06-17 23:22:14.500 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:22:14.501 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:22:14.544 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = Updated User
+2025-06-17 23:22:14.583 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked PUT request: {"id": 1, "name": "Updated User", "email": "updated@example.com"}
+2025-06-17 23:22:14.590 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPutRequest
+2025-06-17 23:22:14.592 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Stopping WireMock server
+2025-06-17 23:22:14.862 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:22:14.864 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-17 23:22:14.882 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: title = New Post Title
+2025-06-17 23:22:14.899 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: body = This is the body of the new post
+2025-06-17 23:22:14.915 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: userId = 1
+2025-06-17 23:22:14.953 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Created post with ID: 101
+2025-06-17 23:22:14.954 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCreatePost
+2025-06-17 23:22:14.957 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:14.957 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:15.621 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 3: Success
+2025-06-17 23:22:15.622 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testRetryMechanism
+2025-06-17 23:22:15.776 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:22:15.776 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:22:15.777 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:22:15.820 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 1 time
+2025-06-17 23:22:15.821 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:22:15.824 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:15.825 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:16.962 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:22:16.966 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:22:16.967 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:22:17.008 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 2 time
+2025-06-17 23:22:17.009 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:22:17.017 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:17.017 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:18.116 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:22:18.117 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:22:18.117 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:22:18.141 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testDeletePost has reached max retry count: 2
+2025-06-17 23:22:18.142 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testDeletePost
+2025-06-17 23:22:18.150 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:18.151 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:19.064 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllPosts
+2025-06-17 23:22:19.067 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting all posts
+2025-06-17 23:22:19.067 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts
+2025-06-17 23:22:19.590 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:22:19.592 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Response time: 471 ms (max allowed: 5000 ms)
+2025-06-17 23:22:19.594 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating content type: Expected application/json; charset=utf-8 | Actual application/json; charset=utf-8
+2025-06-17 23:22:19.735 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 100 posts
+2025-06-17 23:22:19.736 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetAllPosts
+2025-06-17 23:22:19.738 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:19.739 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:21.622 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:22:21.624 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:22:21.624 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:22:24.481 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:22:24.510 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 1 time
+2025-06-17 23:22:24.510 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetPostById
+2025-06-17 23:22:24.512 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:24.514 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:26.213 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:22:26.216 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:22:26.217 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:22:26.900 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:22:26.901 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 2 time
+2025-06-17 23:22:26.901 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetPostById
+2025-06-17 23:22:26.902 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:26.903 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:27.612 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:22:27.613 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:22:27.613 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:22:28.302 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:22:28.303 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testGetPostById has reached max retry count: 2
+2025-06-17 23:22:28.303 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testGetPostById
+2025-06-17 23:22:28.306 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:28.307 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:29.296 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostComments
+2025-06-17 23:22:29.297 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting comments for post ID: 1
+2025-06-17 23:22:29.300 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id}/comments with path params: {id=1}
+2025-06-17 23:22:30.070 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:22:30.075 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 5 comments for post with ID: 1
+2025-06-17 23:22:30.076 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetPostComments
+2025-06-17 23:22:30.078 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:30.079 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:30.881 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:22:30.883 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:22:30.883 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:22:30.913 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 1 time
+2025-06-17 23:22:30.914 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:22:30.918 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:30.918 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:32.084 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:22:32.085 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:22:32.085 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:22:32.096 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 2 time
+2025-06-17 23:22:32.096 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:22:32.100 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:22:32.101 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:22:32.879 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:22:32.880 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:22:32.880 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:22:32.896 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdatePost has reached max retry count: 2
+2025-06-17 23:22:32.897 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testUpdatePost
+2025-06-17 23:22:32.905 [main] INFO  com.restautomation.utils.LoggerUtil - Finishing test suite: API Tests
+2025-06-17 23:22:33.559 [main] INFO  com.restautomation.utils.LoggerUtil - Extent Reports flushed successfully
+2025-06-17 23:25:40.806 [main] INFO  com.restautomation.utils.LoggerUtil - Starting test suite: API Tests
+2025-06-17 23:25:40.819 [main] INFO  com.restautomation.utils.LoggerUtil - Initializing Extent Reports at: /Users/shashankawasthi/Desktop/techbyjerry/rest-assured-automation-framework/rest-assured-automation-framework/test-output/reports/API-Test-Report-2025-06-17_23-25-40.html
+2025-06-17 23:25:41.277 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating ProductAPI instance
+2025-06-17 23:25:41.277 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating UserAPI instance
+2025-06-17 23:25:41.277 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating PostAPI instance
+2025-06-17 23:25:41.282 [TestNG-test=API Tests-1] INFO  com.restautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/dev-config.properties
+2025-06-17 23:25:41.283 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:25:41.283 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:25:41.283 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:25:42.124 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:25:42.124 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:25:42.124 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:25:42.202 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:42.214 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:42.202 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=Test Product, description=This is a test product, price=19.99, stock=10, category=TestCategory, imageUrl=https://example.com/test-product.jpg)
+2025-06-17 23:25:42.260 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-17 23:25:42.217 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=Test User, email=test.user.1750182942202@example.com, username=testuser1750182942217, phone=1234567890, website=testuser.com, address=null, company=null)
+2025-06-17 23:25:42.330 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:25:46.696 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateUser
+2025-06-17 23:25:46.725 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateUser
+2025-06-17 23:25:46.733 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteUser
+2025-06-17 23:25:46.735 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteUser
+2025-06-17 23:25:46.746 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllUsers
+2025-06-17 23:25:46.748 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllUsers
+2025-06-17 23:25:46.752 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserById
+2025-06-17 23:25:46.753 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetUserById
+2025-06-17 23:25:46.760 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserPosts
+2025-06-17 23:25:46.761 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetUserPosts
+2025-06-17 23:25:46.769 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateUser
+2025-06-17 23:25:46.770 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateUser
+2025-06-17 23:25:46.776 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting WireMock server on port: 8989
+2025-06-17 23:25:47.364 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateProduct
+2025-06-17 23:25:47.365 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateProduct
+2025-06-17 23:25:47.374 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteProduct
+2025-06-17 23:25:47.375 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteProduct
+2025-06-17 23:25:47.390 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreatePost
+2025-06-17 23:25:47.390 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllProducts
+2025-06-17 23:25:47.391 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=New Post Title, body=This is the body of the new post)
+2025-06-17 23:25:47.392 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllProducts
+2025-06-17 23:25:47.392 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:47.406 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetProductById
+2025-06-17 23:25:47.409 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetProductById
+2025-06-17 23:25:47.414 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testSearchProductsByName
+2025-06-17 23:25:47.415 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testSearchProductsByName
+2025-06-17 23:25:47.422 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateProduct
+2025-06-17 23:25:47.423 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateProduct
+2025-06-17 23:25:47.431 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testConnectionTimeout
+2025-06-17 23:25:47.432 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing connection timeout handling
+2025-06-17 23:25:47.514 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught expected exception: Cannot get property 'assertionClosure' on null object
+2025-06-17 23:25:47.515 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught NullPointerException as expected
+2025-06-17 23:25:47.517 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testConnectionTimeout
+2025-06-17 23:25:47.527 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIException
+2025-06-17 23:25:47.528 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception
+2025-06-17 23:25:47.533 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Resource not found, Status Code: 404
+2025-06-17 23:25:47.536 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIException
+2025-06-17 23:25:47.543 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIExceptionWithCause
+2025-06-17 23:25:47.544 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception with nested cause
+2025-06-17 23:25:47.548 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Failed to parse response, Cause: Invalid JSON format
+2025-06-17 23:25:47.549 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIExceptionWithCause
+2025-06-17 23:25:47.554 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testRetryMechanism
+2025-06-17 23:25:47.556 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing retry mechanism for transient errors
+2025-06-17 23:25:47.557 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 1: Simulating transient error
+2025-06-17 23:25:47.557 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 1)
+2025-06-17 23:25:48.314 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:25:48.317 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:25:48.320 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockDeleteRequest
+2025-06-17 23:25:48.562 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 2: Simulating transient error
+2025-06-17 23:25:48.563 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 2)
+2025-06-17 23:25:48.992 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/1
+2025-06-17 23:25:49.086 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:25:49.088 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: success = true
+2025-06-17 23:25:49.109 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: message = User deleted
+2025-06-17 23:25:49.127 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked DELETE request: {"success": true, "message": "User deleted"}
+2025-06-17 23:25:49.146 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockDeleteRequest
+2025-06-17 23:25:49.149 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockErrorResponse
+2025-06-17 23:25:49.167 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/999
+2025-06-17 23:25:49.186 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:25:49.186 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-17 23:25:49.228 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: title = New Post Title
+2025-06-17 23:25:49.232 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 404 | Actual 404
+2025-06-17 23:25:49.232 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: error = User not found
+2025-06-17 23:25:49.248 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: body = This is the body of the new post
+2025-06-17 23:25:49.267 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: code = 404
+2025-06-17 23:25:49.272 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: userId = 1
+2025-06-17 23:25:49.302 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked error response: {"error": "User not found", "code": 404}
+2025-06-17 23:25:49.331 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Created post with ID: 101
+2025-06-17 23:25:49.332 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCreatePost
+2025-06-17 23:25:49.336 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:49.337 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:49.332 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockErrorResponse
+2025-06-17 23:25:49.353 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockGetRequest
+2025-06-17 23:25:49.369 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/1
+2025-06-17 23:25:49.441 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:25:49.442 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:25:49.464 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = John Doe
+2025-06-17 23:25:49.483 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked GET request: {"id": 1, "name": "John Doe", "email": "john@example.com"}
+2025-06-17 23:25:49.492 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockGetRequest
+2025-06-17 23:25:49.496 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPostRequest
+2025-06-17 23:25:49.510 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:25:49.552 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:25:49.553 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 101
+2025-06-17 23:25:49.582 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = New User
+2025-06-17 23:25:49.628 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked POST request: {"id": 101, "name": "New User", "email": "new@example.com"}
+2025-06-17 23:25:49.643 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPostRequest
+2025-06-17 23:25:49.646 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPutRequest
+2025-06-17 23:25:49.663 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/1
+2025-06-17 23:25:49.739 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:25:49.742 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:25:49.776 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = Updated User
+2025-06-17 23:25:49.799 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked PUT request: {"id": 1, "name": "Updated User", "email": "updated@example.com"}
+2025-06-17 23:25:49.808 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPutRequest
+2025-06-17 23:25:49.810 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Stopping WireMock server
+2025-06-17 23:25:50.411 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:25:50.412 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:25:50.413 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:25:50.459 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 1 time
+2025-06-17 23:25:50.460 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:25:50.463 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:50.464 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:50.566 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 3: Success
+2025-06-17 23:25:50.567 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testRetryMechanism
+2025-06-17 23:25:51.530 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:25:51.532 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:25:51.532 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:25:51.553 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 2 time
+2025-06-17 23:25:51.553 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:25:51.559 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:51.560 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:52.443 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:25:52.445 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:25:52.445 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:25:52.465 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testDeletePost has reached max retry count: 2
+2025-06-17 23:25:52.465 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testDeletePost
+2025-06-17 23:25:52.669 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:52.670 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:54.711 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllPosts
+2025-06-17 23:25:54.712 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting all posts
+2025-06-17 23:25:54.713 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts
+2025-06-17 23:25:56.783 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:25:56.792 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Response time: 1965 ms (max allowed: 5000 ms)
+2025-06-17 23:25:56.796 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating content type: Expected application/json; charset=utf-8 | Actual application/json; charset=utf-8
+2025-06-17 23:25:56.952 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 100 posts
+2025-06-17 23:25:56.952 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetAllPosts
+2025-06-17 23:25:56.957 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:56.957 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:57.780 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:25:57.784 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:25:57.784 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:25:58.511 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:25:58.521 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 1 time
+2025-06-17 23:25:58.523 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetPostById
+2025-06-17 23:25:58.528 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:25:58.528 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:25:59.650 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:25:59.652 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:25:59.652 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:26:00.124 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:26:00.125 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 2 time
+2025-06-17 23:26:00.125 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetPostById
+2025-06-17 23:26:00.127 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:26:00.127 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:26:01.020 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:26:01.023 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:26:01.024 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:26:01.778 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:26:01.779 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testGetPostById has reached max retry count: 2
+2025-06-17 23:26:01.779 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testGetPostById
+2025-06-17 23:26:01.788 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:26:01.788 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:26:02.677 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostComments
+2025-06-17 23:26:02.678 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting comments for post ID: 1
+2025-06-17 23:26:02.678 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id}/comments with path params: {id=1}
+2025-06-17 23:26:03.837 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:26:03.842 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 5 comments for post with ID: 1
+2025-06-17 23:26:03.843 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetPostComments
+2025-06-17 23:26:03.845 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:26:03.846 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:26:04.879 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:26:04.881 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:26:04.881 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:26:04.896 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 1 time
+2025-06-17 23:26:04.896 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:26:04.898 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:26:04.900 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:26:06.287 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:26:06.287 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:26:06.288 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:26:06.302 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 2 time
+2025-06-17 23:26:06.302 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:26:06.305 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:26:06.308 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:26:09.010 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:26:09.011 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:26:09.011 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:26:09.027 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdatePost has reached max retry count: 2
+2025-06-17 23:26:09.028 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testUpdatePost
+2025-06-17 23:26:09.033 [main] INFO  com.restautomation.utils.LoggerUtil - Finishing test suite: API Tests
+2025-06-17 23:26:09.636 [main] INFO  com.restautomation.utils.LoggerUtil - Extent Reports flushed successfully
+2025-06-17 23:31:28.830 [main] INFO  com.restautomation.utils.LoggerUtil - Starting test suite: API Tests
+2025-06-17 23:31:28.855 [main] INFO  com.restautomation.utils.LoggerUtil - Initializing Extent Reports at: /Users/shashankawasthi/Desktop/techbyjerry/rest-assured-automation-framework/rest-assured-automation-framework/test-output/reports/API-Test-Report-2025-06-17_23-31-28.html
+2025-06-17 23:31:29.545 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating UserAPI instance
+2025-06-17 23:31:29.546 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating ProductAPI instance
+2025-06-17 23:31:29.545 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating PostAPI instance
+2025-06-17 23:31:29.550 [TestNG-test=API Tests-1] INFO  com.restautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/dev-config.properties
+2025-06-17 23:31:29.551 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:31:29.551 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:31:29.551 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:31:30.723 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:31:30.723 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:31:30.723 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:31:30.795 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:30.805 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:30.802 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=Test Product, description=This is a test product, price=19.99, stock=10, category=TestCategory, imageUrl=https://example.com/test-product.jpg)
+2025-06-17 23:31:30.818 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-17 23:31:30.808 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=Test User, email=test.user.1750183290801@example.com, username=testuser1750183290808, phone=1234567890, website=testuser.com, address=null, company=null)
+2025-06-17 23:31:30.829 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:31:34.985 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateUser
+2025-06-17 23:31:35.049 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateUser
+2025-06-17 23:31:35.068 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteUser
+2025-06-17 23:31:35.070 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteUser
+2025-06-17 23:31:35.075 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllUsers
+2025-06-17 23:31:35.076 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllUsers
+2025-06-17 23:31:35.081 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserById
+2025-06-17 23:31:35.083 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetUserById
+2025-06-17 23:31:35.088 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetUserPosts
+2025-06-17 23:31:35.091 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetUserPosts
+2025-06-17 23:31:35.098 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateUser
+2025-06-17 23:31:35.100 [TestNG-test=API Tests-1] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateUser
+2025-06-17 23:31:35.112 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting WireMock server on port: 8989
+2025-06-17 23:31:36.519 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreateProduct
+2025-06-17 23:31:36.520 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testCreateProduct
+2025-06-17 23:31:36.530 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeleteProduct
+2025-06-17 23:31:36.532 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeleteProduct
+2025-06-17 23:31:36.550 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllProducts
+2025-06-17 23:31:36.551 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetAllProducts
+2025-06-17 23:31:36.557 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetProductById
+2025-06-17 23:31:36.559 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetProductById
+2025-06-17 23:31:36.564 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCreatePost
+2025-06-17 23:31:36.566 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=New Post Title, body=This is the body of the new post)
+2025-06-17 23:31:36.566 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:36.579 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testSearchProductsByName
+2025-06-17 23:31:36.584 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testSearchProductsByName
+2025-06-17 23:31:36.592 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdateProduct
+2025-06-17 23:31:36.593 [TestNG-test=API Tests-3] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdateProduct
+2025-06-17 23:31:36.597 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testConnectionTimeout
+2025-06-17 23:31:36.598 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing connection timeout handling
+2025-06-17 23:31:36.621 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught expected exception: Cannot get property 'assertionClosure' on null object
+2025-06-17 23:31:36.622 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught NullPointerException as expected
+2025-06-17 23:31:36.628 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testConnectionTimeout
+2025-06-17 23:31:36.632 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIException
+2025-06-17 23:31:36.633 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception
+2025-06-17 23:31:36.634 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Resource not found, Status Code: 404
+2025-06-17 23:31:36.671 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIException
+2025-06-17 23:31:36.699 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testCustomAPIExceptionWithCause
+2025-06-17 23:31:36.700 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception with nested cause
+2025-06-17 23:31:36.700 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Failed to parse response, Cause: Invalid JSON format
+2025-06-17 23:31:36.701 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCustomAPIExceptionWithCause
+2025-06-17 23:31:36.702 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Starting test: testRetryMechanism
+2025-06-17 23:31:36.705 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing retry mechanism for transient errors
+2025-06-17 23:31:36.705 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 1: Simulating transient error
+2025-06-17 23:31:36.706 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 1)
+2025-06-17 23:31:36.969 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-17 23:31:36.972 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-17 23:31:36.974 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockDeleteRequest
+2025-06-17 23:31:37.711 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 2: Simulating transient error
+2025-06-17 23:31:37.711 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 2)
+2025-06-17 23:31:37.770 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/1
+2025-06-17 23:31:37.848 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:31:37.849 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: success = true
+2025-06-17 23:31:37.863 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: message = User deleted
+2025-06-17 23:31:37.877 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked DELETE request: {"success": true, "message": "User deleted"}
+2025-06-17 23:31:37.892 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockDeleteRequest
+2025-06-17 23:31:37.894 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockErrorResponse
+2025-06-17 23:31:37.904 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/999
+2025-06-17 23:31:37.936 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 404 | Actual 404
+2025-06-17 23:31:37.936 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: error = User not found
+2025-06-17 23:31:37.963 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: code = 404
+2025-06-17 23:31:37.978 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked error response: {"error": "User not found", "code": 404}
+2025-06-17 23:31:37.986 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockErrorResponse
+2025-06-17 23:31:37.988 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockGetRequest
+2025-06-17 23:31:38.001 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/1
+2025-06-17 23:31:38.033 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:31:38.034 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:31:38.051 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = John Doe
+2025-06-17 23:31:38.069 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked GET request: {"id": 1, "name": "John Doe", "email": "john@example.com"}
+2025-06-17 23:31:38.076 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockGetRequest
+2025-06-17 23:31:38.078 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPostRequest
+2025-06-17 23:31:38.091 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-17 23:31:38.096 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:31:38.097 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-17 23:31:38.119 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: title = New Post Title
+2025-06-17 23:31:38.160 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: body = This is the body of the new post
+2025-06-17 23:31:38.161 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-17 23:31:38.161 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 101
+2025-06-17 23:31:38.179 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: userId = 1
+2025-06-17 23:31:38.179 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = New User
+2025-06-17 23:31:38.197 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked POST request: {"id": 101, "name": "New User", "email": "new@example.com"}
+2025-06-17 23:31:38.206 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPostRequest
+2025-06-17 23:31:38.208 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Starting test: testMockPutRequest
+2025-06-17 23:31:38.214 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Created post with ID: 101
+2025-06-17 23:31:38.216 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testCreatePost
+2025-06-17 23:31:38.220 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:38.220 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:38.228 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/1
+2025-06-17 23:31:38.270 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:31:38.271 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-17 23:31:38.290 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = Updated User
+2025-06-17 23:31:38.303 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked PUT request: {"id": 1, "name": "Updated User", "email": "updated@example.com"}
+2025-06-17 23:31:38.309 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test passed: testMockPutRequest
+2025-06-17 23:31:38.310 [TestNG-test=API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Stopping WireMock server
+2025-06-17 23:31:39.712 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 3: Success
+2025-06-17 23:31:39.713 [TestNG-test=API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Test passed: testRetryMechanism
+2025-06-17 23:31:40.096 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:31:40.097 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:31:40.098 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:31:40.161 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 1 time
+2025-06-17 23:31:40.162 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:31:40.180 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:40.180 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:41.202 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:31:41.205 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:31:41.205 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:31:41.231 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 2 time
+2025-06-17 23:31:41.232 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testDeletePost
+2025-06-17 23:31:41.235 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:41.235 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:43.416 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testDeletePost
+2025-06-17 23:31:43.418 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-17 23:31:43.418 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-17 23:31:43.447 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testDeletePost has reached max retry count: 2
+2025-06-17 23:31:43.448 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testDeletePost
+2025-06-17 23:31:43.946 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:43.946 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:45.598 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetAllPosts
+2025-06-17 23:31:45.599 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting all posts
+2025-06-17 23:31:45.599 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts
+2025-06-17 23:31:47.172 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:31:47.178 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Response time: 1505 ms (max allowed: 5000 ms)
+2025-06-17 23:31:47.184 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating content type: Expected application/json; charset=utf-8 | Actual application/json; charset=utf-8
+2025-06-17 23:31:47.345 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 100 posts
+2025-06-17 23:31:47.346 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetAllPosts
+2025-06-17 23:31:47.348 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:47.349 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:50.775 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:31:50.777 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:31:50.778 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:31:51.603 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:31:51.612 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 1 time
+2025-06-17 23:31:51.613 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetPostById
+2025-06-17 23:31:51.615 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:51.615 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:53.069 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:31:53.070 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:31:53.070 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:31:56.047 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:31:56.047 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 2 time
+2025-06-17 23:31:56.048 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testGetPostById
+2025-06-17 23:31:56.053 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:56.054 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:31:58.669 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostById
+2025-06-17 23:31:58.672 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-17 23:31:58.672 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-17 23:31:59.669 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-17 23:31:59.670 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testGetPostById has reached max retry count: 2
+2025-06-17 23:31:59.670 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testGetPostById
+2025-06-17 23:31:59.679 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:31:59.680 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:32:01.381 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testGetPostComments
+2025-06-17 23:32:01.382 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Getting comments for post ID: 1
+2025-06-17 23:32:01.383 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id}/comments with path params: {id=1}
+2025-06-17 23:32:01.717 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-17 23:32:01.720 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrieved 5 comments for post with ID: 1
+2025-06-17 23:32:01.721 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test passed: testGetPostComments
+2025-06-17 23:32:01.723 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:32:01.723 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:32:03.038 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:32:03.038 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:32:03.039 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:32:03.087 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 1 time
+2025-06-17 23:32:03.088 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:32:03.110 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:32:03.110 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:32:03.862 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:32:03.863 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:32:03.863 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:32:03.883 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 2 time
+2025-06-17 23:32:03.884 [TestNG-test=API Tests-2] WARN  com.restautomation.utils.LoggerUtil - Test skipped: testUpdatePost
+2025-06-17 23:32:03.886 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-17 23:32:03.886 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-17 23:32:04.760 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting test: testUpdatePost
+2025-06-17 23:32:04.761 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-17 23:32:04.762 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-17 23:32:04.778 [TestNG-test=API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdatePost has reached max retry count: 2
+2025-06-17 23:32:04.779 [TestNG-test=API Tests-2] ERROR com.restautomation.utils.LoggerUtil - Test failed: testUpdatePost
+2025-06-17 23:32:04.784 [main] INFO  com.restautomation.utils.LoggerUtil - Finishing test suite: API Tests
+2025-06-17 23:32:05.326 [main] INFO  com.restautomation.utils.LoggerUtil - Extent Reports flushed successfully
+2025-06-17 23:58:25.500 [TestNG-test=Web Tests-2] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-17 23:59:01.283 [TestNG-test=Web Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-17 23:59:01.286 [TestNG-test=Web Tests-1] WARN  com.seleniumautomation.config.ConfigManager - Property baseUrl not found in configuration
+2025-06-17 23:59:01.287 [TestNG-test=Web Tests-1] ERROR com.restautomation.utils.LoggerUtil - Error in test setup: null value in entry: url=null
+2025-06-17 23:59:07.063 [TestNG-test=Web Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-17 23:59:07.065 [TestNG-test=Web Tests-2] WARN  com.seleniumautomation.config.ConfigManager - Property baseUrl not found in configuration
+2025-06-17 23:59:07.065 [TestNG-test=Web Tests-2] ERROR com.restautomation.utils.LoggerUtil - Error in test setup: null value in entry: url=null
+2025-06-18 00:02:25.520 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:02:32.008 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:02:32.011 [main] WARN  com.seleniumautomation.config.ConfigManager - Property baseUrl not found in configuration
+2025-06-18 00:02:32.013 [main] ERROR com.restautomation.utils.LoggerUtil - Error in test setup: null value in entry: url=null
+2025-06-18 00:03:11.745 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:03:16.843 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:03:17.837 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:03:17.859 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:03:18.345 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:05:37.504 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:05:45.124 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:05:46.082 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:05:46.131 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:05:47.282 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:07:17.539 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:07:22.388 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:07:22.723 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:07:22.734 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:07:23.795 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:09:06.163 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:09:12.003 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:09:14.080 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:09:14.094 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:09:14.390 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:10:39.826 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:10:46.366 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:10:48.586 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:10:48.598 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:10:48.890 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:14:14.009 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:14:21.534 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:14:23.483 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:14:23.492 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:14:23.822 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:17:25.967 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:17:34.232 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:17:36.474 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:17:36.488 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:17:41.522 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:17:41.523 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:17:41.706 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:17:46.771 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:17:46.771 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:17:46.894 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_10.png
+2025-06-18 00:17:51.932 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:17:51.933 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:17:52.066 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_15.png
+2025-06-18 00:17:57.097 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:17:57.098 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:17:57.217 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_20.png
+2025-06-18 00:18:02.249 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:02.250 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:02.350 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_25.png
+2025-06-18 00:18:07.383 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:07.384 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:07.483 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_30.png
+2025-06-18 00:18:12.521 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:12.521 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:12.610 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_35.png
+2025-06-18 00:18:17.643 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:17.643 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:17.945 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_40.png
+2025-06-18 00:18:23.003 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:23.004 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:23.328 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_45.png
+2025-06-18 00:18:28.380 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:28.380 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:28.487 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_50.png
+2025-06-18 00:18:33.523 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:33.525 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:33.613 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_55.png
+2025-06-18 00:18:38.651 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:38.651 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:38.842 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_60.png
+2025-06-18 00:18:43.893 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:43.894 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:43.976 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_65.png
+2025-06-18 00:18:49.011 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:49.011 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:49.111 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_70.png
+2025-06-18 00:18:54.145 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:54.145 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:54.249 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_75.png
+2025-06-18 00:18:59.280 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:18:59.280 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:18:59.381 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_80.png
+2025-06-18 00:19:04.417 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:04.418 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:04.512 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_85.png
+2025-06-18 00:19:09.541 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:09.542 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:09.644 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_90.png
+2025-06-18 00:19:14.673 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:14.673 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:14.780 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_95.png
+2025-06-18 00:19:19.812 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:19.812 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:19.905 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_100.png
+2025-06-18 00:19:24.935 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:24.935 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:25.018 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_105.png
+2025-06-18 00:19:30.046 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:30.047 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:30.143 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_110.png
+2025-06-18 00:19:35.175 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:35.175 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:35.269 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_115.png
+2025-06-18 00:19:40.299 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:19:40.299 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:19:40.415 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_120.png
+2025-06-18 00:19:40.427 [main] ERROR com.restautomation.utils.LoggerUtil - CAPTCHA not cleared or home page not loaded after waiting. Failing test.
+2025-06-18 00:19:40.715 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:23:09.207 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:23:16.996 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:23:19.014 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:23:19.022 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:23:24.057 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:24.057 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:24.570 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:23:29.644 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:29.644 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:29.741 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_10.png
+2025-06-18 00:23:34.807 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:34.808 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:34.920 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_15.png
+2025-06-18 00:23:39.957 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:39.958 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:40.045 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_20.png
+2025-06-18 00:23:45.091 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:45.091 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:45.190 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_25.png
+2025-06-18 00:23:50.226 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:50.227 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:50.327 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_30.png
+2025-06-18 00:23:55.361 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:23:55.361 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:23:55.461 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_35.png
+2025-06-18 00:24:00.498 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:00.498 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:00.593 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_40.png
+2025-06-18 00:24:05.627 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:05.627 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:05.708 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_45.png
+2025-06-18 00:24:10.743 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:10.744 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:10.843 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_50.png
+2025-06-18 00:24:15.875 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:15.876 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:15.979 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_55.png
+2025-06-18 00:24:21.012 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:21.012 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:21.097 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_60.png
+2025-06-18 00:24:26.130 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:26.130 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:26.212 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_65.png
+2025-06-18 00:24:31.237 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:31.239 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:31.336 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_70.png
+2025-06-18 00:24:36.368 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:36.368 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:36.463 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_75.png
+2025-06-18 00:24:41.500 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:41.500 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:41.896 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_80.png
+2025-06-18 00:24:46.962 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:46.962 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:47.726 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_85.png
+2025-06-18 00:24:52.783 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:52.783 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:53.129 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_90.png
+2025-06-18 00:24:58.213 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:24:58.213 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:24:58.518 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_95.png
+2025-06-18 00:25:03.594 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:25:03.596 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:25:03.993 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_100.png
+2025-06-18 00:25:09.047 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:25:09.047 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:25:09.333 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_105.png
+2025-06-18 00:25:14.388 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:25:14.389 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:25:14.754 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_110.png
+2025-06-18 00:28:14.066 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:28:21.134 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:28:24.651 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:28:24.665 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:28:29.727 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:28:29.728 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:28:30.104 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:28:30.158 [main] INFO  com.restautomation.utils.LoggerUtil - Amazon home page loaded, proceeding with test.
+2025-06-18 00:28:30.181 [main] INFO  com.restautomation.utils.LoggerUtil - SEARCH_BOX locator xpath: //input[@id='twotabsearchtextbox']
+2025-06-18 00:28:30.212 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:28:30.220 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:28:34.390 [main] INFO  com.restautomation.utils.LoggerUtil - Searched for product: laptop
+2025-06-18 00:28:35.081 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:29:30.402 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:29:38.442 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:29:40.902 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:29:40.920 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:29:45.957 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:29:45.957 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:29:46.291 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:29:46.323 [main] INFO  com.restautomation.utils.LoggerUtil - Amazon home page loaded, proceeding with test.
+2025-06-18 00:29:46.345 [main] INFO  com.restautomation.utils.LoggerUtil - SEARCH_BOX locator xpath: //input[@id='twotabsearchtextbox']
+2025-06-18 00:29:46.366 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:29:46.372 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:29:50.058 [main] INFO  com.restautomation.utils.LoggerUtil - Searched for product: laptop
+2025-06-18 00:29:50.732 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:30:41.417 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:30:47.991 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:30:49.647 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:30:49.656 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:30:54.693 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:30:54.693 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:30:54.838 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:30:59.891 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:30:59.893 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:00.006 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_10.png
+2025-06-18 00:31:05.036 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:05.036 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:05.131 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_15.png
+2025-06-18 00:31:10.169 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:10.170 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:10.281 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_20.png
+2025-06-18 00:31:15.324 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:15.326 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:15.406 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_25.png
+2025-06-18 00:31:20.441 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:20.441 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:20.546 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_30.png
+2025-06-18 00:31:25.579 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:25.580 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:25.677 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_35.png
+2025-06-18 00:31:30.713 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:30.713 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:30.812 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_40.png
+2025-06-18 00:31:35.847 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:35.848 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:35.944 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_45.png
+2025-06-18 00:31:40.979 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:40.981 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:41.078 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_50.png
+2025-06-18 00:31:46.114 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:46.115 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:46.214 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_55.png
+2025-06-18 00:31:51.252 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:51.254 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:51.345 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_60.png
+2025-06-18 00:31:56.379 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:31:56.379 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:31:56.482 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_65.png
+2025-06-18 00:32:01.519 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:01.519 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:01.611 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_70.png
+2025-06-18 00:32:06.645 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:06.646 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:06.733 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_75.png
+2025-06-18 00:32:11.769 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:11.770 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:11.866 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_80.png
+2025-06-18 00:32:16.931 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:16.933 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:17.158 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_85.png
+2025-06-18 00:32:22.206 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:22.206 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:22.464 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_90.png
+2025-06-18 00:32:27.555 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:27.555 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:27.651 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_95.png
+2025-06-18 00:32:32.674 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:32.676 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:32.964 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_100.png
+2025-06-18 00:32:38.025 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:38.030 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:38.384 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_105.png
+2025-06-18 00:32:43.444 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:43.444 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:43.537 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_110.png
+2025-06-18 00:32:48.571 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:32:48.571 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:48.665 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_115.png
+2025-06-18 00:32:56.546 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:32:56.563 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:32:56.811 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_120.png
+2025-06-18 00:32:56.825 [main] INFO  com.restautomation.utils.LoggerUtil - Amazon home page loaded, proceeding with test.
+2025-06-18 00:32:56.844 [main] INFO  com.restautomation.utils.LoggerUtil - SEARCH_BOX locator xpath: //input[@id='twotabsearchtextbox']
+2025-06-18 00:32:56.867 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:32:56.873 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:33:00.540 [main] INFO  com.restautomation.utils.LoggerUtil - Searched for product: laptop
+2025-06-18 00:33:31.253 [main] ERROR com.restautomation.utils.LoggerUtil - Failed to load product detail page: Expected condition failed: waiting for presence of element located by: By.xpath: //div[@id='centerCol'] | //div[@id='rightCol'] (tried for 30 second(s) with 500 milliseconds interval)
+2025-06-18 00:33:31.798 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:36:17.138 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:36:26.227 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:36:27.719 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:36:27.754 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:36:32.800 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:36:32.801 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:36:32.988 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:36:38.064 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:36:38.064 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:36:38.442 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_10.png
+2025-06-18 00:36:43.510 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:36:43.510 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:36:43.630 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_15.png
+2025-06-18 00:36:48.679 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:36:48.680 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:36:48.807 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_20.png
+2025-06-18 00:36:53.852 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:36:53.852 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:36:53.959 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_25.png
+2025-06-18 00:36:58.992 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:36:58.993 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:36:59.077 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_30.png
+2025-06-18 00:37:04.109 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:04.110 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:04.196 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_35.png
+2025-06-18 00:37:09.232 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:09.232 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:09.327 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_40.png
+2025-06-18 00:37:14.363 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:14.363 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:14.461 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_45.png
+2025-06-18 00:37:19.496 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:19.496 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:19.594 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_50.png
+2025-06-18 00:37:24.627 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:24.627 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:24.714 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_55.png
+2025-06-18 00:37:29.744 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:29.744 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:29.835 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_60.png
+2025-06-18 00:37:34.869 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:34.869 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:34.959 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_65.png
+2025-06-18 00:37:39.996 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:39.996 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:40.096 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_70.png
+2025-06-18 00:37:45.129 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:45.129 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:45.228 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_75.png
+2025-06-18 00:37:50.259 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:50.259 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:50.344 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_80.png
+2025-06-18 00:37:55.379 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:37:55.379 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:37:55.480 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_85.png
+2025-06-18 00:38:00.512 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:00.512 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:00.616 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_90.png
+2025-06-18 00:38:05.647 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:05.647 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:05.746 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_95.png
+2025-06-18 00:38:10.775 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:10.775 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:10.867 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_100.png
+2025-06-18 00:38:15.903 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:15.905 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:15.997 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_105.png
+2025-06-18 00:38:21.032 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:21.032 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:21.464 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_110.png
+2025-06-18 00:38:26.539 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:26.540 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:26.682 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_115.png
+2025-06-18 00:38:31.723 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:38:31.725 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:38:31.835 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_120.png
+2025-06-18 00:38:31.847 [main] ERROR com.restautomation.utils.LoggerUtil - CAPTCHA not cleared or home page not loaded after waiting. Failing test.
+2025-06-18 00:38:32.124 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:42:01.124 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:42:09.550 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:42:11.314 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:42:11.334 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:42:16.360 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:42:16.360 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:42:16.498 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:42:21.577 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:42:21.577 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:42:21.676 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_10.png
+2025-06-18 00:42:28.420 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:42:28.420 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:42:28.912 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_15.png
+2025-06-18 00:42:28.942 [main] INFO  com.restautomation.utils.LoggerUtil - Amazon home page loaded, proceeding with test.
+2025-06-18 00:42:28.999 [main] INFO  com.restautomation.utils.LoggerUtil - SEARCH_BOX locator xpath: //input[@id='twotabsearchtextbox']
+2025-06-18 00:42:29.082 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com. Spend less. Smile more.
+2025-06-18 00:42:29.099 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:42:32.789 [main] INFO  com.restautomation.utils.LoggerUtil - Searched for product: laptop
+2025-06-18 00:42:34.675 [main] INFO  com.restautomation.utils.LoggerUtil - Found valid product result: Brands related to your search
+2025-06-18 00:42:36.439 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
+2025-06-18 00:43:21.815 [main] INFO  com.seleniumautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/qa-config.properties
+2025-06-18 00:43:30.008 [main] INFO  com.restautomation.utils.LoggerUtil - Initialized chrome browser driver
+2025-06-18 00:43:32.013 [main] INFO  com.restautomation.utils.LoggerUtil - Navigated to base URL: https://www.amazon.com
+2025-06-18 00:43:32.024 [main] INFO  com.restautomation.utils.LoggerUtil - Starting Amazon search test
+2025-06-18 00:43:37.052 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:43:37.054 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:43:37.179 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_5.png
+2025-06-18 00:43:42.231 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:43:42.232 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:43:42.347 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_10.png
+2025-06-18 00:43:47.384 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:43:47.384 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:43:47.493 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_15.png
+2025-06-18 00:43:52.572 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:43:52.572 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/
+2025-06-18 00:43:52.999 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_20.png
+2025-06-18 00:43:58.053 [main] INFO  com.restautomation.utils.LoggerUtil - Current page title: Amazon.com
+2025-06-18 00:43:58.054 [main] INFO  com.restautomation.utils.LoggerUtil - Current page URL: https://www.amazon.com/errors/validateCaptcha?amzn=WaQbLhS22CqM%2BzgTJ0CJAQ%3D%3D&amzn-r=%2F&field-keywords=
+2025-06-18 00:43:58.183 [main] INFO  com.restautomation.utils.LoggerUtil - Screenshot saved to: target/amazon_page_check_25.png
+2025-06-18 00:43:58.183 [main] INFO  com.restautomation.utils.LoggerUtil - CAPTCHA detected, attempting to solve...
+2025-06-18 00:44:01.425 [main] INFO  com.restautomation.utils.LoggerUtil - Closed browser and removed WebDriver instance
