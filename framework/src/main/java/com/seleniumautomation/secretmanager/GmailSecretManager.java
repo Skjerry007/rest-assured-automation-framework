@@ -7,7 +7,7 @@ import com.google.protobuf.ByteString;
 import java.io.IOException;
 
 public class GmailSecretManager {
-    private static final String PROJECT_ID = "898893564285";
+    private static final String PROJECT_ID = "your-actual-project-id"; // Replace with your actual project ID
     private static final String SECRET_ID = "gmail-credentials";
     private static final String VERSION_ID = "latest";
 
