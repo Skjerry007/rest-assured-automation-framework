@@ -3,11 +3,11 @@ package com.restautomation.utils;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 public class JWTUtil {
-    private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     
     public static String generateToken(String username) {
         return Jwts.builder()
@@ -20,10 +20,10 @@ public class JWTUtil {
 
     public static boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder()
-                .setSigningKey(key)
+            Jwts.parser()
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token);
+                .parseSignedClaims(token);
             return true;
         } catch (Exception e) {
             return false;
