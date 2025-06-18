@@ -1,8 +1,42 @@
-# Compiled class files
-*.class
+# Large files
+temurin21.pkg
+*.pkg
 
-# Log files
+# Logs
+logs/
 *.log
+
+# Build directories
+target/
+build/
+out/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+captcha_screenshots/
+tessdata/
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Compiled files
+*.class
+*.jar
+*.war
+*.ear
+
+# Temporary files
+*.tmp
+*.temp
 
 # BlueJ files
 *.ctxt
@@ -24,7 +58,6 @@ hs_err_pid*
 replay_pid*
 
 # Maven
-target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -36,11 +69,8 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # IDE files
-.idea/
-*.iml
 *.iws
 *.ipr
-.vscode/
 .settings/
 .classpath
 .project
@@ -63,5 +93,4 @@ reports/
 extent-reports/
 
 # OS specific files
-.DS_Store
 Thumbs.db 
