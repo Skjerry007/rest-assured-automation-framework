@@ -1439,3 +1439,131 @@
 2025-06-18 12:55:12.392 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
 2025-06-18 12:55:12.393 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
 2025-06-18 12:55:12.419 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdatePost has reached max retry count: 2
+2025-06-18 13:06:00.713 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating UserAPI instance
+2025-06-18 13:06:00.713 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating ProductAPI instance
+2025-06-18 13:06:00.713 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating PostAPI instance
+2025-06-18 13:06:00.744 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.config.ConfigManager - Loading configuration from: src/test/resources/config/dev-config.properties
+2025-06-18 13:06:00.747 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-18 13:06:00.747 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-18 13:06:00.747 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-18 13:06:02.223 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-18 13:06:02.223 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-18 13:06:02.222 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-18 13:06:02.312 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:02.320 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:02.305 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Creating new product: Product(id=null, name=Test Product, description=This is a test product, price=19.99, stock=10, category=TestCategory, imageUrl=https://example.com/test-product.jpg)
+2025-06-18 13:06:02.334 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /products
+2025-06-18 13:06:02.313 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Creating new user: User(id=null, name=Test User, email=test.user.1750232162307@example.com, username=testuser1750232162312, phone=1234567890, website=testuser.com, address=null, company=null)
+2025-06-18 13:06:02.337 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-18 13:06:06.308 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing connection timeout handling
+2025-06-18 13:06:06.325 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught expected exception: Cannot get property 'assertionClosure' on null object
+2025-06-18 13:06:06.344 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught NullPointerException as expected
+2025-06-18 13:06:06.355 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception
+2025-06-18 13:06:06.355 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Resource not found, Status Code: 404
+2025-06-18 13:06:06.391 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing custom API exception with nested cause
+2025-06-18 13:06:06.392 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Caught API exception: Failed to parse response, Cause: Invalid JSON format
+2025-06-18 13:06:06.397 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Testing retry mechanism for transient errors
+2025-06-18 13:06:06.397 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 1: Simulating transient error
+2025-06-18 13:06:06.398 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 1)
+2025-06-18 13:06:07.399 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 2: Simulating transient error
+2025-06-18 13:06:07.400 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Retrying after transient error: Service temporarily unavailable (Attempt 2)
+2025-06-18 13:06:07.841 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Starting WireMock server on port: 8989
+2025-06-18 13:06:07.899 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=New Post Title, body=This is the body of the new post)
+2025-06-18 13:06:07.899 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:08.575 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-18 13:06:08.575 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field exists: id
+2025-06-18 13:06:08.621 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: title = New Post Title
+2025-06-18 13:06:08.656 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: body = This is the body of the new post
+2025-06-18 13:06:08.683 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating field value: userId = 1
+2025-06-18 13:06:08.748 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Created post with ID: 101
+2025-06-18 13:06:08.755 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:08.755 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:09.397 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-18 13:06:09.398 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-18 13:06:09.406 [TestNG-test=REST Assured API Tests-3] INFO  com.restautomation.utils.LoggerUtil - Attempt 3: Success
+2025-06-18 13:06:09.454 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 1 time
+2025-06-18 13:06:09.456 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:09.457 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:09.494 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing request specification
+2025-06-18 13:06:09.496 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Initializing response specification
+2025-06-18 13:06:10.372 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-18 13:06:10.373 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-18 13:06:10.403 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testDeletePost for the 2 time
+2025-06-18 13:06:10.404 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /users/1
+2025-06-18 13:06:10.407 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:10.408 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:10.511 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-18 13:06:10.512 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: success = true
+2025-06-18 13:06:10.532 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: message = User deleted
+2025-06-18 13:06:10.559 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked DELETE request: {"success": true, "message": "User deleted"}
+2025-06-18 13:06:10.607 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/999
+2025-06-18 13:06:10.653 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 404 | Actual 404
+2025-06-18 13:06:10.653 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: error = User not found
+2025-06-18 13:06:10.684 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: code = 404
+2025-06-18 13:06:10.743 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked error response: {"error": "User not found", "code": 404}
+2025-06-18 13:06:10.763 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /users/1
+2025-06-18 13:06:10.815 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-18 13:06:10.816 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-18 13:06:10.846 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = John Doe
+2025-06-18 13:06:10.886 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked GET request: {"id": 1, "name": "John Doe", "email": "john@example.com"}
+2025-06-18 13:06:10.918 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /users
+2025-06-18 13:06:10.966 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 201 | Actual 201
+2025-06-18 13:06:10.966 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 101
+2025-06-18 13:06:11.000 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = New User
+2025-06-18 13:06:11.034 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked POST request: {"id": 101, "name": "New User", "email": "new@example.com"}
+2025-06-18 13:06:11.059 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /users/1
+2025-06-18 13:06:11.139 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-18 13:06:11.139 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: id = 1
+2025-06-18 13:06:11.169 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Validating field value: name = Updated User
+2025-06-18 13:06:11.248 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Successfully mocked PUT request: {"id": 1, "name": "Updated User", "email": "updated@example.com"}
+2025-06-18 13:06:11.257 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Deleting post with ID: 101
+2025-06-18 13:06:11.257 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing DELETE request to: /posts/{id}
+2025-06-18 13:06:11.261 [TestNG-test=REST Assured API Tests-2] INFO  com.restautomation.utils.LoggerUtil - Stopping WireMock server
+2025-06-18 13:06:11.282 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testDeletePost has reached max retry count: 2
+2025-06-18 13:06:11.287 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:11.287 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:11.924 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting all posts
+2025-06-18 13:06:11.925 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts
+2025-06-18 13:06:12.474 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-18 13:06:12.484 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Response time: 469 ms (max allowed: 5000 ms)
+2025-06-18 13:06:12.489 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating content type: Expected application/json; charset=utf-8 | Actual application/json; charset=utf-8
+2025-06-18 13:06:12.613 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrieved 100 posts
+2025-06-18 13:06:12.617 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:12.618 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:13.456 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-18 13:06:13.456 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-18 13:06:13.955 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-18 13:06:13.971 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 1 time
+2025-06-18 13:06:13.976 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:13.977 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:14.751 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-18 13:06:14.752 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-18 13:06:15.226 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-18 13:06:15.227 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testGetPostById for the 2 time
+2025-06-18 13:06:15.234 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:15.234 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:15.898 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting post with ID: 101
+2025-06-18 13:06:15.899 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id} with path params: {id=101}
+2025-06-18 13:06:16.457 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 404
+2025-06-18 13:06:16.458 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testGetPostById has reached max retry count: 2
+2025-06-18 13:06:16.461 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:16.461 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:18.084 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Getting comments for post ID: 1
+2025-06-18 13:06:18.084 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing GET request to: /posts/{id}/comments with path params: {id=1}
+2025-06-18 13:06:18.735 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Validating status code: Expected 200 | Actual 200
+2025-06-18 13:06:18.743 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrieved 5 comments for post with ID: 1
+2025-06-18 13:06:18.745 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:18.746 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:19.612 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-18 13:06:19.613 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-18 13:06:19.649 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 1 time
+2025-06-18 13:06:19.651 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:19.651 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:20.252 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-18 13:06:20.253 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-18 13:06:20.275 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Retrying test: testUpdatePost for the 2 time
+2025-06-18 13:06:20.277 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Creating new post: Post(id=null, userId=1, title=Test Post Title, body=This is the body of the test post)
+2025-06-18 13:06:20.277 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing POST request to: /posts
+2025-06-18 13:06:21.105 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Updating post with ID: 101
+2025-06-18 13:06:21.106 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Performing PUT request to: /posts/{id}
+2025-06-18 13:06:21.130 [TestNG-test=REST Assured API Tests-1] INFO  com.restautomation.utils.LoggerUtil - Test: testUpdatePost has reached max retry count: 2
