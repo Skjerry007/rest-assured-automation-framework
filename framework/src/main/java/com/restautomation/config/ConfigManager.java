@@ -1,43 +1,46 @@
 package com.restautomation.config;
 
-import lombok.extern.log4j.Log4j2;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
  * ConfigManager - Singleton class to manage configuration properties
  */
-@Log4j2
 public class ConfigManager {
+    private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
+    private static final Properties properties = new Properties();
     private static ConfigManager instance;
-    private Properties properties;
+    private static final String CONFIG_FILE = "src/test/resources/config/dev-config.properties";
 
     private ConfigManager() {
-        properties = new Properties();
-        try {
-            // Load properties from different environment files based on the environment
-            String env = System.getProperty("env", "dev");
-            String configFile = "src/test/resources/config/" + env + "-config.properties";
-            
-            log.info("Loading configuration from: {}", configFile);
-            properties.load(new FileInputStream(configFile));
-        } catch (IOException e) {
-            log.error("Error loading config properties: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to load config properties", e);
-        }
+        loadConfig();
     }
 
     /**
      * Singleton getInstance method
      * @return ConfigManager instance
      */
-    public static synchronized ConfigManager getInstance() {
+    public static ConfigManager getInstance() {
         if (instance == null) {
             instance = new ConfigManager();
         }
         return instance;
+    }
+
+    private void loadConfig() {
+        try {
+            logger.info("Loading configuration from: {}", CONFIG_FILE);
+            try (InputStream input = new FileInputStream(CONFIG_FILE)) {
+                properties.load(input);
+            }
+        } catch (IOException e) {
+            logger.error("Failed to load configuration: {}", e.getMessage());
+            throw new RuntimeException("Failed to load configuration", e);
+        }
     }
 
     /**
@@ -48,7 +51,8 @@ public class ConfigManager {
     public String getProperty(String key) {
         String value = properties.getProperty(key);
         if (value == null) {
-            log.warn("Property {} not found in configuration", key);
+            logger.error("Configuration property not found: {}", key);
+            throw new RuntimeException("Configuration property not found: " + key);
         }
         return value;
     }
@@ -60,7 +64,12 @@ public class ConfigManager {
      * @return property value or default
      */
     public String getProperty(String key, String defaultValue) {
-        return properties.getProperty(key, defaultValue);
+        String value = properties.getProperty(key);
+        if (value == null) {
+            logger.warn("Configuration property not found: {}. Using default: {}", key, defaultValue);
+            return defaultValue;
+        }
+        return value;
     }
     
     /**
@@ -68,7 +77,7 @@ public class ConfigManager {
      * @return base URL
      */
     public String getBaseUrl() {
-        return getProperty("api.baseUrl");
+        return getProperty("baseUrl");
     }
     
     /**
@@ -77,9 +86,9 @@ public class ConfigManager {
      */
     public int getTimeout() {
         try {
-            return Integer.parseInt(getProperty("api.timeout", "30"));
+            return Integer.parseInt(getProperty("timeout", "30"));
         } catch (NumberFormatException e) {
-            log.warn("Invalid timeout value, using default 30 seconds");
+            logger.warn("Invalid timeout value, using default 30 seconds");
             return 30;
         }
     }
@@ -90,5 +99,14 @@ public class ConfigManager {
      */
     public boolean isSslVerificationEnabled() {
         return Boolean.parseBoolean(getProperty("api.sslVerification", "true"));
+    }
+
+    public void setProperty(String key, String value) {
+        properties.setProperty(key, value);
+        logger.info("Set configuration property: {} = {}", key, value);
+    }
+
+    public String getApiKey() {
+        return getProperty("apiKey");
     }
 }

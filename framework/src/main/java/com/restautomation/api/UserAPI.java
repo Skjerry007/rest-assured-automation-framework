@@ -43,7 +43,10 @@ public class UserAPI extends BaseAPI {
      */
     public Response createUser(User user) {
         LoggerUtil.info("Creating new user: {}", user);
-        return post(Endpoints.USERS, user, null);
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json");
+        headers.put("Accept", "application/json");
+        return post(Endpoints.USERS, user, headers);
     }
     
     /**
@@ -56,7 +59,7 @@ public class UserAPI extends BaseAPI {
         LoggerUtil.info("Updating user with ID: {}", userId);
         Map<String, Object> pathParams = new HashMap<>();
         pathParams.put("id", userId);
-        return put(Endpoints.USER_BY_ID, user, Collections.emptyMap());
+        return put(Endpoints.USER_BY_ID, user, pathParams, null);
     }
     
     /**
@@ -68,7 +71,7 @@ public class UserAPI extends BaseAPI {
         LoggerUtil.info("Deleting user with ID: {}", userId);
         Map<String, Object> pathParams = new HashMap<>();
         pathParams.put("id", userId);
-        return delete(Endpoints.USER_BY_ID, null);
+        return delete(Endpoints.USER_BY_ID, pathParams, null);
     }
     
     /**

@@ -10,29 +10,32 @@ import com.restautomation.utils.LoggerUtil;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * TestListener - TestNG listener for test execution events
  */
 public class TestListener implements ITestListener {
+    private static final Logger logger = LogManager.getLogger(TestListener.class);
     
     @Override
     public void onStart(ITestContext context) {
-        LoggerUtil.info("Starting test suite: {}", context.getName());
+        logger.info("Starting test suite: " + context.getName());
         // Initialize the extent report
         ExtentReportManager.initReports();
     }
     
     @Override
     public void onFinish(ITestContext context) {
-        LoggerUtil.info("Finishing test suite: {}", context.getName());
+        logger.info("Finished test suite: " + context.getName());
         // Flush the extent report
         ExtentReportManager.flushReports();
     }
     
     @Override
     public void onTestStart(ITestResult result) {
-        LoggerUtil.info("Starting test: {}", result.getName());
+        logger.info("Starting test: " + result.getName());
         // Create a test for the current test method
         ExtentTest test = ExtentReportManager.createTest(result.getName(), 
                 result.getTestClass().getRealClass().getSimpleName());
@@ -45,7 +48,7 @@ public class TestListener implements ITestListener {
     
     @Override
     public void onTestSuccess(ITestResult result) {
-        LoggerUtil.info("Test passed: {}", result.getName());
+        logger.info("Test passed: " + result.getName());
         // Log the successful test
         ExtentTest test = ExtentReportManager.getTest();
         test.log(Status.PASS, MarkupHelper.createLabel("Test Passed", ExtentColor.GREEN));
@@ -55,24 +58,25 @@ public class TestListener implements ITestListener {
     }
     
     @Override
-public void onTestFailure(ITestResult result) {
-    LoggerUtil.error("Test failed: {}", result.getName());
-    ExtentTest test = ExtentReportManager.getTest();
-    test.log(Status.FAIL, MarkupHelper.createLabel("Test Failed", ExtentColor.RED));
+    public void onTestFailure(ITestResult result) {
+        logger.error("Test failed: " + result.getName());
+        ExtentTest test = ExtentReportManager.getTest();
+        test.log(Status.FAIL, MarkupHelper.createLabel("Test Failed", ExtentColor.RED));
 
-    if (result.getThrowable() != null) {
-        test.log(Status.FAIL, result.getThrowable());
-        String stackTrace = exceptionStackTraceToString(result.getThrowable());
-        // Use string instead of enum for language
-        test.log(Status.FAIL, MarkupHelper.createCodeBlock(stackTrace, "java"));
+        if (result.getThrowable() != null) {
+            test.log(Status.FAIL, result.getThrowable());
+            String stackTrace = exceptionStackTraceToString(result.getThrowable());
+            // Use string instead of enum for language
+            test.log(Status.FAIL, MarkupHelper.createCodeBlock(stackTrace, "java"));
+            logger.error("Failure reason: " + result.getThrowable().getMessage());
+        }
+
+        test.info("Test execution time: " + (result.getEndMillis() - result.getStartMillis()) + "ms");
     }
-
-    test.info("Test execution time: " + (result.getEndMillis() - result.getStartMillis()) + "ms");
-}
     
     @Override
     public void onTestSkipped(ITestResult result) {
-        LoggerUtil.warn("Test skipped: {}", result.getName());
+        logger.warn("Test skipped: " + result.getName());
         // Log the skipped test
         ExtentTest test = ExtentReportManager.getTest();
         test.log(Status.SKIP, MarkupHelper.createLabel("Test Skipped", ExtentColor.YELLOW));
@@ -81,6 +85,11 @@ public void onTestFailure(ITestResult result) {
         if (result.getThrowable() != null) {
             test.log(Status.SKIP, result.getThrowable());
         }
+    }
+    
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+        logger.warn("Test failed but within success percentage: " + result.getName());
     }
     
     /**

@@ -1,52 +1,67 @@
 package com.seleniumautomation.config;
 
-import lombok.extern.log4j.Log4j2;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
  * ConfigManager - Singleton class to manage configuration properties
  */
-@Log4j2
 public class ConfigManager {
+    private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
+    private static final Properties properties = new Properties();
     private static ConfigManager instance;
-    private Properties properties;
+    private static final String CONFIG_FILE = "src/test/resources/config/dev-config.properties";
 
     private ConfigManager() {
-        properties = new Properties();
-        try {
-            String env = System.getProperty("env", "qa");
-            String configFile = "src/test/resources/config/" + env + "-config.properties";
-            
-            log.info("Loading configuration from: {}", configFile);
-            properties.load(new FileInputStream(configFile));
-        } catch (IOException e) {
-            log.error("Error loading config properties: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to load config properties", e);
-        }
+        loadConfig();
     }
-    
-    public static synchronized ConfigManager getInstance() {
+
+    public static ConfigManager getInstance() {
         if (instance == null) {
             instance = new ConfigManager();
         }
         return instance;
     }
-    
+
+    private void loadConfig() {
+        try {
+            logger.info("Loading configuration from: {}", CONFIG_FILE);
+            try (InputStream input = new FileInputStream(CONFIG_FILE)) {
+                properties.load(input);
+            }
+        } catch (IOException e) {
+            logger.error("Failed to load configuration: {}", e.getMessage());
+            throw new RuntimeException("Failed to load configuration", e);
+        }
+    }
+
     public String getProperty(String key) {
         String value = properties.getProperty(key);
         if (value == null) {
-            log.warn("Property {} not found in configuration", key);
+            logger.error("Configuration property not found: {}", key);
+            throw new RuntimeException("Configuration property not found: " + key);
         }
         return value;
     }
-    
+
     public String getProperty(String key, String defaultValue) {
-        return properties.getProperty(key, defaultValue);
+        String value = properties.getProperty(key);
+        if (value == null) {
+            logger.warn("Configuration property not found: {}. Using default: {}", key, defaultValue);
+            return defaultValue;
+        }
+        return value;
     }
-    
+
+    public void setProperty(String key, String value) {
+        properties.setProperty(key, value);
+        logger.info("Set configuration property: {} = {}", key, value);
+    }
+
     public String getBrowser() {
         return getProperty("browser", "chrome");
     }
@@ -63,7 +78,7 @@ public class ConfigManager {
         try {
             return Integer.parseInt(getProperty("explicitWait", "30"));
         } catch (NumberFormatException e) {
-            log.warn("Invalid explicit wait value, using default 30 seconds");
+            logger.warn("Invalid explicit wait value, using default 30 seconds");
             return 30;
         }
     }

@@ -9,38 +9,20 @@ import com.restautomation.utils.ResponseValidator;
 import com.restautomation.utils.RetryAnalyzer;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * PostApiTest - Tests for Post API endpoints
  */
 public class PostApiTest {
     private PostAPI postAPI;
-    private Integer createdPostId;
     
     @BeforeClass
     public void setup() {
         // Get PostAPI instance from factory
         postAPI = APIFactory.getInstance().getPostAPI();
-    }
-    
-    @BeforeMethod
-    public void createPostForTest() {
-        // Create a post before each test that needs an ID
-        Post post = Post.builder()
-                .userId(1)
-                .title("Test Post Title")
-                .body("This is the body of the test post")
-                .build();
-        Response response = postAPI.createPost(post);
-        if (response.jsonPath().get("id") == null) {
-            // Public API does not persist data, skip test
-            throw new SkipException("Post creation failed or public API does not persist data. Skipping test.");
-        }
-        createdPostId = response.jsonPath().getInt("id");
     }
     
     @Test(description = "Test getting all posts", retryAnalyzer = RetryAnalyzer.class)
@@ -61,10 +43,11 @@ public class PostApiTest {
     
     @Test(description = "Test getting post by ID", retryAnalyzer = RetryAnalyzer.class)
     public void testGetPostById() {
-        Response response = postAPI.getPostById(createdPostId);
+        int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
+        Response response = postAPI.getPostById(randomId);
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
         ResponseValidator.validateFieldExists(response, "id");
-        ResponseValidator.validateFieldValue(response, "id", createdPostId);
+        ResponseValidator.validateFieldValue(response, "id", randomId);
         ResponseValidator.validateFieldExists(response, "title");
         ResponseValidator.validateFieldExists(response, "body");
         ResponseValidator.validateFieldExists(response, "userId");
@@ -96,36 +79,33 @@ public class PostApiTest {
     
     @Test(description = "Test updating a post", retryAnalyzer = RetryAnalyzer.class)
     public void testUpdatePost() {
+        int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Post updatedPost = Post.builder()
                 .userId(1)
                 .title("Updated Post Title")
                 .body("This is the updated body of the post")
                 .build();
-        Response response = postAPI.updatePost(createdPostId, updatedPost);
+        Response response = postAPI.updatePost(randomId, updatedPost);
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
         ResponseValidator.validateFieldValue(response, "title", "Updated Post Title");
         ResponseValidator.validateFieldValue(response, "body", "This is the updated body of the post");
-        LoggerUtil.info("Updated post with ID: {}", createdPostId);
+        LoggerUtil.info("Updated post with ID: {}", randomId);
     }
     
     @Test(description = "Test deleting a post", retryAnalyzer = RetryAnalyzer.class)
     public void testDeletePost() {
-        Response response = postAPI.deletePost(createdPostId);
+        int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
+        Response response = postAPI.deletePost(randomId);
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
-        LoggerUtil.info("Deleted post with ID: {}", createdPostId);
+        LoggerUtil.info("Deleted post with ID: {}", randomId);
     }
     
     @Test(description = "Test getting post comments", retryAnalyzer = RetryAnalyzer.class)
     public void testGetPostComments() {
-        // Get comments for post with ID 1
-        Response response = postAPI.getPostComments(1);
-        
-        // Validate response
+        int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
+        Response response = postAPI.getPostComments(randomId);
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
-        
-        // Validate response is a non-empty array
         Assert.assertTrue(response.jsonPath().getList("").size() > 0, "Post comments should not be empty");
-        
-        LoggerUtil.info("Retrieved {} comments for post with ID: 1", response.jsonPath().getList("").size());
+        LoggerUtil.info("Retrieved {} comments for post with ID: {}", response.jsonPath().getList("").size(), randomId);
     }
 }

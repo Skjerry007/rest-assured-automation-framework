@@ -2,8 +2,10 @@ package com.restautomation.factory;
 
 import com.restautomation.api.AuthAPI;
 import com.restautomation.api.PostAPI;
-import com.restautomation.api.ProductAPI;
 import com.restautomation.api.UserAPI;
+import com.restautomation.api.AlbumAPI;
+import com.restautomation.api.PhotoAPI;
+import com.restautomation.api.TodoAPI;
 import com.restautomation.utils.LoggerUtil;
 
 /**
@@ -55,11 +57,29 @@ public class APIFactory {
     }
     
     /**
-     * Get ProductAPI instance
-     * @return ProductAPI instance
+     * Get AlbumAPI instance
+     * @return AlbumAPI instance
      */
-    public ProductAPI getProductAPI() {
-        LoggerUtil.info("Creating ProductAPI instance");
-        return new ProductAPI();
+    public AlbumAPI getAlbumAPI() {
+        LoggerUtil.info("Creating AlbumAPI instance");
+        return new AlbumAPI();
+    }
+    
+    /**
+     * Get PhotoAPI instance
+     * @return PhotoAPI instance
+     */
+    public PhotoAPI getPhotoAPI() {
+        LoggerUtil.info("Creating PhotoAPI instance");
+        return new PhotoAPI();
+    }
+    
+    /**
+     * Get TodoAPI instance
+     * @return TodoAPI instance
+     */
+    public TodoAPI getTodoAPI() {
+        LoggerUtil.info("Creating TodoAPI instance");
+        return new TodoAPI();
     }
 }

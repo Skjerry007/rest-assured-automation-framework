@@ -56,7 +56,7 @@ public class PostAPI extends BaseAPI {
         LoggerUtil.info("Updating post with ID: {}", postId);
         Map<String, Object> pathParams = new HashMap<>();
         pathParams.put("id", postId);
-        return put(Endpoints.POST_BY_ID, post, Collections.emptyMap());
+        return put(Endpoints.POST_BY_ID, post, pathParams, null);
     }
     
     /**
@@ -68,7 +68,7 @@ public class PostAPI extends BaseAPI {
         LoggerUtil.info("Deleting post with ID: {}", postId);
         Map<String, Object> pathParams = new HashMap<>();
         pathParams.put("id", postId);
-        return delete(Endpoints.POST_BY_ID, null);
+        return delete(Endpoints.POST_BY_ID, pathParams, null);
     }
     
     /**

@@ -1,12 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="REST Assured API Suite" parallel="classes" thread-count="3">
-    <test name="REST Assured API Tests">
+<suite name="Rest Assured API Test Suite" parallel="tests" thread-count="3">
+    <parameter name="environment" value="dev"/>
+    
+    <!-- API Tests -->
+    <test name="API Tests">
         <classes>
-            <class name="com.restautomation.tests.PostApiTest"/>
-            <class name="com.restautomation.tests.ProductApiTest"/>
-            <class name="com.restautomation.tests.UserApiTest"/>
+            <!-- Album API Tests -->
+            <class name="com.restautomation.tests.AlbumApiTest"/>
+            
+            <!-- API Exception Tests -->
             <class name="com.restautomation.tests.APIExceptionHandlingTest"/>
-            <class name="com.restautomation.tests.WireMockAPITest"/>
+            
+            <!-- Photo API Tests -->
+            <class name="com.restautomation.tests.PhotoApiTest"/>
+            
+            <!-- Post API Tests -->
+            <class name="com.restautomation.tests.PostApiTest"/>
+            
+            <!-- Todo API Tests -->
+            <class name="com.restautomation.tests.TodoApiTest"/>
+            
+            <!-- User API Tests -->
+            <class name="com.restautomation.tests.UserApiTest"/>
         </classes>
     </test>
+    
+    <!-- Listeners -->
+    <listeners>
+        <listener class-name="com.restautomation.listeners.TestListener"/>
+        <listener class-name="com.restautomation.listeners.RetryListener"/>
+    </listeners>
 </suite>

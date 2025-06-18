@@ -151,8 +151,11 @@ public class BaseAPI {
      */
     public Response post(String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing POST request to: {}", endpoint);
-        return setHeaders(headers)
-                .body(requestBody)
+        RequestSpecification request = setHeaders(headers);
+        if (requestBody != null) {
+            request.body(requestBody);
+        }
+        return request
                 .when()
                 .post(endpoint)
                 .then()
@@ -181,6 +184,27 @@ public class BaseAPI {
     }
     
     /**
+     * Perform PUT request with path parameters
+     * @param endpoint API endpoint
+     * @param requestBody request body
+     * @param pathParams path parameters
+     * @param headers request headers
+     * @return Response object
+     */
+    public Response put(String endpoint, Object requestBody, Map<String, Object> pathParams, Map<String, String> headers) {
+        LoggerUtil.info("Performing PUT request to: {} with path params: {}", endpoint, pathParams);
+        return setHeaders(headers)
+                .pathParams(pathParams)
+                .body(requestBody)
+                .when()
+                .put(endpoint)
+                .then()
+                .spec(responseSpec)
+                .extract()
+                .response();
+    }
+    
+    /**
      * Perform DELETE request
      * @param endpoint API endpoint
      * @param headers request headers
@@ -189,6 +213,25 @@ public class BaseAPI {
     public Response delete(String endpoint, Map<String, String> headers) {
         LoggerUtil.info("Performing DELETE request to: {}", endpoint);
         return setHeaders(headers)
+                .when()
+                .delete(endpoint)
+                .then()
+                .spec(responseSpec)
+                .extract()
+                .response();
+    }
+    
+    /**
+     * Perform DELETE request with path parameters
+     * @param endpoint API endpoint
+     * @param pathParams path parameters
+     * @param headers request headers
+     * @return Response object
+     */
+    public Response delete(String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
+        LoggerUtil.info("Performing DELETE request to: {} with path params: {}", endpoint, pathParams);
+        return setHeaders(headers)
+                .pathParams(pathParams)
                 .when()
                 .delete(endpoint)
                 .then()
