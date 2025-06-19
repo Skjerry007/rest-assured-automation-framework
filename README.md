@@ -1,223 +1,171 @@
-# REST Assured & Selenium Automation Framework
+# REST Assured & Selenium + Self-Healing Automation Framework
 
-This framework is designed for automated testing of both REST APIs and web applications using REST Assured and Selenium WebDriver.
+This framework provides robust, maintainable, and scalable automation for both REST APIs and web UI (Selenium) with advanced features like self-healing locators, Dockerized Selenium Grid, and beautiful reporting.
 
 ## Features
 
-### Design Patterns
-- Singleton Pattern for configuration, reporting, and factory classes
-- Factory Pattern for API instance creation
-- Builder Pattern for models using Lombok
-- Page Object Model (POM) for both API endpoints and Selenium pages
+### UI Automation (SauceDemo Example)
+- **Full end-to-end automation** of https://www.saucedemo.com (login, add to cart, checkout, order verification, negative scenarios)
+- **Self-healing locators**: Automatically recover from UI changes using multiple locator strategies (see `LocatorUtil.selfHealing`)
+- **Explicit waits**: All dynamic elements are handled with robust waits
+- **Parallel & Grid execution**: Run tests locally or on Selenium Grid (Docker Compose)
+- **Retry mechanism**: Flaky tests are retried automatically
+- **Comprehensive logging**: All steps and errors are logged
+- **Screenshots on failure**: For easy debugging
+- **Beautiful ExtentReports**: Interactive HTML reports for both UI and API tests
+
+### API Automation
+- REST Assured for API testing (GET, POST, PUT, DELETE, schema validation, etc.)
+- Mock API support (WireMock)
+- Secure credential management (AWS/Google Secret Manager)
+- Data-driven and environment-driven
 
 ### Reporting
-- Extent Reports for detailed HTML reports (API & Selenium)
-- TestNG listeners for test execution events
-- Custom logging with Log4j2
+- **ExtentReports** for both UI and API (HTML, screenshots, logs, system info)
+- **Log4j2** for detailed logs
+- **TestNG listeners** for reporting and retry
 
-### REST Assured Features
-- REST API testing with REST Assured
-- HTTP method support: GET, POST, PUT, PATCH, DELETE
-- Request/response validation
-- JSON Schema validation
-- Response time, header, and content type validation
-- SSL handling
-- Mock API testing with WireMock
-- Authentication handling (Basic, OAuth, JWT)
-- Environment-specific configurations
-- Test data management
-- API response validation
-- Custom reporting
+### Self-Healing Locators
+- Implemented in `framework/src/main/java/com/seleniumautomation/utils/LocatorUtil.java`
+- Use `LocatorUtil.selfHealing(By... locators)` in page objects
+- Tries each locator in order until one matches, making tests resilient to UI changes
 
-### Selenium Features
-- Web UI testing with Selenium WebDriver
-- Page Object Model (POM) design pattern
-- Custom Selenium keywords and utilities
-- Gmail OTP automation example
-- CAPTCHA handling with Tesseract OCR
-- Environment-specific configurations (dev/qa)
-- Utility classes for common operations
-
-### Security
-- AWS Secret Manager integration for secure credentials
-- Google Secret Manager integration
-- Token-based authentication
-- Environment variable management
-- Secure credential storage
-
-### Exception Handling
-- Custom exceptions
-- Retry mechanism for flaky tests
-- Comprehensive error logging
-- Test failure screenshots
-
-### Docker & CI/CD
-- Dockerfile for containerized execution
-- Jenkins pipeline integration
-- Cross-browser testing support
-- Parallel test execution
+### Docker & Selenium Grid
+- **docker-compose.yml** for easy Selenium Grid setup (hub + Chrome + Firefox nodes)
+- Run UI tests in parallel across browsers/containers
 
 ## Prerequisites
 
-- Java JDK 8 or higher
+- Java 21+
 - Maven
-- Chrome WebDriver
-- Tesseract OCR (for CAPTCHA handling)
-- Docker (optional, for containerized execution)
-- Jenkins (optional, for CI/CD)
+- Google Chrome (for local UI tests)
+- Docker Desktop (for Selenium Grid)
+- Tesseract OCR (for CAPTCHA tests, optional)
 
-## Installation
+## Installation & Setup
 
-1. Clone the repository
-2. Install Tesseract OCR:
-   ```bash
-   # For macOS
-   brew install tesseract
-   
-   # For Ubuntu/Debian
-   sudo apt-get install tesseract-ocr
-   ```
-
-3. Install Maven dependencies:
+1. **Clone the repository**
+2. **Install dependencies:**
    ```bash
    mvn clean install
    ```
-
-## Environment Setup
-
-1. Create a `.env` file in the root directory:
+3. **Install Tesseract OCR** (optional, for CAPTCHA):
    ```bash
-   cp .env.example .env
+   brew install tesseract   # macOS
+   sudo apt-get install tesseract-ocr   # Ubuntu/Debian
    ```
-
-2. Update the `.env` file with your environment-specific values:
-   - API Configuration
-   - Web Configuration
-   - Authentication settings
-   - Secret Manager Configuration
-   - Test Credentials
-   - Gmail Configuration
-   - Logging settings
-   - Test Configuration
-
-3. Set up Secret Management:
-   - For AWS Secrets Manager:
-     ```bash
-     # Install AWS CLI
-     brew install awscli
-     
-     # Configure AWS credentials
-     aws configure
-     ```
-   
-   - For Google Secret Manager:
-     ```bash
-     # Install Google Cloud SDK
-     brew install google-cloud-sdk
-     
-     # Initialize and configure
-     gcloud init
-     ```
-
-4. Create configuration files:
+4. **Set up config:**
    ```bash
-   # Copy example configurations
    cp framework/src/test/resources/config/dev-config.example.properties framework/src/test/resources/config/dev-config.properties
-   cp framework/src/test/resources/config/qa-config.example.properties framework/src/test/resources/config/qa-config.properties
-   
-   # Update the configuration files with your environment-specific values
+   # Edit dev-config.properties for your environment/credentials
    ```
+5. **(Optional) Set up Secret Manager** for secure credentials (see README section above)
 
-## Project Structure
+## Running UI Tests
 
-```
-framework/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── com/
-│   │   │   │   ├── seleniumautomation/
-│   │   │   │   │   ├── base/
-│   │   │   │   │   ├── locators/
-│   │   │   │   │   ├── pages/
-│   │   │   │   │   └── utils/
-│   │   │   │   └── restautomation/
-│   │   │   │       ├── api/
-│   │   │   │       ├── models/
-│   │   │   │       ├── utils/
-│   │   │   │       └── factory/
-│   │   │   └── resources/
-│   │   └── webapp/
-│   └── test/
-│       ├── java/
-│       │   └── com/
-│       │       ├── seleniumautomation/
-│       │       │   └── test/
-│       │       └── restautomation/
-│       │           └── tests/
-│       └── resources/
-│           ├── config/
-│           ├── testdata/
-│           └── testng-selenium.xml
-└── pom.xml
-```
-
-## Configuration
-
-- Environment-specific configurations are in `src/test/resources/config/`
-- Locator properties are in `src/main/java/com/seleniumautomation/locators/`
-- TestNG configuration is in `src/test/resources/testng-selenium.xml`
-- API test data is in `src/test/resources/testdata/`
-
-## Running Tests
-
+### **Locally (single or parallel):**
 ```bash
-# Run all tests
-mvn clean test
+# Run all UI tests (TestNG suite)
+mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
 
-# Run specific test class
-mvn test -Dtest=AmazonSearchTest
-mvn test -Dtest=UserApiTest
+# Run a specific test class
+mvn test -Dtest=SauceDemoTest
 
-# Run specific test suite
-mvn test -Dsuite=api-tests
-mvn test -Dsuite=ui-tests
-
-# Run tests in Docker
-docker build -t automation-framework .
-docker run automation-framework
+# Run in parallel (locally)
+mvn clean test -DexecutorCapacity=2 -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
 ```
 
-## Key Components
+### **On Selenium Grid (Docker Compose):**
+1. **Start the grid:**
+   ```bash
+   docker-compose up -d
+   # Grid will be at http://localhost:4444
+   ```
+2. **Run tests on grid:**
+   ```bash
+   mvn clean test -DgridExecutorCapacity=2 -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
+   ```
+   - Increase `gridExecutorCapacity` for more parallelism
 
-### REST Assured Components
-- **BaseAPI**: Base class for all API test classes
-- **APIFactory**: Factory class for creating API instances
-- **AuthAPI**: API methods for authentication endpoints
-- **UserAPI**: API methods for user management
-- **ProductAPI**: API methods for product management
-- **JWTUtil**: Utility for JWT token generation and validation
-- **WireMockServer**: Mock API server for testing
-- **ResponseValidator**: Custom response validation utilities
+## Running API Tests
+```bash
+# Run all API tests
+mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng-restassured.xml
 
-### Selenium Components
-- **BaseTest**: Base class for all test classes
-- **AmazonHomePage**: Page object for Amazon homepage
-- **AmazonSearchResultsPage**: Page object for search results
-- **AmazonProductPage**: Page object for product details
-- **CaptchaReader**: Utility for handling CAPTCHA using Tesseract OCR
-- **SeleniumKeywords**: Custom Selenium wrapper methods
-- **GmailService**: Gmail OTP automation utility
-- **ScreenshotUtil**: Test failure screenshot utility
+# Run a specific API test class
+mvn test -Dtest=UserApiTest
+```
 
-## Security
+## Reporting & Logs
+- **ExtentReports HTML:**
+  - UI: `framework/test-output/extent-reports/ExtentReport_*.html`
+  - API: `framework/test-output/reports/API-Test-Report-*.html`
+- **Logs:**
+  - `framework/logs/test-automation.log`
+- **Screenshots (on failure):**
+  - `framework/captcha_screenshots/` (for CAPTCHA)
+  - Embedded in ExtentReports for UI failures
 
-Please refer to [SECURITY.md](SECURITY.md) for security guidelines and best practices.
+## Docker Compose for Selenium Grid
+Example `docker-compose.yml`:
+```yaml
+version: '3.7'
+services:
+  selenium-hub:
+    image: selenium/hub:4.21.0
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+    environment:
+      - GRID_MAX_SESSION=16
+      - GRID_BROWSER_TIMEOUT=300
+      - GRID_TIMEOUT=300
+  chrome:
+    image: selenium/node-chrome:4.21.0
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    volumes:
+      - /dev/shm:/dev/shm
+  firefox:
+    image: selenium/node-firefox:4.21.0
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    volumes:
+      - /dev/shm:/dev/shm
+```
 
-## Contributing
+## SauceDemo UI Automation Details
+- **Tested Flows:**
+  - Login (positive/negative)
+  - Add to cart, cart validation
+  - Checkout (positive/negative, missing info)
+  - Order summary, price, tax, payment, shipping
+  - Order completion and thank you page
+- **Self-healing locators** ensure resilience to UI changes
+- **All data is extracted and asserted** (item name, price, totals, etc.)
+- **Parallel/grid execution** for speed and scalability
+- **Full logs and screenshots** for debugging
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request 
+## Best Practices
+- Use self-healing locators for all new page objects
+- Keep credentials and secrets out of source code (use secret manager/config)
+- Use Docker Compose for scalable, reproducible grid runs
+- Review ExtentReports after every run for actionable insights
+- Add new tests using the Page Object Model for maintainability
+
+## Troubleshooting
+- If browsers do not launch, check Docker and Selenium Grid status
+- If locators break, add fallback strategies to `LocatorUtil.selfHealing`
+- For slow tests, tune explicit wait times in config
+- For more parallelism, increase node count in `docker-compose.yml` and `gridExecutorCapacity`
+
+## Contributors & License
+- See `CONTRIBUTING.md` and `LICENSE` 

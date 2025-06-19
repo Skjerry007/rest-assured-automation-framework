@@ -4,8 +4,10 @@
     
     <test name="Web Tests">
         <classes>
-            <class name="com.seleniumautomation.test.AmazonSearchTest"/>
-            <class name="com.seleniumautomation.test.NaukriResumeUploadTest"/>
+            <class name="com.seleniumautomation.test.SauceDemoTest"/>
         </classes>
     </test>
+    <listeners>
+        <listener class-name="com.seleniumautomation.reports.ExtentTestListener"/>
+    </listeners>
 </suite>

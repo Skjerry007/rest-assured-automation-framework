@@ -91,4 +91,17 @@ public class LocatorUtil {
             locatorProperties.load(input);
         }
     }
+
+    public static By selfHealing(By... locators) {
+        return new By() {
+            @Override
+            public java.util.List<org.openqa.selenium.WebElement> findElements(org.openqa.selenium.SearchContext context) {
+                for (By locator : locators) {
+                    java.util.List<org.openqa.selenium.WebElement> elements = locator.findElements(context);
+                    if (!elements.isEmpty()) return elements;
+                }
+                throw new org.openqa.selenium.NoSuchElementException("No locator matched");
+            }
+        };
+    }
 } 
