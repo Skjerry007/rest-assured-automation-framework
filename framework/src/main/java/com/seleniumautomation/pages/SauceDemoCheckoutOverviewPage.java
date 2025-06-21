@@ -72,4 +72,9 @@ public class SauceDemoCheckoutOverviewPage {
         WebElement el = driver.findElement(finishButton);
         waitUtil.waitForElementToBeClickable(el).click();
     }
+    
+    public void finishCheckout() {
+        LoggerUtil.info("Finishing checkout");
+        clickFinish();
+    }
 }

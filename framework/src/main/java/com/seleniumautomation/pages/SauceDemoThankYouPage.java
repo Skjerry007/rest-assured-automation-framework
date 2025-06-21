@@ -29,4 +29,14 @@ public class SauceDemoThankYouPage {
         WebElement el = driver.findElement(backHomeButton);
         waitUtil.waitForElementToBeClickable(el).click();
     }
+    
+    public boolean isCheckoutComplete() {
+        try {
+            WebElement el = driver.findElement(thankYouHeader);
+            String headerText = waitUtil.waitForElementToBeVisible(el).getText();
+            return "THANK YOU FOR YOUR ORDER".equals(headerText);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
