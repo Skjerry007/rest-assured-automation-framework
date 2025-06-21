@@ -106,6 +106,146 @@ List<String> requests = (List<String>) chromeDriver.executeScript("return window
    ```
 5. **(Optional) Set up Secret Manager** for secure credentials (see README section above)
 
+## Project Structure
+
+```
+rest-assured-automation-framework/
+├── framework/                           # Main project directory
+│   ├── pom.xml                         # ✅ Single, complete Maven POM
+│   ├── src/                            # Source code
+│   │   ├── main/java/                  # Java source files
+│   │   │   ├── com/restautomation/     # REST API automation
+│   │   │   │   ├── api/                # API client classes
+│   │   │   │   │   ├── AlbumAPI.java
+│   │   │   │   │   ├── AuthAPI.java
+│   │   │   │   │   ├── PhotoAPI.java
+│   │   │   │   │   ├── PostAPI.java
+│   │   │   │   │   ├── TodoAPI.java
+│   │   │   │   │   └── UserAPI.java
+│   │   │   │   ├── base/               # Base classes
+│   │   │   │   │   └── BaseAPI.java
+│   │   │   │   ├── config/             # Configuration
+│   │   │   │   │   └── ConfigManager.java
+│   │   │   │   ├── constants/          # Constants
+│   │   │   │   │   ├── Endpoints.java
+│   │   │   │   │   └── StatusCodes.java
+│   │   │   │   ├── exceptions/         # Custom exceptions
+│   │   │   │   │   └── APIException.java
+│   │   │   │   ├── factory/            # Factory patterns
+│   │   │   │   │   └── APIFactory.java
+│   │   │   │   ├── listeners/          # TestNG listeners
+│   │   │   │   │   ├── RetryListener.java
+│   │   │   │   │   └── TestListener.java
+│   │   │   │   ├── models/             # Data models
+│   │   │   │   │   ├── Album.java
+│   │   │   │   │   ├── AuthRequest.java
+│   │   │   │   │   ├── AuthResponse.java
+│   │   │   │   │   ├── Photo.java
+│   │   │   │   │   ├── Post.java
+│   │   │   │   │   ├── Product.java
+│   │   │   │   │   ├── Todo.java
+│   │   │   │   │   └── User.java
+│   │   │   │   ├── reports/            # Reporting utilities
+│   │   │   │   ├── secretmanager/      # Secret management
+│   │   │   │   │   └── SecretManager.java
+│   │   │   │   └── utils/              # Utility classes
+│   │   │   │       ├── CaptchaReader.java
+│   │   │   │       ├── JWTUtil.java
+│   │   │   │       ├── LoggerUtil.java
+│   │   │   │       ├── ResponseValidator.java
+│   │   │   │       ├── RetryAnalyzer.java
+│   │   │   │       └── TestDataUtil.java
+│   │   │   └── com/seleniumautomation/ # Selenium UI automation
+│   │   │       ├── config/             # Selenium configuration
+│   │   │       │   └── ConfigManager.java
+│   │   │       ├── driver/             # WebDriver management
+│   │   │       │   ├── DriverManager.java
+│   │   │       │   └── WebDriverSetup.java
+│   │   │       ├── keywords/           # Keyword-driven framework
+│   │   │       │   └── SeleniumKeywords.java
+│   │   │       ├── pages/              # Page Object Model
+│   │   │       │   ├── AmazonHomePage.java
+│   │   │       │   ├── AmazonProductPage.java
+│   │   │       │   ├── AmazonSearchResultsPage.java
+│   │   │       │   ├── SauceDemoCartPage.java
+│   │   │       │   ├── SauceDemoCheckoutOverviewPage.java
+│   │   │       │   ├── SauceDemoCheckoutPage.java
+│   │   │       │   ├── SauceDemoInventoryPage.java
+│   │   │       │   ├── SauceDemoLoginPage.java
+│   │   │       │   └── SauceDemoThankYouPage.java
+│   │   │       ├── secretmanager/      # Selenium secret management
+│   │   │       │   └── GmailSecretManager.java
+│   │   │       └── utils/              # Selenium utilities
+│   │   │           ├── CaptchaReader.java
+│   │   │           ├── GmailService.java
+│   │   │           ├── LocatorUtil.java      # ✅ Self-healing locators
+│   │   │           ├── TestSearchContext.java
+│   │   │           ├── WaitUtil.java
+│   │   │           └── WebDriverSetup.java
+│   │   ├── main/resources/             # Main resources
+│   │   │   └── com/seleniumautomation/locators/
+│   │   │       ├── AmazonLocators.properties
+│   │   │       ├── NaukriLocators.properties
+│   │   │       └── SauceDemoLocators.properties  # ✅ Centralized locators
+│   │   └── test/java/                  # Test files
+│   │       ├── com/restautomation/tests/  # API tests
+│   │       │   ├── AlbumApiTest.java
+│   │       │   ├── APIExceptionHandlingTest.java
+│   │       │   ├── PhotoApiTest.java
+│   │       │   ├── PostApiTest.java
+│   │       │   ├── TodoApiTest.java
+│   │       │   ├── UserApiTest.java
+│   │       │   └── WireMockAPITest.java
+│   │       └── com/seleniumautomation/    # UI tests
+│   │           ├── base/
+│   │           │   └── BaseTest.java
+│   │           └── test/
+│   │               ├── AmazonSearchTest.java
+│   │               ├── CaptchaScreenshotTest.java
+│   │               ├── CaptchaTest.java
+│   │               ├── CDPNetworkInterceptTest.java  # ✅ Network interception
+│   │               ├── NaukriResumeUploadTest.java
+│   │               ├── OTPTest.java
+│   │               ├── SauceDemoTest.java
+│   │               └── SelfHealingTest.java
+│   └── test/resources/                 # Test resources
+│       ├── com/seleniumautomation/locators/
+│       │   └── AmazonLocators.properties
+│       ├── config/                     # Test configuration
+│       │   ├── dev-config.example.properties
+│       │   ├── dev-config.properties
+│       │   └── qa-config.properties
+│       ├── log4j2.xml                  # Logging configuration
+│       ├── rest-assured.properties     # REST Assured config
+│       ├── schemas/                    # JSON schemas
+│       │   └── user-schema.json
+│       ├── testdata/                   # Test data files
+│       │   ├── posts.json
+│       │   └── users.json
+│       └── testng-*.xml               # TestNG suite files
+│           ├── testng-otp.xml
+│           ├── testng-restassured.xml
+│           ├── testng-selenium.xml
+│           └── testng.xml
+├── docker-compose.yml                  # ✅ Selenium Grid setup
+├── README.md                           # This file
+├── .gitignore                          # Git ignore rules
+├── SECURITY.md                         # Security guidelines
+├── setup-secrets.sh                    # Secret setup script
+└── local-secrets.properties            # Local secrets (gitignored)
+```
+
+### Key Features of the Structure:
+
+✅ **Single Maven POM**: Simplified structure with one complete `pom.xml` in the framework directory
+✅ **Centralized Locators**: All UI locators stored in properties files under `src/main/resources/com/seleniumautomation/locators/`
+✅ **Self-Healing Locators**: Advanced locator management in `LocatorUtil.java` with automatic fallback strategies
+✅ **Page Object Model**: Clean separation of page objects, utilities, and test classes
+✅ **Modular Design**: Separate packages for REST API and Selenium automation
+✅ **Comprehensive Testing**: Both API and UI tests with proper test organization
+✅ **Docker Support**: Ready-to-use Selenium Grid with Docker Compose
+✅ **Configuration Management**: Environment-specific config files and secret management
+
 ## Running UI Tests
 
 ### **Locally (single or parallel):**
