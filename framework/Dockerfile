@@ -1,43 +1,21 @@
-FROM maven:3.8.5-openjdk-11-slim
+FROM selenium/standalone-chrome:4.11.0
 
-# Set working directory
-WORKDIR /app
+USER root
 
-# Copy project files
-COPY . .
+# Install Maven and Git
+RUN apt-get update && \
+    apt-get install -y maven git && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install Chrome for headless browser tests (if needed)
-RUN apt-get update && apt-get install -y \
-    wget \
-    gnupg \
-    curl \
-    unzip \
-    --no-install-recommends \
-    && curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update \
-    && apt-get install -y \
-    google-chrome-stable \
-    --no-install-recommends \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# Set workdir and copy project
+WORKDIR /opt/automation
+COPY framework/ /opt/automation/framework
 
-# Install ChromeDriver
-RUN CHROME_VERSION=$(google-chrome --version | grep -oE "[0-9]+\.[0-9]+\.[0-9]+") \
-    && CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION%%.*}") \
-    && wget -q "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" \
-    && unzip chromedriver_linux64.zip \
-    && rm chromedriver_linux64.zip \
-    && mv chromedriver /usr/local/bin/chromedriver \
-    && chmod +x /usr/local/bin/chromedriver
+# Set workdir to framework directory for Maven
+WORKDIR /opt/automation/framework
 
-# Build the project without running tests
-RUN mvn clean package -DskipTests
+# Set environment variables for Maven
+ENV MAVEN_OPTS="-Xmx1024m"
 
-# Set environment variables
-ENV JAVA_OPTS="-Xmx2048m"
-ENV MAVEN_OPTS="-Xmx2048m"
-
-# Command to run tests with specified parameters
-ENTRYPOINT ["mvn"]
-CMD ["test"]
+# Default command: run the CDP test
+CMD ["mvn", "test", "-Dtest=CDPNetworkInterceptTest"]

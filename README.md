@@ -30,6 +30,51 @@ This framework provides robust, maintainable, and scalable automation for both R
 - Use `LocatorUtil.selfHealing(By... locators)` in page objects
 - Tries each locator in order until one matches, making tests resilient to UI changes
 
+### Chrome DevTools Protocol (CDP) Network Interception
+- **JavaScript-based Network Request Interception**: Intercept and monitor all network requests (fetch, XMLHttpRequest) using injected JavaScript
+- **Comprehensive Request Monitoring**: Capture URLs, query parameters, and request details for debugging and validation
+- **Multi-Site Testing**: Tested on various websites including:
+  - **httpbin.org**: Basic HTTP request interception and parameter extraction
+  - **Amazon.in**: E-commerce site request monitoring (including `fetchshoppingaids` requests)
+  - **Nykaa.com**: Mobile web request interception with custom user agents
+  - **the-internet.herokuapp.com**: Dynamic content and AJAX request monitoring
+  - **testpages.herokuapp.com**: Form submission request capture
+  - **W3Schools AJAX Demo**: Real-time AJAX request interception in iframes
+
+#### CDP Features Implemented:
+- **Request URL Capture**: Intercept and log all network request URLs
+- **Query Parameter Parsing**: Extract and validate URL parameters
+- **Request Counting**: Track total number of intercepted requests
+- **Console Logging**: Real-time request logging in browser console
+- **Mobile Web Support**: Custom user agents and viewport settings for mobile testing
+- **Iframe Support**: Network interception works within iframe contexts
+- **Form Submission Monitoring**: Capture form submission requests and parameters
+
+#### Usage Example:
+```java
+// Inject network interception JavaScript
+chromeDriver.executeScript(
+    "window.interceptedRequests = [];" +
+    "const originalFetch = window.fetch;" +
+    "window.fetch = function() {" +
+    "    window.interceptedRequests.push(arguments[0]);" +
+    "    return originalFetch.apply(this, arguments);" +
+    "};"
+);
+
+// Navigate to page and wait for requests
+chromeDriver.get("https://example.com");
+Thread.sleep(5000);
+
+// Get intercepted requests
+List<String> requests = (List<String>) chromeDriver.executeScript("return window.interceptedRequests;");
+```
+
+#### Test Classes:
+- `CDPNetworkInterceptTest.java`: Comprehensive network interception tests
+- Supports multiple interception strategies and websites
+- Includes parameter extraction and validation utilities
+
 ### Docker & Selenium Grid
 - **docker-compose.yml** for easy Selenium Grid setup (hub + Chrome + Firefox nodes)
 - Run UI tests in parallel across browsers/containers
@@ -74,6 +119,19 @@ mvn test -Dtest=SauceDemoTest
 # Run in parallel (locally)
 mvn clean test -DexecutorCapacity=2 -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
 ```
+
+### **CDP Network Interception Tests:**
+```bash
+# Run all CDP network interception tests
+mvn test -Dtest=CDPNetworkInterceptTest
+
+# Run specific CDP test methods
+mvn test -Dtest=CDPNetworkInterceptTest#testInterceptHttpbinRequest
+mvn test -Dtest=CDPNetworkInterceptTest#testInterceptAllAmazonRequests
+mvn test -Dtest=CDPNetworkInterceptTest#testInterceptNykaaRefreshRequest
+```
+
+**Note**: CDP tests require Chrome browser and may need to run in non-headless mode for some scenarios (e.g., W3Schools AJAX demo).
 
 ### **On Selenium Grid (Docker Compose):**
 1. **Start the grid:**
