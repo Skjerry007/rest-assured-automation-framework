@@ -8,12 +8,7 @@ import com.restautomation.utils.LoggerUtil;
 
 public class SauceDemoLoginPage {
     private WebDriver driver;
-
-    // Locators
-    private By usernameField = By.id("user-name");
-    private By passwordField = By.id("password");
-    private By loginButton = By.id("login-button");
-    private By errorMessage = By.cssSelector("h3[data-test='error']");
+    private static final String LOCATOR_FILE = "SauceDemoLocators";
 
     public SauceDemoLoginPage(WebDriver driver) {
         this.driver = driver;
@@ -21,22 +16,26 @@ public class SauceDemoLoginPage {
 
     public void enterUsername(String username) {
         LoggerUtil.info("Entering username: {}", username);
+        By usernameField = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "USERNAME_FIELD"));
         driver.findElement(usernameField).clear();
         driver.findElement(usernameField).sendKeys(username);
     }
 
     public void enterPassword(String password) {
         LoggerUtil.info("Entering password: {}", password);
+        By passwordField = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "PASSWORD_FIELD"));
         driver.findElement(passwordField).clear();
         driver.findElement(passwordField).sendKeys(password);
     }
 
     public void clickLogin() {
         LoggerUtil.info("Clicking login button");
+        By loginButton = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "LOGIN_BUTTON"));
         driver.findElement(loginButton).click();
     }
 
     public boolean isErrorDisplayed() {
+        By errorMessage = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "ERROR_MESSAGE"));
         return !driver.findElements(errorMessage).isEmpty();
     }
 

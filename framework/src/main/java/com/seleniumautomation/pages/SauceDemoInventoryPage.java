@@ -5,14 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.restautomation.utils.LoggerUtil;
 import com.seleniumautomation.utils.WaitUtil;
+import com.seleniumautomation.utils.LocatorUtil;
+import java.util.List;
 
 public class SauceDemoInventoryPage {
     private WebDriver driver;
     private WaitUtil waitUtil;
-
-    // Locators
-    private By addToCartButton = By.cssSelector("button[data-test^='add-to-cart']");
-    private By cartIcon = By.className("shopping_cart_link");
+    private static final String LOCATOR_FILE = "SauceDemoLocators";
 
     public SauceDemoInventoryPage(WebDriver driver) {
         this.driver = driver;
@@ -21,6 +20,7 @@ public class SauceDemoInventoryPage {
 
     public void addFirstItemToCart() {
         LoggerUtil.info("Adding first item to cart");
+        By addToCartButton = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "ADD_TO_CART_BUTTON"));
         WebElement addButton = driver.findElements(addToCartButton).get(0);
         waitUtil.waitForElementToBeClickable(addButton).click();
         
@@ -34,6 +34,7 @@ public class SauceDemoInventoryPage {
 
     public void goToCart() {
         LoggerUtil.info("Navigating to cart");
+        By cartIcon = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "CART_ICON"));
         WebElement cartElement = driver.findElement(cartIcon);
         waitUtil.waitForElementToBeClickable(cartElement).click();
         // Wait for the cart page URL
@@ -51,14 +52,17 @@ public class SauceDemoInventoryPage {
     }
 
     public String getFirstItemName() {
-        return driver.findElements(By.className("inventory_item_name")).get(0).getText();
+        By itemNameLocator = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "INVENTORY_ITEM_NAME"));
+        return driver.findElements(itemNameLocator).get(0).getText();
     }
 
     public String getFirstItemDescription() {
-        return driver.findElements(By.className("inventory_item_desc")).get(0).getText();
+        By itemDescLocator = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "INVENTORY_ITEM_DESC"));
+        return driver.findElements(itemDescLocator).get(0).getText();
     }
 
     public String getFirstItemPrice() {
-        return driver.findElements(By.className("inventory_item_price")).get(0).getText();
+        By itemPriceLocator = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "INVENTORY_ITEM_PRICE"));
+        return driver.findElements(itemPriceLocator).get(0).getText();
     }
 }

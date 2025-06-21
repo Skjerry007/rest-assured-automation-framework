@@ -329,22 +329,40 @@ public class LocatorUtil {
      * Parse locator string into By object
      */
     private static By parseLocator(String locatorString) {
-        if (locatorString.startsWith("//")) {
-            return By.xpath(locatorString);
-        } else if (locatorString.startsWith(".")) {
-            return By.cssSelector(locatorString);
-        } else if (locatorString.startsWith("#")) {
-            return By.cssSelector(locatorString);
+        if (locatorString == null) {
+            throw new IllegalArgumentException("Locator string cannot be null");
+        }
+        if (locatorString.startsWith("css=")) {
+            return By.cssSelector(locatorString.substring(4));
         } else if (locatorString.startsWith("id=")) {
             return By.id(locatorString.substring(3));
         } else if (locatorString.startsWith("name=")) {
             return By.name(locatorString.substring(5));
         } else if (locatorString.startsWith("class=")) {
             return By.className(locatorString.substring(6));
+        } else if (locatorString.startsWith("xpath=")) {
+            return By.xpath(locatorString.substring(6));
+        } else if (locatorString.startsWith("//")) {
+            return By.xpath(locatorString);
+        } else if (locatorString.startsWith(".")) {
+            return By.cssSelector(locatorString);
+        } else if (locatorString.startsWith("#")) {
+            return By.cssSelector(locatorString);
         } else {
-            // Default to CSS selector
+            // Heuristic: if it looks like a CSS selector, use cssSelector; if it looks like an id or class, use those
+            if (!locatorString.contains(" ") && !locatorString.contains("[")) {
+                // If it doesn't look like a selector, treat as id
+                return By.id(locatorString);
+            }
             return By.cssSelector(locatorString);
         }
+    }
+
+    /**
+     * Public method to parse locator string into By object
+     */
+    public static By getByLocator(String locatorString) {
+        return parseLocator(locatorString);
     }
 
     /**

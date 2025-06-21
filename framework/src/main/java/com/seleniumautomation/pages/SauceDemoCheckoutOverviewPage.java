@@ -10,26 +10,7 @@ import com.seleniumautomation.utils.WaitUtil;
 public class SauceDemoCheckoutOverviewPage {
     private WebDriver driver;
     private WaitUtil waitUtil;
-
-    // Self-healing locators
-    private By itemName = LocatorUtil.selfHealing(
-        By.cssSelector(".inventory_item_name"),
-        By.xpath("//div[contains(@class,'inventory_item_name')]")
-    );
-    private By itemDesc = LocatorUtil.selfHealing(
-        By.cssSelector(".inventory_item_desc"),
-        By.xpath("//div[contains(@class,'inventory_item_desc')]")
-    );
-    private By itemPrice = LocatorUtil.selfHealing(
-        By.cssSelector(".inventory_item_price"),
-        By.xpath("//div[contains(@class,'inventory_item_price')]")
-    );
-    private By finishButton = By.id("finish");
-    private By paymentInfo = By.xpath("//div[contains(text(),'Payment Information')]/following-sibling::div");
-    private By shippingInfo = By.xpath("//div[contains(text(),'Shipping Information')]/following-sibling::div");
-    private By itemTotal = By.xpath("//div[contains(text(),'Item total')]");
-    private By tax = By.xpath("//div[contains(text(),'Tax')]");
-    private By total = By.xpath("//div[contains(text(),'Total')]");
+    private static final String LOCATOR_FILE = "SauceDemoLocators";
 
     public SauceDemoCheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
@@ -37,38 +18,55 @@ public class SauceDemoCheckoutOverviewPage {
     }
 
     public String getItemName() {
+        By itemName = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "ITEM_NAME"));
         WebElement el = driver.findElement(itemName);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getItemDescription() {
+        By itemDesc = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "ITEM_DESC"));
         WebElement el = driver.findElement(itemDesc);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getItemPrice() {
+        By itemPrice = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "ITEM_PRICE"));
         WebElement el = driver.findElement(itemPrice);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getPaymentInfo() {
+        By paymentInfo = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "PAYMENT_INFO"));
         WebElement el = driver.findElement(paymentInfo);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getShippingInfo() {
+        By shippingInfo = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "SHIPPING_INFO"));
         WebElement el = driver.findElement(shippingInfo);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getItemTotal() {
+        By itemTotal = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "ITEM_TOTAL"));
         WebElement el = driver.findElement(itemTotal);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getTax() {
+        By tax = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "TAX"));
         WebElement el = driver.findElement(tax);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public String getTotal() {
+        By total = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "TOTAL"));
         WebElement el = driver.findElement(total);
         return waitUtil.waitForElementToBeVisible(el).getText();
     }
+    
     public void clickFinish() {
+        By finishButton = LocatorUtil.getByLocator(LocatorUtil.getLocator(LOCATOR_FILE, "OVERVIEW_FINISH_BUTTON"));
         WebElement el = driver.findElement(finishButton);
         waitUtil.waitForElementToBeClickable(el).click();
     }
