@@ -238,12 +238,19 @@ rest-assured-automation-framework/
 ### Key Features of the Structure:
 
 ✅ **Single Maven POM**: Simplified structure with one complete `pom.xml` in the framework directory
+
 ✅ **Centralized Locators**: All UI locators stored in properties files under `src/main/resources/com/seleniumautomation/locators/`
+
 ✅ **Self-Healing Locators**: Advanced locator management in `LocatorUtil.java` with automatic fallback strategies
+
 ✅ **Page Object Model**: Clean separation of page objects, utilities, and test classes
+
 ✅ **Modular Design**: Separate packages for REST API and Selenium automation
+
 ✅ **Comprehensive Testing**: Both API and UI tests with proper test organization
+
 ✅ **Docker Support**: Ready-to-use Selenium Grid with Docker Compose
+
 ✅ **Configuration Management**: Environment-specific config files and secret management
 
 ## Running UI Tests
