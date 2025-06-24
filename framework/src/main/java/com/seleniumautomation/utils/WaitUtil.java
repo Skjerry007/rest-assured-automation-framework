@@ -107,4 +107,46 @@ public class WaitUtil {
             throw new RuntimeException("URL does not contain expected fragment", e);
         }
     }
+    
+    /**
+     * Static method to wait for page load
+     * @param driver WebDriver instance
+     */
+    public static void waitForPageLoad(WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            wait.until(webDriver -> ((JavascriptExecutor) webDriver)
+                    .executeScript("return document.readyState").equals("complete"));
+            LoggerUtil.info("Page loaded successfully");
+        } catch (Exception e) {
+            LoggerUtil.warn("Page load wait failed: {}", e.getMessage());
+        }
+    }
+    
+    /**
+     * Static method to scroll to element
+     * @param driver WebDriver instance
+     * @param element Element to scroll to
+     */
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        try {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            LoggerUtil.info("Scrolled to element successfully");
+        } catch (Exception e) {
+            LoggerUtil.warn("Failed to scroll to element: {}", e.getMessage());
+        }
+    }
+    
+    /**
+     * Static method to wait for specified seconds
+     * @param seconds Number of seconds to wait
+     */
+    public static void waitForSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            LoggerUtil.warn("Wait interrupted: {}", e.getMessage());
+        }
+    }
 }

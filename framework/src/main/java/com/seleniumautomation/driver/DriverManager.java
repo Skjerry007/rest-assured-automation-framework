@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.JavascriptExecutor;
 
 import com.seleniumautomation.config.ConfigManager;
 import com.restautomation.utils.LoggerUtil;
@@ -47,12 +48,42 @@ public class DriverManager {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
+                    
+                    // Anti-bot detection measures for Udemy
+                    chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-gpu");
+                    chromeOptions.addArguments("--disable-web-security");
+                    chromeOptions.addArguments("--disable-features=VizDisplayCompositor");
+                    chromeOptions.addArguments("--disable-extensions");
+                    chromeOptions.addArguments("--disable-plugins");
+                    chromeOptions.addArguments("--disable-images");
+                    chromeOptions.addArguments("--disable-javascript-harmony-shipping");
+                    chromeOptions.addArguments("--disable-background-timer-throttling");
+                    chromeOptions.addArguments("--disable-backgrounding-occluded-windows");
+                    chromeOptions.addArguments("--disable-renderer-backgrounding");
+                    chromeOptions.addArguments("--disable-features=TranslateUI");
+                    chromeOptions.addArguments("--disable-ipc-flooding-protection");
+                    
+                    // User agent spoofing - use a real browser user agent
+                    chromeOptions.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+                    
+                    // Additional stealth settings
+                    chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                    chromeOptions.setExperimentalOption("useAutomationExtension", false);
+                    
                     if (ConfigManager.getInstance().isHeadless()) {
                         chromeOptions.addArguments("--headless");
                     }
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.addArguments("--disable-notifications");
                     webDriver = new ChromeDriver(chromeOptions);
+                    
+                    // Execute stealth script to remove automation indicators
+                    ((JavascriptExecutor) webDriver).executeScript(
+                        "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
+                    );
                     break;
                     
                 case "firefox":
