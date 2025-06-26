@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 
 import javax.imageio.ImageIO;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -90,8 +91,18 @@ public class CaptchaReader {
             
             LoggerUtil.info("CAPTCHA screenshot saved: " + screenshot.getAbsolutePath());
             
+            // Preprocess the image: grayscale, increase contrast, threshold
+            BufferedImage img = ImageIO.read(screenshot);
+            BufferedImage processedImg = preprocessImage(img);
+            File processedFile = new File(SCREENSHOT_DIR + "/captcha_processed_" + timestamp + ".png");
+            ImageIO.write(processedImg, "png", processedFile);
+            
+            // Set Tesseract config for uppercase and digits only
+            tesseract.setTessVariable("tessedit_char_whitelist", "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            tesseract.setPageSegMode(8); // Treat the image as a single word
+            
             // Read CAPTCHA text using Tesseract
-            String captchaText = tesseract.doOCR(screenshot).trim();
+            String captchaText = tesseract.doOCR(processedFile).trim();
             LoggerUtil.info("Detected CAPTCHA text: " + captchaText);
             
             return captchaText;
@@ -105,6 +116,33 @@ public class CaptchaReader {
         }
         
         return null;
+    }
+    
+    // Preprocess image: grayscale, increase contrast, threshold
+    private static BufferedImage preprocessImage(BufferedImage img) {
+        int width = img.getWidth();
+        int height = img.getHeight();
+        BufferedImage gray = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Color color = new Color(img.getRGB(x, y));
+                int r = color.getRed();
+                int g = color.getGreen();
+                int b = color.getBlue();
+                int grayVal = (int)(0.299 * r + 0.587 * g + 0.114 * b);
+                gray.setRGB(x, y, new Color(grayVal, grayVal, grayVal).getRGB());
+            }
+        }
+        // Apply simple thresholding
+        int threshold = 128;
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int rgb = gray.getRGB(x, y) & 0xFF;
+                int bin = rgb > threshold ? 255 : 0;
+                gray.setRGB(x, y, new Color(bin, bin, bin).getRGB());
+            }
+        }
+        return gray;
     }
     
     public static void takeScreenshot(WebDriver driver, String prefix) {

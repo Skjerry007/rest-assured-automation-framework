@@ -50,7 +50,7 @@ public class BaseAPI {
 
     // Set timeouts using proper config chaining
     RestAssured.config = RestAssured.config()
-        .connectionConfig(connectionConfig().closeIdleConnectionsAfterEachResponse())
+        .connectionConfig(connectionConfig())
         .httpClient(httpClientConfig()
             .setParam("http.connection.timeout", config.getTimeout() * 1000)
             .setParam("http.socket.timeout", config.getTimeout() * 1000));

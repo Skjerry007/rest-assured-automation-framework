@@ -32,15 +32,21 @@ public class WireMockAPITest {
         // Configure client
         configureFor(HOST, PORT);
 
+        // Set the base URL in ConfigManager to WireMock's URL
+        com.restautomation.config.ConfigManager.getInstance().setProperty("baseUrl", "http://" + HOST + ":" + PORT);
+
         // Initialize API with WireMock URL
-        api = new BaseAPI() {{
-            requestSpec = requestSpec.baseUri("http://" + HOST + ":" + PORT);
-        }};
+        api = new BaseAPI();
     }
 
     @AfterClass
     public void tearDown() {
         LoggerUtil.info("Stopping WireMock server");
+        try {
+            Thread.sleep(500); // Wait for 0.5 seconds to ensure all requests are finished
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         if (wireMockServer != null) {
             wireMockServer.stop();
         }
@@ -136,13 +142,20 @@ public class WireMockAPITest {
                         .withHeader("Content-Type", "application/json")
                         .withBody("{\"error\": \"User not found\", \"code\": 404}")));
 
-        Response response = api.get("/users/999", null);
+        LoggerUtil.info("About to call api.get for /users/999");
+        try {
+            Response response = api.get("/users/999", null);
+            LoggerUtil.info("api.get call completed for /users/999");
 
-        ResponseValidator.validateStatusCode(response, StatusCodes.NOT_FOUND);
-        ResponseValidator.validateFieldValue(response, "error", "User not found");
-        ResponseValidator.validateFieldValue(response, "code", 404);
+            ResponseValidator.validateStatusCode(response, StatusCodes.NOT_FOUND);
+            ResponseValidator.validateFieldValue(response, "error", "User not found");
+            ResponseValidator.validateFieldValue(response, "code", 404);
 
-        LoggerUtil.info("Successfully mocked error response: {}", response.asString());
-        verify(getRequestedFor(urlEqualTo("/users/999")));
+            LoggerUtil.info("Successfully mocked error response: {}", response.asString());
+            verify(getRequestedFor(urlEqualTo("/users/999")));
+        } catch (Exception e) {
+            LoggerUtil.error("Exception in testMockErrorResponse: {}", e);
+            org.testng.Assert.fail("Exception in testMockErrorResponse: " + e.getMessage(), e);
+        }
     }
 }
