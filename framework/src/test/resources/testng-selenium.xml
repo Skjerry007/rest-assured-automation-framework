@@ -7,7 +7,4 @@
             <class name="com.seleniumautomation.test.SauceDemoTest"/>
         </classes>
     </test>
-    <listeners>
-        <listener class-name="com.seleniumautomation.reports.ExtentTestListener"/>
-    </listeners>
 </suite>

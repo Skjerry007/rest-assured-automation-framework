@@ -18,6 +18,7 @@ import java.io.File;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.stream.Collectors;
 
 public class LocatorUtil {
     private static final Logger logger = LoggerFactory.getLogger(LocatorUtil.class);
@@ -440,6 +441,36 @@ public class LocatorUtil {
         try (InputStream input = LocatorUtil.class.getClassLoader().getResourceAsStream(resourcePath)) {
             if (input == null) {
                 throw new IOException("Could not find locator file: " + resourcePath);
+            }
+            locatorProperties.load(input);
+        }
+    }
+
+    public static List<By> getLocators(String key) {
+        String value = locatorProperties.getProperty(key);
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException("No locator found for key: " + key);
+        }
+        return Arrays.stream(value.split("\\|"))
+                .map(String::trim)
+                .map(LocatorUtil::toBy)
+                .collect(Collectors.toList());
+    }
+
+    private static By toBy(String locator) {
+        if (locator.startsWith("xpath:")) {
+            return By.xpath(locator.substring(6));
+        } else if (locator.startsWith("css:")) {
+            return By.cssSelector(locator.substring(4));
+        } else {
+            throw new IllegalArgumentException("Unknown locator type: " + locator);
+        }
+    }
+
+    public static void loadPropertiesFromFile(String fileName) throws IOException {
+        try (InputStream input = LocatorUtil.class.getClassLoader().getResourceAsStream(fileName)) {
+            if (input == null) {
+                throw new IOException("Could not find locator file: " + fileName);
             }
             locatorProperties.load(input);
         }
