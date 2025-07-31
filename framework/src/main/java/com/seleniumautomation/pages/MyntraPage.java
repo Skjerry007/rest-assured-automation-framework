@@ -120,7 +120,9 @@ public class MyntraPage {
 
     public String getProductNameOnPDP() {
         try {
-            WebElement nameElem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".pdp-title")));
+            List<org.openqa.selenium.By> locators = LocatorUtil.getLocators("productNameOnPDP");
+            WebElement nameElem = elementFinder.findElementWithRetries(locators);
+            wait.until(ExpectedConditions.visibilityOf(nameElem));
             return nameElem.getText();
         } catch (Exception e) {
             return null;

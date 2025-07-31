@@ -16,7 +16,7 @@ public class MyntraTest {
     public void setUp() throws Exception {
         driver = new ChromeDriver();
         driver.get("https://www.myntra.com/");
-        LocatorUtil.loadPropertiesFromFile("myntra-locators.properties");
+        LocatorUtil.loadPropertiesFromFile("myntra-locators");
         myntraPage = new MyntraPage(driver);
     }
 

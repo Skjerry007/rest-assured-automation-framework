@@ -1,4 +1,4 @@
-package com.seleniumautomation.tests;
+package com.seleniumautomation.test;
 
 import com.seleniumautomation.utils.GmailService;
 import org.testng.Assert;
