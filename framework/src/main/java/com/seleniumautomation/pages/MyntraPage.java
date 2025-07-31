@@ -20,7 +20,6 @@ public class MyntraPage {
         this.driver = driver;
         this.elementFinder = new ElementFinder(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public void searchForProduct(String query) {
