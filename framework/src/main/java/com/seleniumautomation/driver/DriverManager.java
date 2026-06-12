@@ -1,6 +1,6 @@
 package com.seleniumautomation.driver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,11 +42,12 @@ public class DriverManager {
     public void initializeDriver() {
         WebDriver webDriver = null;
         String browser = ConfigManager.getInstance().getBrowser().toLowerCase();
+        String platform = ConfigManager.getInstance().getPlatform().toLowerCase();
         
         try {
             switch (browser) {
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
+
                     ChromeOptions chromeOptions = new ChromeOptions();
                     
                     // Anti-bot detection measures for Udemy
@@ -66,8 +67,14 @@ public class DriverManager {
                     chromeOptions.addArguments("--disable-features=TranslateUI");
                     chromeOptions.addArguments("--disable-ipc-flooding-protection");
                     
-                    // User agent spoofing - use a real browser user agent
-                    chromeOptions.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+                    // User agent spoofing - use a real browser user agent if not mobile
+                    if ("mweb".equals(platform)) {
+                        java.util.Map<String, String> mobileEmulation = new java.util.HashMap<>();
+                        mobileEmulation.put("deviceName", "Nexus 5");
+                        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+                    } else {
+                        chromeOptions.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+                    }
                     
                     // Additional stealth settings
                     chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
@@ -76,7 +83,9 @@ public class DriverManager {
                     if (ConfigManager.getInstance().isHeadless()) {
                         chromeOptions.addArguments("--headless");
                     }
-                    chromeOptions.addArguments("--start-maximized");
+                    if (!"mweb".equals(platform)) {
+                        chromeOptions.addArguments("--start-maximized");
+                    }
                     chromeOptions.addArguments("--disable-notifications");
                     webDriver = new ChromeDriver(chromeOptions);
                     
@@ -87,7 +96,7 @@ public class DriverManager {
                     break;
                     
                 case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
+
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     if (ConfigManager.getInstance().isHeadless()) {
                         firefoxOptions.addArguments("--headless");
@@ -96,7 +105,7 @@ public class DriverManager {
                     break;
                     
                 case "edge":
-                    WebDriverManager.edgedriver().setup();
+
                     EdgeOptions edgeOptions = new EdgeOptions();
                     if (ConfigManager.getInstance().isHeadless()) {
                         edgeOptions.addArguments("--headless");
@@ -109,9 +118,11 @@ public class DriverManager {
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
             }
             
-            webDriver.manage().window().maximize();
+            if (!"mweb".equals(platform)) {
+                webDriver.manage().window().maximize();
+            }
             setDriver(webDriver);
-            LoggerUtil.info("Initialized {} browser driver", browser);
+            LoggerUtil.info("Initialized {} browser driver for platform {}", browser, platform);
             
         } catch (Exception e) {
             LoggerUtil.error("Error initializing WebDriver: {}", e.getMessage());

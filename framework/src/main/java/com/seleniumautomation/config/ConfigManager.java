@@ -14,7 +14,7 @@ public class ConfigManager {
     private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
     private static final Properties properties = new Properties();
     private static ConfigManager instance;
-    private static final String CONFIG_FILE = "src/test/resources/config/dev-config.properties";
+    private static final String CONFIG_FILE = "src/test/resources/config/config.properties";
 
     private ConfigManager() {
         loadConfig();
@@ -69,9 +69,30 @@ public class ConfigManager {
     public boolean isHeadless() {
         return Boolean.parseBoolean(getProperty("headless", "false"));
     }
+
+    public String getPlatform() {
+        return getProperty("platform", "dweb");
+    }
+
+    public String getWebUrl() {
+        String platform = getPlatform().toLowerCase();
+        return getProperty("web.url." + platform);
+    }
     
     public String getBaseUrl() {
         return getProperty("baseUrl");
+    }
+
+    public String getNaukriEmail() {
+        return System.getProperty("naukri.email", getProperty("naukri.email", ""));
+    }
+
+    public String getNaukriPassword() {
+        return System.getProperty("naukri.password", getProperty("naukri.password", ""));
+    }
+
+    public String getResumePath() {
+        return System.getProperty("naukri.resumePath", getProperty("naukri.resumePath", "src/test/resources/resume.pdf"));
     }
     
     public int getExplicitWait() {

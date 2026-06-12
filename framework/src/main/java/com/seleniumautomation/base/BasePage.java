@@ -1,4 +1,4 @@
-package com.seleniumautomation.keywords;
+package com.seleniumautomation.base;
 
 import com.seleniumautomation.driver.DriverManager;
 import com.restautomation.utils.LoggerUtil;
@@ -11,18 +11,24 @@ import java.io.File;
 import java.util.Set;
 
 /**
- * SeleniumKeywords - Common Selenium operations wrapped in reusable methods
+ * BasePage - Common Selenium operations wrapped in reusable methods
  */
-public class SeleniumKeywords {
+public class BasePage {
 
     private final WebDriver driver;
     private final JavascriptExecutor js;
     private final WaitUtil wait;
 
-    public SeleniumKeywords() {
+    public BasePage() {
         this.driver = DriverManager.getInstance().getDriver();
         this.js = (JavascriptExecutor) this.driver;
         this.wait = new WaitUtil();
+    }
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        this.js = (JavascriptExecutor) this.driver;
+        this.wait = new WaitUtil(driver);
     }
 
     // Overload for clickElement using By

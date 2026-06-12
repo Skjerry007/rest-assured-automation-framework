@@ -14,7 +14,7 @@ public class ConfigManager {
     private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
     private static final Properties properties = new Properties();
     private static ConfigManager instance;
-    private static final String CONFIG_FILE = "src/test/resources/config/dev-config.properties";
+    private static final String CONFIG_FILE = "src/test/resources/config/config.properties";
 
     private ConfigManager() {
         loadConfig();

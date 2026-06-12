@@ -18,7 +18,7 @@ public class BaseTest {
             DriverManager.getInstance().initializeDriver();
             
             // Navigate to base URL
-            String baseUrl = ConfigManager.getInstance().getProperty("web.baseUrl");
+            String baseUrl = ConfigManager.getInstance().getWebUrl();
             DriverManager.getInstance().getDriver().get(baseUrl);
             LoggerUtil.info("Navigated to base URL: {}", baseUrl);
             

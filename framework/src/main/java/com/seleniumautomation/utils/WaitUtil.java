@@ -21,6 +21,12 @@ public class WaitUtil {
         this.wait = new WebDriverWait(driver, 
                 Duration.ofSeconds(ConfigManager.getInstance().getExplicitWait()));
     }
+
+    public WaitUtil(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, 
+                Duration.ofSeconds(ConfigManager.getInstance().getExplicitWait()));
+    }
     
     /**
      * Wait for element to be visible
