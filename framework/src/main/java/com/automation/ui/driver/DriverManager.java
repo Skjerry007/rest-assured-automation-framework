@@ -121,6 +121,13 @@ public class DriverManager {
             if (!"mweb".equals(platform)) {
                 webDriver.manage().window().maximize();
             }
+            
+            // Apply default global timeout strategy from configuration
+            int defaultWait = ConfigManager.getInstance().getExplicitWait();
+            webDriver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(defaultWait));
+            webDriver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(defaultWait));
+            webDriver.manage().timeouts().scriptTimeout(java.time.Duration.ofSeconds(defaultWait));
+
             setDriver(webDriver);
             LoggerUtil.info("Initialized {} browser driver for platform {}", browser, platform);
             
