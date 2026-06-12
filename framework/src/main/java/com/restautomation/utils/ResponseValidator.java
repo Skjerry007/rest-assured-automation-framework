@@ -2,7 +2,8 @@ package com.restautomation.utils;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
-
+import com.restautomation.exceptions.APIException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
@@ -113,4 +114,40 @@ public class ResponseValidator {
         Assert.fail("Schema validation failed: " + e.getMessage());
     }
 }
+
+    /**
+     * Validate status code and deserialize response to class instance
+     * @param response API response
+     * @param expectedStatusCode expected status code
+     * @param clazz Target deserialization class
+     * @param <T> generic class type
+     * @return deserialized object instance
+     */
+    public static <T> T validateAndDeserialize(Response response, int expectedStatusCode, Class<T> clazz) {
+        validateStatusCode(response, expectedStatusCode);
+        try {
+            return response.as(clazz);
+        } catch (Exception e) {
+            LoggerUtil.error("Failed to deserialize response to class {}: {}", clazz.getName(), e.getMessage());
+            throw new APIException("Deserialization failed", e);
+        }
+    }
+
+    /**
+     * Validate status code and deserialize response to List of class instances
+     * @param response API response
+     * @param expectedStatusCode expected status code
+     * @param clazz Target deserialization class
+     * @param <T> generic class type
+     * @return deserialized list of object instances
+     */
+    public static <T> List<T> validateAndDeserializeList(Response response, int expectedStatusCode, Class<T> clazz) {
+        validateStatusCode(response, expectedStatusCode);
+        try {
+            return response.jsonPath().getList("", clazz);
+        } catch (Exception e) {
+            LoggerUtil.error("Failed to deserialize response to List of {}: {}", clazz.getName(), e.getMessage());
+            throw new APIException("Deserialization failedList", e);
+        }
+    }
 }

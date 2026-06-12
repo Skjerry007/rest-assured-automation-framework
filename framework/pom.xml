@@ -28,6 +28,7 @@
         <mysql.version>8.0.33</mysql.version>
         <apache.commons.version>3.14.0</apache.commons.version>
         <maven.test.skip>true</maven.test.skip>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencyManagement>
@@ -279,12 +280,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <skipTests>true</skipTests>
+                    <skipTests>${skipTests}</skipTests>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${testng.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        --add-opens java.base/java.lang=ALL-UNNAMED
                     </argLine>
                     <systemPropertyVariables>
                         <framework>${framework}</framework>

@@ -1,6 +1,7 @@
 package com.restautomation.base;
 
 import com.restautomation.config.ConfigManager;
+import com.restautomation.exceptions.APIException;
 import com.restautomation.utils.LoggerUtil;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -24,6 +25,41 @@ public class BaseAPI {
     protected RequestSpecification requestSpec;
     protected ResponseSpecification responseSpec;
     
+    // Thread-safe token storage for dynamic Bearer Auth injection
+    protected static final ThreadLocal<String> authToken = new ThreadLocal<>();
+    
+    public static void setAuthToken(String token) {
+        authToken.set(token);
+    }
+    
+    public static String getAuthToken() {
+        return authToken.get();
+    }
+    
+    public static void clearAuthToken() {
+        authToken.remove();
+    }
+
+    /**
+     * Functional interface for encapsulating RestAssured request execution
+     */
+    @FunctionalInterface
+    private interface RequestExecutor {
+        Response execute();
+    }
+
+    /**
+     * Wrap execution to handle all runtime API exception scenarios cleanly
+     */
+    private Response executeRequest(String method, String endpoint, RequestExecutor executor) {
+        try {
+            return executor.execute();
+        } catch (Exception e) {
+            LoggerUtil.error("{} request to {} failed: {}", method, endpoint, e.getMessage(), e);
+            throw new APIException(method + " request to " + endpoint + " failed", e);
+        }
+    }
+    
     /**
      * Initialize base specs
      */
@@ -36,31 +72,31 @@ public class BaseAPI {
      * Initialize request specification with common settings
      */
     private void initializeRequestSpec() {
-    LoggerUtil.info("Initializing request specification");
+        LoggerUtil.info("Initializing request specification");
 
-    RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
-        .setBaseUri(config.getBaseUrl())
-        .setContentType(ContentType.JSON)
-        .setAccept(ContentType.JSON)
-        .addFilter(new io.qameta.allure.restassured.AllureRestAssured());
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
+            .setBaseUri(config.getBaseUrl())
+            .setContentType(ContentType.JSON)
+            .setAccept(ContentType.JSON)
+            .addFilter(new io.qameta.allure.restassured.AllureRestAssured());
 
-    // Set SSL relaxation if configured
-    if (!config.isSslVerificationEnabled()) {
-        requestSpecBuilder.setRelaxedHTTPSValidation();
+        // Set SSL relaxation if configured
+        if (!config.isSslVerificationEnabled()) {
+            requestSpecBuilder.setRelaxedHTTPSValidation();
+        }
+
+        // Set timeouts using proper config chaining
+        RestAssured.config = RestAssured.config()
+            .connectionConfig(connectionConfig())
+            .httpClient(httpClientConfig()
+                .setParam("http.connection.timeout", config.getTimeout() * 1000)
+                .setParam("http.socket.timeout", config.getTimeout() * 1000));
+
+        // Log request details
+        requestSpecBuilder.log(LogDetail.ALL);
+
+        requestSpec = requestSpecBuilder.build();
     }
-
-    // Set timeouts using proper config chaining
-    RestAssured.config = RestAssured.config()
-        .connectionConfig(connectionConfig())
-        .httpClient(httpClientConfig()
-            .setParam("http.connection.timeout", config.getTimeout() * 1000)
-            .setParam("http.socket.timeout", config.getTimeout() * 1000));
-
-    // Log request details
-    requestSpecBuilder.log(LogDetail.ALL);
-
-    requestSpec = requestSpecBuilder.build();
-}
     
     /**
      * Initialize response specification with common settings
@@ -76,12 +112,18 @@ public class BaseAPI {
     }
     
     /**
-     * Set headers for request specification
+     * Set headers for request specification (automatically injects Bearer Auth if present)
      * @param headers map of headers
      * @return RequestSpecification with headers
      */
     protected RequestSpecification setHeaders(Map<String, String> headers) {
         RequestSpecification reqSpec = RestAssured.given().spec(requestSpec);
+        
+        String token = authToken.get();
+        if (token != null && !token.trim().isEmpty()) {
+            reqSpec.header("Authorization", "Bearer " + token);
+        }
+        
         if (headers != null && !headers.isEmpty()) {
             reqSpec.headers(headers);
         }
@@ -96,13 +138,15 @@ public class BaseAPI {
      */
     public Response get(String endpoint, Map<String, String> headers) {
         LoggerUtil.info("Performing GET request to: {}", endpoint);
-        return setHeaders(headers)
+        return executeRequest("GET", endpoint, () -> 
+            setHeaders(headers)
                 .when()
                 .get(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -114,14 +158,16 @@ public class BaseAPI {
      */
     public Response get(String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
         LoggerUtil.info("Performing GET request to: {} with path params: {}", endpoint, pathParams);
-        return setHeaders(headers)
+        return executeRequest("GET", endpoint, () -> 
+            setHeaders(headers)
                 .pathParams(pathParams)
                 .when()
                 .get(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -133,14 +179,16 @@ public class BaseAPI {
      */
     public Response getWithQueryParams(String endpoint, Map<String, Object> queryParams, Map<String, String> headers) {
         LoggerUtil.info("Performing GET request to: {} with query params: {}", endpoint, queryParams);
-        return setHeaders(headers)
+        return executeRequest("GET", endpoint, () -> 
+            setHeaders(headers)
                 .queryParams(queryParams)
                 .when()
                 .get(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -152,17 +200,19 @@ public class BaseAPI {
      */
     public Response post(String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing POST request to: {}", endpoint);
-        RequestSpecification request = setHeaders(headers);
-        if (requestBody != null) {
-            request.body(requestBody);
-        }
-        return request
+        return executeRequest("POST", endpoint, () -> {
+            RequestSpecification request = setHeaders(headers);
+            if (requestBody != null) {
+                request.body(requestBody);
+            }
+            return request
                 .when()
                 .post(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
                 .response();
+        });
     }
     
     /**
@@ -174,14 +224,16 @@ public class BaseAPI {
      */
     public Response put(String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing PUT request to: {}", endpoint);
-        return setHeaders(headers)
+        return executeRequest("PUT", endpoint, () -> 
+            setHeaders(headers)
                 .body(requestBody)
                 .when()
                 .put(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -194,7 +246,8 @@ public class BaseAPI {
      */
     public Response put(String endpoint, Object requestBody, Map<String, Object> pathParams, Map<String, String> headers) {
         LoggerUtil.info("Performing PUT request to: {} with path params: {}", endpoint, pathParams);
-        return setHeaders(headers)
+        return executeRequest("PUT", endpoint, () -> 
+            setHeaders(headers)
                 .pathParams(pathParams)
                 .body(requestBody)
                 .when()
@@ -202,7 +255,8 @@ public class BaseAPI {
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -213,13 +267,15 @@ public class BaseAPI {
      */
     public Response delete(String endpoint, Map<String, String> headers) {
         LoggerUtil.info("Performing DELETE request to: {}", endpoint);
-        return setHeaders(headers)
+        return executeRequest("DELETE", endpoint, () -> 
+            setHeaders(headers)
                 .when()
                 .delete(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -231,14 +287,16 @@ public class BaseAPI {
      */
     public Response delete(String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
         LoggerUtil.info("Performing DELETE request to: {} with path params: {}", endpoint, pathParams);
-        return setHeaders(headers)
+        return executeRequest("DELETE", endpoint, () -> 
+            setHeaders(headers)
                 .pathParams(pathParams)
                 .when()
                 .delete(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
     
     /**
@@ -250,13 +308,15 @@ public class BaseAPI {
      */
     public Response patch(String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing PATCH request to: {}", endpoint);
-        return setHeaders(headers)
+        return executeRequest("PATCH", endpoint, () -> 
+            setHeaders(headers)
                 .body(requestBody)
                 .when()
                 .patch(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response();
+                .response()
+        );
     }
 }

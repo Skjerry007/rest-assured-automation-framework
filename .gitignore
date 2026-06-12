@@ -4,7 +4,11 @@ temurin21.pkg
 
 # Logs
 logs/
+**/logs/
 *.log
+**/*.log
+test-automation.log
+test-automatiom.log
 
 # Build directories
 target/
@@ -91,6 +95,9 @@ local-secrets.properties
 test-output/
 reports/
 extent-reports/
+allure-results/
+allure-report/
+.allure/
 
 # OS specific files
 Thumbs.db 
