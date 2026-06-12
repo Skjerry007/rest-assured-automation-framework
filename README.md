@@ -1,6 +1,6 @@
-# REST Assured & Selenium + Self-Healing Automation Framework
+# REST Assured & Selenium Test Automation Framework
 
-This framework provides robust, maintainable, and scalable automation for both REST APIs and web UI (Selenium) with advanced features like self-healing locators, Dockerized Selenium Grid, and beautiful reporting.
+This framework provides robust, maintainable, and scalable automation for both REST APIs and web UI (Selenium) with Dockerized Selenium Grid, security secret management, global default timeout strategies, structured logging, and beautiful Allure reporting.
 
 ## Features
 
@@ -9,7 +9,7 @@ This framework provides robust, maintainable, and scalable automation for both R
 - **Global Default Timeout Strategy**: Configured implicit waits, page load timeouts, and script timeouts globally at the driver initialization level
 - **Thread-safe WebDriver management**: Robust parallel execution support
 - **Retry mechanism**: TestNG retry analyzer dynamically applied to retry failed tests automatically
-- **Comprehensive logging**: Structured Logging utilizing Log4j2
+- **Comprehensive logging**: Structured Logging utilizing Log4j2 and descriptive try-catch block step logging
 - **Screenshots on failure**: Automatically captured and attached to reports
 - **Beautiful Allure Reports**: Modern reporting with step-by-step documentation, API payload attachments, and screenshots on failure
 
@@ -25,59 +25,31 @@ This framework provides robust, maintainable, and scalable automation for both R
 - **Log4j2** for detailed logs
 - **TestNG listeners** for execution tracing and runtime retry transformer
 
-### Self-Healing Locators
-- Implemented in `framework/src/main/java/com/seleniumautomation/utils/LocatorUtil.java`
-- Use `LocatorUtil.selfHealing(By... locators)` in page objects
-- Tries each locator in order until one matches, making tests resilient to UI changes
-
-### Chrome DevTools Protocol (CDP) Network Interception
-- **JavaScript-based Network Request Interception**: Intercept and monitor all network requests (fetch, XMLHttpRequest) using injected JavaScript
-- **Comprehensive Request Monitoring**: Capture URLs, query parameters, and request details for debugging and validation
-- **Multi-Site Testing**: Tested on various websites including:
-  - **httpbin.org**: Basic HTTP request interception and parameter extraction
-  - **Amazon.in**: E-commerce site request monitoring (including `fetchshoppingaids` requests)
-  - **Nykaa.com**: Mobile web request interception with custom user agents
-  - **the-internet.herokuapp.com**: Dynamic content and AJAX request monitoring
-  - **testpages.herokuapp.com**: Form submission request capture
-  - **W3Schools AJAX Demo**: Real-time AJAX request interception in iframes
-
-#### CDP Features Implemented:
-- **Request URL Capture**: Intercept and log all network request URLs
-- **Query Parameter Parsing**: Extract and validate URL parameters
-- **Request Counting**: Track total number of intercepted requests
-- **Console Logging**: Real-time request logging in browser console
-- **Mobile Web Support**: Custom user agents and viewport settings for mobile testing
-- **Iframe Support**: Network interception works within iframe contexts
-- **Form Submission Monitoring**: Capture form submission requests and parameters
-
-#### Usage Example:
-```java
-// Inject network interception JavaScript
-chromeDriver.executeScript(
-    "window.interceptedRequests = [];" +
-    "const originalFetch = window.fetch;" +
-    "window.fetch = function() {" +
-    "    window.interceptedRequests.push(arguments[0]);" +
-    "    return originalFetch.apply(this, arguments);" +
-    "};"
-);
-
-// Navigate to page and wait for requests
-chromeDriver.get("https://example.com");
-Thread.sleep(5000);
-
-// Get intercepted requests
-List<String> requests = (List<String>) chromeDriver.executeScript("return window.interceptedRequests;");
-```
-
-#### Test Classes:
-- `CDPNetworkInterceptTest.java`: Comprehensive network interception tests
-- Supports multiple interception strategies and websites
-- Includes parameter extraction and validation utilities
-
 ### Docker & Selenium Grid
 - **docker-compose.yml** for easy Selenium Grid setup (hub + Chrome + Firefox nodes)
 - Run UI tests in parallel across browsers/containers
+
+---
+
+## What's Included vs. What's Removed
+
+To keep the automation framework clean, maintainable, and focused on robust core functionalities, several modules have been streamlined:
+
+### 🟢 What is Present (Included)
+- **Page Object Model (POM)**: Maintained clean separation of page interactions in `ui/pages/` and static element mappings in `ui/locators/NaukriLocators.java`.
+- **Global Timeout Strategy**: Managed timeouts (implicit, page load, and script) centrally in [DriverManager.java](file:///Users/shashank/Desktop/Desktop - Shashank’s MacBook Air/rest-assured-automation-framework/framework/src/main/java/ui/driver/DriverManager.java) to eliminate redundant wait boilerplate.
+- **REST API Automation Engine**: Comprehensive REST Assured clients, POJO response schemas, and schema validation.
+- **WireMock Mock API Server**: Configured for local API verification testing under `WireMockAPITest.java`.
+- **Log4j2 Structured Logging**: Explicit step-by-step try-catch logging within page object action methods.
+- **Allure Report Integration**: Auto-capturing of screenshots on failure and step annotations.
+- **Dockerized Selenium Grid**: Standard Selenium Hub and browser node orchestration (`docker-compose.yml`).
+
+### 🔴 What is NOT Present (Removed)
+- **CDP Network Interception**: Chrome DevTools Protocol network interception tests and scripts have been fully removed to maintain deterministic browser execution.
+- **Self-Healing Locators (`LocatorUtil`)**: Replaced by standard page object locator definitions in `NaukriLocators.java` for simpler element maintenance.
+- **SauceDemo E2E Flows**: Cleaned up to keep focus on the Naukri resume-upload end-to-end suite.
+
+---
 
 ## Prerequisites
 
@@ -100,11 +72,9 @@ List<String> requests = (List<String>) chromeDriver.executeScript("return window
    sudo apt-get install tesseract-ocr   # Ubuntu/Debian
    ```
 4. **Set up config:**
-   ```bash
-   cp framework/src/test/resources/config/dev-config.example.properties framework/src/test/resources/config/dev-config.properties
-   # Edit dev-config.properties for your environment/credentials
-   ```
-5. **(Optional) Set up Secret Manager** for secure credentials (see README section above)
+   - Edit the configuration properties file at: `framework/src/test/resources/config/config.properties`
+   - Edit the credentials file at: `framework/src/test/resources/config/credentials.json`
+5. **(Optional) Set up Secret Manager** for secure credentials (using `setup-secrets.sh`)
 
 ### Project Structure
 
@@ -181,74 +151,54 @@ rest-assured-automation-framework/
 │   │   │   └── ui/tests/               # UI tests
 │   │   │       ├── BaseTest.java
 │   │   │       └── NaukriResumeUploadTest.java
-│   └── test/resources/                 # Test resources
-│       ├── config/                     # Test configuration
-│       │   ├── dev-config.example.properties
-│       │   ├── dev-config.properties
-│       │   └── qa-config.properties
-│       ├── log4j2.xml                  # Logging configuration
-│       ├── rest-assured.properties     # REST Assured config
-│       ├── schemas/                    # JSON schemas
-│       │   └── user-schema.json
-│       ├── testdata/                   # Test data files
-│       │   ├── posts.json
-│       │   └── users.json
-│       └── testng-*.xml               # TestNG suite files
-│           ├── testng-restassured.xml
-│           ├── testng-selenium.xml
-│           └── testng.xml
-├── docker-compose.yml                  # ✅ Selenium Grid setup
+│   │   └── test/resources/             # Test resources
+│   │       ├── config/                 # Test configuration
+│   │       │   ├── config.properties   # Main environment configuration
+│   │       │   └── credentials.json    # Google OAuth credentials
+│   │       ├── schemas/                # JSON schemas
+│   │       │   └── user-schema.json
+│   │       ├── testdata/               # Test data files
+│   │       │   ├── posts.json
+│   │       │   └── users.json
+│   │       ├── allure.properties       # Allure reporting configuration
+│   │       ├── log4j2.xml              # Logging configuration
+│   │       ├── rest-assured.properties # REST Assured configuration
+│   │       ├── testng-restassured.xml  # TestNG suite for API tests
+│   │       ├── testng-selenium.xml     # TestNG suite for UI tests
+│   │       └── testng.xml              # Main TestNG suite
+├── docker-compose.yml                  # Selenium Grid setup
 ├── README.md                           # This file
 ├── .gitignore                          # Git ignore rules
 ├── SECURITY.md                         # Security guidelines
-├── setup-secrets.sh                    # Secret setup script
-└── local-secrets.properties            # Local secrets (gitignored)
+└── setup-secrets.sh                    # Secret setup script
 ```
 
 ### Key Features of the Structure:
 
-✅ **Single Maven POM**: Simplified structure with one complete `pom.xml` in the framework directory
+✅ **Flat Package Structure**: Refactored to root `common`, `api`, and `ui` packages under `src/main/java` and `src/test/java` without nested `com/` packages.
 
-✅ **Centralized Locators**: All UI locators stored in properties files under `src/main/resources/com/seleniumautomation/locators/`
+✅ **Single Maven POM**: Simplified structure with one complete `pom.xml` in the framework directory.
 
-✅ **Self-Healing Locators**: Advanced locator management in `LocatorUtil.java` with automatic fallback strategies
+✅ **Page Object Model**: Clean separation of page objects, locators mapping, and test classes.
 
-✅ **Page Object Model**: Clean separation of page objects, utilities, and test classes
+✅ **Modular Design**: Distinct layers for REST API and Selenium automation.
 
-✅ **Modular Design**: Separate packages for REST API and Selenium automation
+✅ **Comprehensive Testing**: Both API and UI tests with proper test organization.
 
-✅ **Comprehensive Testing**: Both API and UI tests with proper test organization
+✅ **Docker Support**: Ready-to-use Selenium Grid with Docker Compose.
 
-✅ **Docker Support**: Ready-to-use Selenium Grid with Docker Compose
-
-✅ **Configuration Management**: Environment-specific config files and secret management
+---
 
 ## Running UI Tests
 
-### **Locally (single or parallel):**
+### **Locally:**
 ```bash
 # Run all UI tests (TestNG suite)
-mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
+mvn clean test -Dtestng.file=testng-selenium.xml -DskipTests=false -Dmaven.test.skip=false
 
 # Run a specific test class
-mvn test -Dtest=SauceDemoTest
-
-# Run in parallel (locally)
-mvn clean test -DexecutorCapacity=2 -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
+mvn test -Dtest=NaukriResumeUploadTest -DskipTests=false -Dmaven.test.skip=false
 ```
-
-### **CDP Network Interception Tests:**
-```bash
-# Run all CDP network interception tests
-mvn test -Dtest=CDPNetworkInterceptTest
-
-# Run specific CDP test methods
-mvn test -Dtest=CDPNetworkInterceptTest#testInterceptHttpbinRequest
-mvn test -Dtest=CDPNetworkInterceptTest#testInterceptAllAmazonRequests
-mvn test -Dtest=CDPNetworkInterceptTest#testInterceptNykaaRefreshRequest
-```
-
-**Note**: CDP tests require Chrome browser and may need to run in non-headless mode for some scenarios (e.g., W3Schools AJAX demo).
 
 ### **On Selenium Grid (Docker Compose):**
 1. **Start the grid:**
@@ -258,18 +208,22 @@ mvn test -Dtest=CDPNetworkInterceptTest#testInterceptNykaaRefreshRequest
    ```
 2. **Run tests on grid:**
    ```bash
-   mvn clean test -DgridExecutorCapacity=2 -Dsurefire.suiteXmlFiles=src/test/resources/testng-selenium.xml
+   mvn clean test -DgridExecutorCapacity=2 -Dtestng.file=testng-selenium.xml -DskipTests=false -Dmaven.test.skip=false
    ```
    - Increase `gridExecutorCapacity` for more parallelism
 
+---
+
 ## Running API Tests
 ```bash
-# Run all API tests
-mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng-restassured.xml
+# Run all API tests (TestNG suite)
+mvn clean test -Dtestng.file=testng-restassured.xml -DskipTests=false -Dmaven.test.skip=false
 
 # Run a specific API test class
-mvn test -Dtest=UserApiTest
+mvn test -Dtest=UserApiTest -DskipTests=false -Dmaven.test.skip=false
 ```
+
+---
 
 ## Reporting & Logs
 - **Allure Reports:**
@@ -282,6 +236,8 @@ mvn test -Dtest=UserApiTest
   - Log output directory: `framework/logs/test-automation.log`
 - **Screenshots (on failure):**
   - Dynamically captured and attached directly inside Allure Report cases on TestNG failure.
+
+---
 
 ## Docker Compose for Selenium Grid
 Example `docker-compose.yml`:
@@ -319,6 +275,8 @@ services:
       - /dev/shm:/dev/shm
 ```
 
+---
+
 ## Naukri UI Automation Details
 - **Tested Flows:**
   - Login page credentials input (positive/negative scenarios)
@@ -328,17 +286,23 @@ services:
 - **All credentials** are fetched dynamically from GCP/AWS Secret Manager or system properties
 - **Full Log4j2 execution tracing** recorded per test method
 
+---
+
 ## Best Practices
 - Keep credentials and secrets out of source code (use secret manager/config)
 - Use Docker Compose for scalable, reproducible grid runs
 - Review Allure Reports after every run for actionable insights
 - Add new tests using the Page Object Model for maintainability
 
+---
+
 ## Troubleshooting
-- If browsers do not launch, check Docker and Selenium Grid status
-- If locators break, add fallback strategies to `LocatorUtil.selfHealing`
-- For slow tests, tune explicit wait times in config
-- For more parallelism, increase node count in `docker-compose.yml` and `gridExecutorCapacity`
+- If browsers do not launch, check Docker and Selenium Grid status.
+- If UI locators break, update the corresponding locator definitions inside `ui/locators/NaukriLocators.java`.
+- For slow tests, tune explicit wait times in `config.properties`.
+- For more parallelism, increase node count in `docker-compose.yml` and `gridExecutorCapacity`.
+
+---
 
 ## Contributors & License
-- See `CONTRIBUTING.md` and `LICENSE` 
+- See `CONTRIBUTING.md` and `LICENSE`
