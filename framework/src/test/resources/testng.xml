@@ -7,28 +7,28 @@
     <test name="API Tests">
         <classes>
             <!-- Album API Tests -->
-            <class name="com.restautomation.tests.AlbumApiTest"/>
+            <class name="com.automation.api.tests.AlbumApiTest"/>
             
             <!-- API Exception Tests -->
-            <class name="com.restautomation.tests.APIExceptionHandlingTest"/>
+            <class name="com.automation.api.tests.APIExceptionHandlingTest"/>
             
             <!-- Photo API Tests -->
-            <class name="com.restautomation.tests.PhotoApiTest"/>
+            <class name="com.automation.api.tests.PhotoApiTest"/>
             
             <!-- Post API Tests -->
-            <class name="com.restautomation.tests.PostApiTest"/>
+            <class name="com.automation.api.tests.PostApiTest"/>
             
             <!-- Todo API Tests -->
-            <class name="com.restautomation.tests.TodoApiTest"/>
+            <class name="com.automation.api.tests.TodoApiTest"/>
             
             <!-- User API Tests -->
-            <class name="com.restautomation.tests.UserApiTest"/>
+            <class name="com.automation.api.tests.UserApiTest"/>
         </classes>
     </test>
     
     <!-- Listeners -->
     <listeners>
-        <listener class-name="com.restautomation.listeners.TestListener"/>
-        <listener class-name="com.restautomation.listeners.AnnotationTransformer"/>
+        <listener class-name="com.automation.common.listeners.TestListener"/>
+        <listener class-name="com.automation.common.listeners.AnnotationTransformer"/>
     </listeners>
 </suite>
