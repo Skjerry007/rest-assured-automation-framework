@@ -41,7 +41,8 @@ public class BaseAPI {
     RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
         .setBaseUri(config.getBaseUrl())
         .setContentType(ContentType.JSON)
-        .setAccept(ContentType.JSON);
+        .setAccept(ContentType.JSON)
+        .addFilter(new io.qameta.allure.restassured.AllureRestAssured());
 
     // Set SSL relaxation if configured
     if (!config.isSslVerificationEnabled()) {

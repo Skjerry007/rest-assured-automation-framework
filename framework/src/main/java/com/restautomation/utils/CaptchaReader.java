@@ -14,11 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.Rectangle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -2,7 +2,6 @@ package com.restautomation.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.util.Map;
 /**
  * TestDataUtil - Utility for managing test data
  */
-@Log4j2
 public class TestDataUtil {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String TEST_DATA_DIR = "src/test/resources/testdata/";

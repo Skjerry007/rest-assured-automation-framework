@@ -42,6 +42,21 @@ public class WaitUtil {
             throw new RuntimeException("Element not visible", e);
         }
     }
+
+    /**
+     * Wait for element to be visible by locator
+     * @param locator By locator to wait for
+     * @return WebElement
+     */
+    public WebElement waitForElementToBeVisible(By locator) {
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        } catch (TimeoutException e) {
+            LoggerUtil.error("Element not visible after {} seconds: {}", 
+                    ConfigManager.getInstance().getExplicitWait(), locator);
+            throw new RuntimeException("Element not visible", e);
+        }
+    }
     
     /**
      * Wait for element to be clickable
@@ -57,6 +72,21 @@ public class WaitUtil {
             throw new RuntimeException("Element not clickable", e);
         }
     }
+
+    /**
+     * Wait for element to be clickable by locator
+     * @param locator By locator to wait for
+     * @return WebElement
+     */
+    public WebElement waitForElementToBeClickable(By locator) {
+        try {
+            return wait.until(ExpectedConditions.elementToBeClickable(locator));
+        } catch (TimeoutException e) {
+            LoggerUtil.error("Element not clickable after {} seconds: {}", 
+                    ConfigManager.getInstance().getExplicitWait(), locator);
+            throw new RuntimeException("Element not clickable", e);
+        }
+    }
     
     /**
      * Wait for element to disappear
@@ -68,6 +98,20 @@ public class WaitUtil {
         } catch (TimeoutException e) {
             LoggerUtil.error("Element still visible after {} seconds: {}", 
                     ConfigManager.getInstance().getExplicitWait(), element);
+            throw new RuntimeException("Element still visible", e);
+        }
+    }
+
+    /**
+     * Wait for element to disappear by locator
+     * @param locator By locator to wait for
+     */
+    public void waitForElementToDisappear(By locator) {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+        } catch (TimeoutException e) {
+            LoggerUtil.error("Element still visible after {} seconds: {}", 
+                    ConfigManager.getInstance().getExplicitWait(), locator);
             throw new RuntimeException("Element still visible", e);
         }
     }

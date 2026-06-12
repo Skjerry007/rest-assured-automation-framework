@@ -32,22 +32,26 @@ public class BasePage {
     }
 
     // Overload for clickElement using By
-public void clickElement(By locator) {
-    WebElement element = driver.findElement(locator);
-    clickElement(element);
-}
+    public void clickElement(By locator) {
+        WebElement element = wait.waitForElementToBeClickable(locator);
+        clickElement(element);
+    }
 
-// Overload for typeText using By
-public void typeText(By locator, String text) {
-    WebElement element = driver.findElement(locator);
-    typeText(element, text);
-}
+    // Overload for typeText using By
+    public void typeText(By locator, String text) {
+        WebElement element = wait.waitForElementToBeVisible(locator);
+        typeText(element, text);
+    }
 
-// Overload for isElementDisplayed using By
-public boolean isElementDisplayed(By locator) {
-    WebElement element = driver.findElement(locator);
-    return isElementDisplayed(element);
-}
+    // Overload for isElementDisplayed using By
+    public boolean isElementDisplayed(By locator) {
+        try {
+            WebElement element = wait.waitForElementToBeVisible(locator);
+            return isElementDisplayed(element);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     /**
      * Navigate to a given URL
@@ -114,7 +118,7 @@ public boolean isElementDisplayed(By locator) {
      * Overloaded method - Upload a file using a By locator
      */
     public void uploadFile(By locator, String filePath) {
-        WebElement element = driver.findElement(locator);
+        WebElement element = wait.waitForElementToBeVisible(locator);
         uploadFile(element, filePath);
     }
 

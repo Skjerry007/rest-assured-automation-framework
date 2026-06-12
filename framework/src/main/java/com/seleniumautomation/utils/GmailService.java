@@ -29,9 +29,24 @@ public class GmailService {
 
     public static Gmail getGmailService() throws Exception {
         if (service == null) {
+            java.io.Reader reader;
+            try {
+                String credentialsJson = GmailSecretManager.getGmailCredentialsJson();
+                if (credentialsJson != null && !credentialsJson.trim().isEmpty() && !credentialsJson.contains("your-actual-project-id")) {
+                    reader = new java.io.StringReader(credentialsJson);
+                    com.restautomation.utils.LoggerUtil.info("Successfully loaded Gmail credentials from Google Secret Manager");
+                } else {
+                    com.restautomation.utils.LoggerUtil.warn("Secret Manager returned empty or default project ID credentials. Falling back to local file.");
+                    reader = new InputStreamReader(new FileInputStream(CREDENTIALS_FILE_PATH));
+                }
+            } catch (Exception e) {
+                com.restautomation.utils.LoggerUtil.warn("Failed to load credentials from Google Secret Manager ({}). Falling back to local file.", e.getMessage());
+                reader = new InputStreamReader(new FileInputStream(CREDENTIALS_FILE_PATH));
+            }
+
             GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
                 GsonFactory.getDefaultInstance(),
-                new InputStreamReader(new FileInputStream(CREDENTIALS_FILE_PATH))
+                reader
             );
 
             GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
@@ -60,9 +75,6 @@ public class GmailService {
     }
 
     public static String getOTPFromEmail(String subject) throws Exception {
-        // Retrieve credentials from Google Secret Manager
-        String credentialsJson = GmailSecretManager.getGmailCredentialsJson();
-        // Use credentialsJson for Gmail API authentication
         Gmail gmail = getGmailService();
         ListMessagesResponse response = gmail.users().messages().list("me")
             .setQ("subject:" + subject)

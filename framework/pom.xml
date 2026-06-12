@@ -14,7 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <rest-assured.version>5.4.0</rest-assured.version>
         <testng.version>7.10.1</testng.version>
-        <extentreports.version>5.1.1</extentreports.version>
+        <allure.version>2.35.2</allure.version>
+        <aspectj.version>1.9.22</aspectj.version>
         <jackson.version>2.17.0</jackson.version>
         <lombok.version>1.18.46</lombok.version>
         <log4j.version>2.23.1</log4j.version>
@@ -28,6 +29,18 @@
         <apache.commons.version>3.14.0</apache.commons.version>
         <maven.test.skip>true</maven.test.skip>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-bom</artifactId>
+                <version>${allure.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
           <!-- Selenium -->
@@ -76,11 +89,23 @@
             <version>${testng.version}</version>
         </dependency>
         
-        <!-- Extent Reports -->
+        <!-- Allure TestNG Integration -->
         <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>${extentreports.version}</version>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+        </dependency>
+        
+        <!-- Allure Rest Assured Integration -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+        </dependency>
+
+        <!-- AspectJ Weaver for Allure steps and attachments -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
         
         <!-- Jackson for JSON -->
@@ -258,11 +283,28 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${testng.file}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <systemPropertyVariables>
                         <framework>${framework}</framework>
                         <gridExecutorCapacity>${gridExecutorCapacity}</gridExecutorCapacity>
                     </systemPropertyVariables>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
+                <executions>
+                    <execution>
+                        <id>allure-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
