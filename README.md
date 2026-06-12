@@ -4,26 +4,26 @@ This framework provides robust, maintainable, and scalable automation for both R
 
 ## Features
 
-### UI Automation (SauceDemo Example)
-- **Full end-to-end automation** of https://www.saucedemo.com (login, add to cart, checkout, order verification, negative scenarios)
-- **Self-healing locators**: Automatically recover from UI changes using multiple locator strategies (see `LocatorUtil.selfHealing`)
-- **Explicit waits**: All dynamic elements are handled with robust waits
-- **Parallel & Grid execution**: Run tests locally or on Selenium Grid (Docker Compose)
-- **Retry mechanism**: Flaky tests are retried automatically
-- **Comprehensive logging**: All steps and errors are logged
-- **Screenshots on failure**: For easy debugging
-- **Beautiful ExtentReports**: Interactive HTML reports for both UI and API tests
+### UI Automation (Naukri Example)
+- **Full end-to-end automation** of Naukri resume upload workflow with OTP retrieval
+- **Global Default Timeout Strategy**: Configured implicit waits, page load timeouts, and script timeouts globally at the driver initialization level
+- **Thread-safe WebDriver management**: Robust parallel execution support
+- **Retry mechanism**: TestNG retry analyzer dynamically applied to retry failed tests automatically
+- **Comprehensive logging**: Structured Logging utilizing Log4j2
+- **Screenshots on failure**: Automatically captured and attached to reports
+- **Beautiful Allure Reports**: Modern reporting with step-by-step documentation, API payload attachments, and screenshots on failure
 
 ### API Automation
-- REST Assured for API testing (GET, POST, PUT, DELETE, schema validation, etc.)
-- Mock API support (WireMock)
-- Secure credential management (AWS/Google Secret Manager)
-- Data-driven and environment-driven
+- **REST Assured** for API testing (GET, POST, PUT, DELETE, schema validation, etc.)
+- **Response Validation Helpers**: Simplified assertion and deserialization methods
+- **Mock API support** via WireMock
+- **Secure credential management** (AWS/Google Secret Manager)
+- **Data-driven & environment-driven** execution
 
 ### Reporting
-- **ExtentReports** for both UI and API (HTML, screenshots, logs, system info)
+- **Allure Reports** integration with AspectJ runtime weaving for dynamic step capture and failures attachments
 - **Log4j2** for detailed logs
-- **TestNG listeners** for reporting and retry
+- **TestNG listeners** for execution tracing and runtime retry transformer
 
 ### Self-Healing Locators
 - Implemented in `framework/src/main/java/com/seleniumautomation/utils/LocatorUtil.java`
@@ -106,7 +106,7 @@ List<String> requests = (List<String>) chromeDriver.executeScript("return window
    ```
 5. **(Optional) Set up Secret Manager** for secure credentials (see README section above)
 
-## Project Structure
+### Project Structure
 
 ```
 rest-assured-automation-framework/
@@ -114,29 +114,38 @@ rest-assured-automation-framework/
 │   ├── pom.xml                         # ✅ Single, complete Maven POM
 │   ├── src/                            # Source code
 │   │   ├── main/java/                  # Java source files
-│   │   │   ├── com/restautomation/     # REST API automation
-│   │   │   │   ├── api/                # API client classes
+│   │   │   ├── common/                 # Common / Shared components
+│   │   │   │   ├── config/             # Config manager loading config.properties
+│   │   │   │   │   └── ConfigManager.java
+│   │   │   │   ├── listeners/          # TestNG execution listeners and Retry Analyzers
+│   │   │   │   │   ├── AnnotationTransformer.java
+│   │   │   │   │   ├── RetryAnalyzer.java
+│   │   │   │   │   └── TestListener.java
+│   │   │   │   ├── secretmanager/      # AWS/Google secrets management
+│   │   │   │   │   ├── GmailSecretManager.java
+│   │   │   │   │   └── SecretManager.java
+│   │   │   │   └── utils/              # Shared utility helpers
+│   │   │   │       ├── JWTUtil.java
+│   │   │   │       ├── LoggerUtil.java
+│   │   │   │       ├── TestDataUtil.java
+│   │   │   │       ├── GmailService.java
+│   │   │   │       └── WaitUtil.java
+│   │   │   ├── api/                    # REST API automation
+│   │   │   │   ├── base/               # Base specs & request wrappers
+│   │   │   │   │   └── BaseAPI.java
+│   │   │   │   ├── constants/          # API constants
+│   │   │   │   │   ├── Endpoints.java
+│   │   │   │   │   └── StatusCodes.java
+│   │   │   │   ├── endpoints/          # API endpoint client classes
 │   │   │   │   │   ├── AlbumAPI.java
 │   │   │   │   │   ├── AuthAPI.java
 │   │   │   │   │   ├── PhotoAPI.java
 │   │   │   │   │   ├── PostAPI.java
 │   │   │   │   │   ├── TodoAPI.java
 │   │   │   │   │   └── UserAPI.java
-│   │   │   │   ├── base/               # Base classes
-│   │   │   │   │   └── BaseAPI.java
-│   │   │   │   ├── config/             # Configuration
-│   │   │   │   │   └── ConfigManager.java
-│   │   │   │   ├── constants/          # Constants
-│   │   │   │   │   ├── Endpoints.java
-│   │   │   │   │   └── StatusCodes.java
 │   │   │   │   ├── exceptions/         # Custom exceptions
 │   │   │   │   │   └── APIException.java
-│   │   │   │   ├── factory/            # Factory patterns
-│   │   │   │   │   └── APIFactory.java
-│   │   │   │   ├── listeners/          # TestNG listeners
-│   │   │   │   │   ├── RetryListener.java
-│   │   │   │   │   └── TestListener.java
-│   │   │   │   ├── models/             # Data models
+│   │   │   │   ├── models/             # Data model POJOs
 │   │   │   │   │   ├── Album.java
 │   │   │   │   │   ├── AuthRequest.java
 │   │   │   │   │   ├── AuthResponse.java
@@ -145,72 +154,34 @@ rest-assured-automation-framework/
 │   │   │   │   │   ├── Product.java
 │   │   │   │   │   ├── Todo.java
 │   │   │   │   │   └── User.java
-│   │   │   │   ├── reports/            # Reporting utilities
-│   │   │   │   ├── secretmanager/      # Secret management
-│   │   │   │   │   └── SecretManager.java
-│   │   │   │   └── utils/              # Utility classes
-│   │   │   │       ├── CaptchaReader.java
-│   │   │   │       ├── JWTUtil.java
-│   │   │   │       ├── LoggerUtil.java
-│   │   │   │       ├── ResponseValidator.java
-│   │   │   │       ├── RetryAnalyzer.java
-│   │   │   │       └── TestDataUtil.java
-│   │   │   └── com/seleniumautomation/ # Selenium UI automation
-│   │   │       ├── config/             # Selenium configuration
-│   │   │       │   └── ConfigManager.java
-│   │   │       ├── driver/             # WebDriver management
-│   │   │       │   ├── DriverManager.java
-│   │   │       │   └── WebDriverSetup.java
-│   │   │       ├── keywords/           # Keyword-driven framework
-│   │   │       │   └── SeleniumKeywords.java
-│   │   │       ├── pages/              # Page Object Model
-│   │   │       │   ├── AmazonHomePage.java
-│   │   │       │   ├── AmazonProductPage.java
-│   │   │       │   ├── AmazonSearchResultsPage.java
-│   │   │       │   ├── SauceDemoCartPage.java
-│   │   │       │   ├── SauceDemoCheckoutOverviewPage.java
-│   │   │       │   ├── SauceDemoCheckoutPage.java
-│   │   │       │   ├── SauceDemoInventoryPage.java
-│   │   │       │   ├── SauceDemoLoginPage.java
-│   │   │       │   └── SauceDemoThankYouPage.java
-│   │   │       ├── secretmanager/      # Selenium secret management
-│   │   │       │   └── GmailSecretManager.java
-│   │   │       └── utils/              # Selenium utilities
-│   │   │           ├── CaptchaReader.java
-│   │   │           ├── GmailService.java
-│   │   │           ├── LocatorUtil.java      # ✅ Self-healing locators
-│   │   │           ├── TestSearchContext.java
-│   │   │           ├── WaitUtil.java
-│   │   │           └── WebDriverSetup.java
-│   │   ├── main/resources/             # Main resources
-│   │   │   └── com/seleniumautomation/locators/
-│   │   │       ├── AmazonLocators.properties
-│   │   │       ├── NaukriLocators.properties
-│   │   │       └── SauceDemoLocators.properties  # ✅ Centralized locators
-│   │   └── test/java/                  # Test files
-│   │       ├── com/restautomation/tests/  # API tests
-│   │       │   ├── AlbumApiTest.java
-│   │       │   ├── APIExceptionHandlingTest.java
-│   │       │   ├── PhotoApiTest.java
-│   │       │   ├── PostApiTest.java
-│   │       │   ├── TodoApiTest.java
-│   │       │   ├── UserApiTest.java
-│   │       │   └── WireMockAPITest.java
-│   │       └── com/seleniumautomation/    # UI tests
-│   │           ├── base/
-│   │           │   └── BaseTest.java
-│   │           └── test/
-│   │               ├── AmazonSearchTest.java
-│   │               ├── CaptchaScreenshotTest.java
-│   │               ├── CaptchaTest.java
-│   │               ├── CDPNetworkInterceptTest.java  # ✅ Network interception
-│   │               ├── NaukriResumeUploadTest.java
-│   │               ├── OTPTest.java
-│   │               ├── SauceDemoTest.java
-│   │               └── SelfHealingTest.java
+│   │   │   │   └── utils/              # API specific utils
+│   │   │   │       └── ResponseValidator.java
+│   │   │   └── ui/                     # Selenium UI automation
+│   │   │       ├── base/               # Base page
+│   │   │       │   └── BasePage.java
+│   │   │       ├── driver/             # Thread-local WebDriver management
+│   │   │       │   └── DriverManager.java
+│   │   │       ├── locators/           # UI elements locators mapping
+│   │   │       │   └── NaukriLocators.java
+│   │   │       ├── pages/              # Page Object Model classes
+│   │   │       │   ├── PageObjectManager.java
+│   │   │       │   ├── NaukriLoginPage.java
+│   │   │       │   └── NaukriProfilePage.java
+│   │   │       └── steps/              # E2E step scenarios
+│   │   │           └── NaukriSteps.java
+│   │   ├── test/java/                  # Test files
+│   │   │   ├── api/tests/              # API tests
+│   │   │   │   ├── AlbumApiTest.java
+│   │   │   │   ├── APIExceptionHandlingTest.java
+│   │   │   │   ├── PhotoApiTest.java
+│   │   │   │   ├── PostApiTest.java
+│   │   │   │   ├── TodoApiTest.java
+│   │   │   │   ├── UserApiTest.java
+│   │   │   │   └── WireMockAPITest.java
+│   │   │   └── ui/tests/               # UI tests
+│   │   │       ├── BaseTest.java
+│   │   │       └── NaukriResumeUploadTest.java
 │   └── test/resources/                 # Test resources
-│       ├── com/seleniumautomation/locators/
-│       │   └── AmazonLocators.properties
 │       ├── config/                     # Test configuration
 │       │   ├── dev-config.example.properties
 │       │   ├── dev-config.properties
@@ -223,7 +194,6 @@ rest-assured-automation-framework/
 │       │   ├── posts.json
 │       │   └── users.json
 │       └── testng-*.xml               # TestNG suite files
-│           ├── testng-otp.xml
 │           ├── testng-restassured.xml
 │           ├── testng-selenium.xml
 │           └── testng.xml
@@ -302,14 +272,16 @@ mvn test -Dtest=UserApiTest
 ```
 
 ## Reporting & Logs
-- **ExtentReports HTML:**
-  - UI: `framework/test-output/extent-reports/ExtentReport_*.html`
-  - API: `framework/test-output/reports/API-Test-Report-*.html`
+- **Allure Reports:**
+  - Allure Results directory: `framework/target/allure-results`
+  - Generate and serve report:
+    ```bash
+    allure serve target/allure-results
+    ```
 - **Logs:**
-  - `framework/logs/test-automation.log`
+  - Log output directory: `framework/logs/test-automation.log`
 - **Screenshots (on failure):**
-  - `framework/captcha_screenshots/` (for CAPTCHA)
-  - Embedded in ExtentReports for UI failures
+  - Dynamically captured and attached directly inside Allure Report cases on TestNG failure.
 
 ## Docker Compose for Selenium Grid
 Example `docker-compose.yml`:
@@ -347,23 +319,19 @@ services:
       - /dev/shm:/dev/shm
 ```
 
-## SauceDemo UI Automation Details
+## Naukri UI Automation Details
 - **Tested Flows:**
-  - Login (positive/negative)
-  - Add to cart, cart validation
-  - Checkout (positive/negative, missing info)
-  - Order summary, price, tax, payment, shipping
-  - Order completion and thank you page
-- **Self-healing locators** ensure resilience to UI changes
-- **All data is extracted and asserted** (item name, price, totals, etc.)
-- **Parallel/grid execution** for speed and scalability
-- **Full logs and screenshots** for debugging
+  - Login page credentials input (positive/negative scenarios)
+  - OTP retrieval via Gmail API (`GmailService`)
+  - Resume upload flow page navigation
+- **Global timeout strategy** manages waits implicitly at the driver creation stage
+- **All credentials** are fetched dynamically from GCP/AWS Secret Manager or system properties
+- **Full Log4j2 execution tracing** recorded per test method
 
 ## Best Practices
-- Use self-healing locators for all new page objects
 - Keep credentials and secrets out of source code (use secret manager/config)
 - Use Docker Compose for scalable, reproducible grid runs
-- Review ExtentReports after every run for actionable insights
+- Review Allure Reports after every run for actionable insights
 - Add new tests using the Page Object Model for maintainability
 
 ## Troubleshooting
