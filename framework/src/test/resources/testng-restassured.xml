@@ -9,7 +9,6 @@
         <classes>
             <class name="com.restautomation.tests.UserApiTest"/>
             <class name="com.restautomation.tests.PostApiTest"/>
-            <class name="com.restautomation.tests.WireMockAPITest"/>
             <class name="com.restautomation.tests.APIExceptionHandlingTest"/>
         </classes>
     </test>

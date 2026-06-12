@@ -6,7 +6,7 @@ import com.restautomation.factory.APIFactory;
 import com.restautomation.models.Photo;
 import com.restautomation.utils.LoggerUtil;
 import com.restautomation.utils.ResponseValidator;
-import com.restautomation.utils.RetryAnalyzer;
+
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -26,7 +26,7 @@ public class PhotoApiTest {
         photoAPI = APIFactory.getInstance().getPhotoAPI();
     }
     
-    @Test(description = "Test getting all photos", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting all photos")
     public void testGetAllPhotos() {
         // Get all photos
         Response response = photoAPI.getAllPhotos();
@@ -41,7 +41,7 @@ public class PhotoApiTest {
         LoggerUtil.info("Retrieved {} photos", response.jsonPath().getList("").size());
     }
     
-    @Test(description = "Test getting photo by ID", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting photo by ID")
     public void testGetPhotoById() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 5001); // 1 to 5000 inclusive
         Response response = photoAPI.getPhotoById(randomId);
@@ -56,7 +56,7 @@ public class PhotoApiTest {
         LoggerUtil.info("Retrieved photo with title: {}", photoTitle);
     }
     
-    @Test(description = "Test creating a new photo", retryAnalyzer = RetryAnalyzer.class, enabled = false)
+    @Test(description = "Test creating a new photo", enabled = false)
     public void testCreatePhoto() {
         // Create photo object
         Photo photo = Photo.builder()
@@ -80,7 +80,7 @@ public class PhotoApiTest {
         LoggerUtil.info("Created photo with ID: {}", response.jsonPath().getInt("id"));
     }
     
-    @Test(description = "Test updating a photo", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test updating a photo")
     public void testUpdatePhoto() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 5001); // 1 to 5000 inclusive
         Photo updatedPhoto = Photo.builder()
@@ -95,7 +95,7 @@ public class PhotoApiTest {
         LoggerUtil.info("Updated photo with ID: {}", randomId);
     }
     
-    @Test(description = "Test deleting a photo", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test deleting a photo")
     public void testDeletePhoto() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 5001); // 1 to 5000 inclusive
         Response response = photoAPI.deletePhoto(randomId);

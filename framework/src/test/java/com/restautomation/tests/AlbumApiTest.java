@@ -6,7 +6,7 @@ import com.restautomation.factory.APIFactory;
 import com.restautomation.models.Album;
 import com.restautomation.utils.LoggerUtil;
 import com.restautomation.utils.ResponseValidator;
-import com.restautomation.utils.RetryAnalyzer;
+
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -26,7 +26,7 @@ public class AlbumApiTest {
         albumAPI = APIFactory.getInstance().getAlbumAPI();
     }
     
-    @Test(description = "Test getting all albums", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting all albums")
     public void testGetAllAlbums() {
         // Get all albums
         Response response = albumAPI.getAllAlbums();
@@ -41,7 +41,7 @@ public class AlbumApiTest {
         LoggerUtil.info("Retrieved {} albums", response.jsonPath().getList("").size());
     }
     
-    @Test(description = "Test getting album by ID", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting album by ID")
     public void testGetAlbumById() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Response response = albumAPI.getAlbumById(randomId);
@@ -54,7 +54,7 @@ public class AlbumApiTest {
         LoggerUtil.info("Retrieved album with title: {}", albumTitle);
     }
     
-    @Test(description = "Test creating a new album", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test creating a new album")
     public void testCreateAlbum() {
         // Create album object
         Album album = Album.builder()
@@ -74,7 +74,7 @@ public class AlbumApiTest {
         LoggerUtil.info("Created album with ID: {}", response.jsonPath().getInt("id"));
     }
     
-    @Test(description = "Test updating an album", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test updating an album")
     public void testUpdateAlbum() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Album updatedAlbum = Album.builder()
@@ -87,7 +87,7 @@ public class AlbumApiTest {
         LoggerUtil.info("Updated album with ID: {}", randomId);
     }
     
-    @Test(description = "Test deleting an album", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test deleting an album")
     public void testDeleteAlbum() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Response response = albumAPI.deleteAlbum(randomId);
@@ -95,7 +95,7 @@ public class AlbumApiTest {
         LoggerUtil.info("Deleted album with ID: {}", randomId);
     }
     
-    @Test(description = "Test getting album photos", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting album photos")
     public void testGetAlbumPhotos() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Response response = albumAPI.getAlbumPhotos(randomId);

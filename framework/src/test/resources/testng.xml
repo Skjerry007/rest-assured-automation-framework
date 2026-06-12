@@ -29,6 +29,6 @@
     <!-- Listeners -->
     <listeners>
         <listener class-name="com.restautomation.listeners.TestListener"/>
-        <listener class-name="com.restautomation.listeners.RetryListener"/>
+        <listener class-name="com.restautomation.listeners.AnnotationTransformer"/>
     </listeners>
 </suite>

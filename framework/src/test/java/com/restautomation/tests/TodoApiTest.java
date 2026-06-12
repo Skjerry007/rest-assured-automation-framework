@@ -6,7 +6,7 @@ import com.restautomation.factory.APIFactory;
 import com.restautomation.models.Todo;
 import com.restautomation.utils.LoggerUtil;
 import com.restautomation.utils.ResponseValidator;
-import com.restautomation.utils.RetryAnalyzer;
+
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -26,7 +26,7 @@ public class TodoApiTest {
         todoAPI = APIFactory.getInstance().getTodoAPI();
     }
     
-    @Test(description = "Test getting all todos", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting all todos")
     public void testGetAllTodos() {
         // Get all todos
         Response response = todoAPI.getAllTodos();
@@ -41,7 +41,7 @@ public class TodoApiTest {
         LoggerUtil.info("Retrieved {} todos", response.jsonPath().getList("").size());
     }
     
-    @Test(description = "Test getting todo by ID", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting todo by ID")
     public void testGetTodoById() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 201); // 1 to 200 inclusive
         Response response = todoAPI.getTodoById(randomId);
@@ -55,7 +55,7 @@ public class TodoApiTest {
         LoggerUtil.info("Retrieved todo with title: {}", todoTitle);
     }
     
-    @Test(description = "Test creating a new todo", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test creating a new todo")
     public void testCreateTodo() {
         // Create todo object
         Todo todo = Todo.builder()
@@ -77,7 +77,7 @@ public class TodoApiTest {
         LoggerUtil.info("Created todo with ID: {}", response.jsonPath().getInt("id"));
     }
     
-    @Test(description = "Test updating a todo", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test updating a todo")
     public void testUpdateTodo() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 201); // 1 to 200 inclusive
         Todo updatedTodo = Todo.builder()
@@ -92,7 +92,7 @@ public class TodoApiTest {
         LoggerUtil.info("Updated todo with ID: {}", randomId);
     }
     
-    @Test(description = "Test deleting a todo", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test deleting a todo")
     public void testDeleteTodo() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 201); // 1 to 200 inclusive
         Response response = todoAPI.deleteTodo(randomId);

@@ -6,7 +6,7 @@ import com.restautomation.factory.APIFactory;
 import com.restautomation.models.Post;
 import com.restautomation.utils.LoggerUtil;
 import com.restautomation.utils.ResponseValidator;
-import com.restautomation.utils.RetryAnalyzer;
+
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -25,7 +25,7 @@ public class PostApiTest {
         postAPI = APIFactory.getInstance().getPostAPI();
     }
     
-    @Test(description = "Test getting all posts", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting all posts")
     public void testGetAllPosts() {
         // Get all posts
         Response response = postAPI.getAllPosts();
@@ -41,7 +41,7 @@ public class PostApiTest {
         LoggerUtil.info("Retrieved {} posts", response.jsonPath().getList("").size());
     }
     
-    @Test(description = "Test getting post by ID", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting post by ID")
     public void testGetPostById() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Response response = postAPI.getPostById(randomId);
@@ -55,7 +55,7 @@ public class PostApiTest {
         LoggerUtil.info("Retrieved post with title: {}", postTitle);
     }
     
-    @Test(description = "Test creating a new post", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test creating a new post")
     public void testCreatePost() {
         // Create post object
         Post post = Post.builder()
@@ -77,7 +77,7 @@ public class PostApiTest {
         LoggerUtil.info("Created post with ID: {}", response.jsonPath().getInt("id"));
     }
     
-    @Test(description = "Test updating a post", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test updating a post")
     public void testUpdatePost() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Post updatedPost = Post.builder()
@@ -92,7 +92,7 @@ public class PostApiTest {
         LoggerUtil.info("Updated post with ID: {}", randomId);
     }
     
-    @Test(description = "Test deleting a post", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test deleting a post")
     public void testDeletePost() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Response response = postAPI.deletePost(randomId);
@@ -100,7 +100,7 @@ public class PostApiTest {
         LoggerUtil.info("Deleted post with ID: {}", randomId);
     }
     
-    @Test(description = "Test getting post comments", retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Test getting post comments")
     public void testGetPostComments() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 101); // 1 to 100 inclusive
         Response response = postAPI.getPostComments(randomId);

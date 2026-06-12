@@ -6,7 +6,7 @@ import com.restautomation.factory.APIFactory;
 import com.restautomation.models.User;
 import com.restautomation.utils.LoggerUtil;
 import com.restautomation.utils.ResponseValidator;
-import com.restautomation.utils.RetryAnalyzer;
+
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -21,30 +21,30 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class UserApiTest {
     private UserAPI userAPI;
-    
+
     @BeforeClass
     public void setup() {
         // Get UserAPI instance from factory
         userAPI = APIFactory.getInstance().getUserAPI();
     }
-    
-    @Test(description = "Test getting all users", retryAnalyzer = RetryAnalyzer.class)
+
+    @Test(description = "Test getting all users")
     public void testGetAllUsers() {
         // Get all users
         Response response = userAPI.getAllUsers();
-        
+
         // Validate response
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
         ResponseValidator.validateResponseTime(response, 5000);
         ResponseValidator.validateContentType(response, "application/json; charset=utf-8");
-        
+
         // Validate response is a non-empty array
         Assert.assertTrue(response.jsonPath().getList("").size() > 0, "Users list should not be empty");
-        
+
         LoggerUtil.info("Retrieved {} users", response.jsonPath().getList("").size());
     }
-    
-    @Test(description = "Test getting user by ID", retryAnalyzer = RetryAnalyzer.class)
+
+    @Test(description = "Test getting user by ID")
     public void testGetUserById() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 11); // 1 to 10 inclusive
         Response response = userAPI.getUserById(randomId);
@@ -56,8 +56,8 @@ public class UserApiTest {
         String userName = response.jsonPath().getString("name");
         LoggerUtil.info("Retrieved user with name: {}", userName);
     }
-    
-    @Test(description = "Test creating a new user", retryAnalyzer = RetryAnalyzer.class, enabled = false)
+
+    @Test(description = "Test creating a new user")
     public void testCreateUser() {
         // Create user object
         User user = User.builder()
@@ -67,20 +67,20 @@ public class UserApiTest {
                 .phone("1234567890")
                 .website("johndoe.com")
                 .build();
-        
+
         // Create user
         Response response = userAPI.createUser(user);
-        
+
         // Validate response
         ResponseValidator.validateStatusCode(response, StatusCodes.CREATED);
         ResponseValidator.validateFieldExists(response, "id");
         ResponseValidator.validateFieldValue(response, "name", "John Doe");
         ResponseValidator.validateFieldValue(response, "email", "john.doe@example.com");
-        
+
         LoggerUtil.info("Created user with ID: {}", response.jsonPath().getInt("id"));
     }
-    
-    @Test(description = "Test updating a user", retryAnalyzer = RetryAnalyzer.class)
+
+    @Test(description = "Test updating a user")
     public void testUpdateUser() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 11); // 1 to 10 inclusive
         LoggerUtil.info("Updating user with ID: {}", randomId);
@@ -94,8 +94,8 @@ public class UserApiTest {
         ResponseValidator.validateFieldValue(response, "email", "jane.smith@example.com");
         LoggerUtil.info("Updated user with ID: {}", randomId);
     }
-    
-    @Test(description = "Test deleting a user", retryAnalyzer = RetryAnalyzer.class)
+
+    @Test(description = "Test deleting a user")
     public void testDeleteUser() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 11); // 1 to 10 inclusive
         LoggerUtil.info("Deleting user with ID: {}", randomId);
@@ -103,8 +103,8 @@ public class UserApiTest {
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
         LoggerUtil.info("Deleted user with ID: {}", randomId);
     }
-    
-    @Test(description = "Test getting user posts", retryAnalyzer = RetryAnalyzer.class)
+
+    @Test(description = "Test getting user posts")
     public void testGetUserPosts() {
         int randomId = ThreadLocalRandom.current().nextInt(1, 11); // 1 to 10 inclusive
         Response response = userAPI.getUserPosts(randomId);
