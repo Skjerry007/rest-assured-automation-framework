@@ -82,7 +82,7 @@ public class ConfigManager {
     // ==========================================
     
     public String getBaseUrl() {
-        return getProperty("baseUrl");
+        return getProperty("api.baseUrl");
     }
     
     public int getTimeout() {
