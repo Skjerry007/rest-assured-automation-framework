@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * TestDataUtil - Utility for managing test data
@@ -17,24 +18,29 @@ public class TestDataUtil {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final String TEST_DATA_DIR = "src/test/resources/testdata/";
     
+    // Thread-safe cache to avoid reading from disk repeatedly
+    private static final Map<String, JsonNode> jsonCache = new ConcurrentHashMap<>();
+    
     private TestDataUtil() {
         // Private constructor to prevent instantiation
     }
     
     /**
-     * Load test data from JSON file
+     * Load test data from JSON file (cached)
      * @param fileName JSON file name
      * @return JsonNode with test data
      */
     public static JsonNode loadTestData(String fileName) {
-        try {
-            String filePath = TEST_DATA_DIR + fileName;
-            LoggerUtil.info("Loading test data from: {}", filePath);
-            return objectMapper.readTree(new File(filePath));
-        } catch (IOException e) {
-            LoggerUtil.error("Error loading test data: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to load test data", e);
-        }
+        return jsonCache.computeIfAbsent(fileName, file -> {
+            try {
+                String filePath = TEST_DATA_DIR + file;
+                LoggerUtil.info("Loading and caching test data from: {}", filePath);
+                return objectMapper.readTree(new File(filePath));
+            } catch (IOException e) {
+                LoggerUtil.error("Error loading test data: {}", e.getMessage(), e);
+                throw new RuntimeException("Failed to load test data", e);
+            }
+        });
     }
     
     /**
@@ -50,6 +56,24 @@ public class TestDataUtil {
         } else {
             LoggerUtil.error("Test data not found for test: {} in file: {}", testName, fileName);
             throw new RuntimeException("Test data not found for test: " + testName);
+        }
+    }
+
+    /**
+     * Get test data and deserialize directly to target class
+     * @param fileName JSON file name
+     * @param testName test name/key in the JSON
+     * @param clazz Target class for deserialization
+     * @param <T> Target class type
+     * @return Deserialized object instance
+     */
+    public static <T> T getTestData(String fileName, String testName, Class<T> clazz) {
+        JsonNode dataNode = getTestData(fileName, testName);
+        try {
+            return objectMapper.treeToValue(dataNode, clazz);
+        } catch (IOException e) {
+            LoggerUtil.error("Error mapping JSON node to class {}: {}", clazz.getName(), e.getMessage());
+            throw new RuntimeException("Failed to map test data to object", e);
         }
     }
     
@@ -111,5 +135,13 @@ public class TestDataUtil {
             LoggerUtil.error("Error converting JSON to object: {}", e.getMessage(), e);
             throw new RuntimeException("Failed to convert JSON to object", e);
         }
+    }
+
+    /**
+     * Clear the JSON cache
+     */
+    public static void clearCache() {
+        jsonCache.clear();
+        LoggerUtil.info("Cleared test data cache");
     }
 }

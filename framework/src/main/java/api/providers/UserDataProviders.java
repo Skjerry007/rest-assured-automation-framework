@@ -1,6 +1,5 @@
 package api.providers;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import common.utils.TestDataUtil;
 import api.models.User;
 import org.testng.annotations.DataProvider;
@@ -24,8 +23,7 @@ public class UserDataProviders {
             throw new IllegalArgumentException("No data key mapping found for test method: " + testName);
         }
         
-        JsonNode userData = TestDataUtil.getTestData("users.json", jsonKey);
-        User user = TestDataUtil.jsonToObject(userData.toString(), User.class);
+        User user = TestDataUtil.getTestData("users.json", jsonKey, User.class);
         return new Object[][] { { user } };
     }
 }
