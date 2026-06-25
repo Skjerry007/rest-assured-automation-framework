@@ -15,7 +15,6 @@ import static io.restassured.config.ConnectionConfig.connectionConfig;
 import static io.restassured.config.HttpClientConfig.httpClientConfig;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * BaseAPI - Base class for all API requests
@@ -24,18 +23,18 @@ public class BaseAPI {
     protected static final ConfigManager config = ConfigManager.getInstance();
     protected RequestSpecification requestSpec;
     protected ResponseSpecification responseSpec;
-    
+
     // Thread-safe token storage for dynamic Bearer Auth injection
     protected static final ThreadLocal<String> authToken = new ThreadLocal<>();
-    
+
     public static void setAuthToken(String token) {
         authToken.set(token);
     }
-    
+
     public static String getAuthToken() {
         return authToken.get();
     }
-    
+
     public static void clearAuthToken() {
         authToken.remove();
     }
@@ -59,7 +58,7 @@ public class BaseAPI {
             throw new APIException(method + " request to " + endpoint + " failed", e);
         }
     }
-    
+
     /**
      * Initialize base specs
      */
@@ -67,7 +66,7 @@ public class BaseAPI {
         initializeRequestSpec();
         initializeResponseSpec();
     }
-    
+
     /**
      * Initialize request specification with common settings
      */
@@ -75,10 +74,10 @@ public class BaseAPI {
         LoggerUtil.info("Initializing request specification");
 
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
-            .setBaseUri(config.getBaseUrl())
-            .setContentType(ContentType.JSON)
-            .setAccept(ContentType.JSON)
-            .addFilter(new io.qameta.allure.restassured.AllureRestAssured());
+                .setBaseUri(config.getBaseUrl())
+                .setContentType(ContentType.JSON)
+                .setAccept(ContentType.JSON)
+                .addFilter(new io.qameta.allure.restassured.AllureRestAssured());
 
         // Set SSL relaxation if configured
         if (!config.isSslVerificationEnabled()) {
@@ -87,167 +86,225 @@ public class BaseAPI {
 
         // Set timeouts using proper config chaining
         RestAssured.config = RestAssured.config()
-            .connectionConfig(connectionConfig())
-            .httpClient(httpClientConfig()
-                .setParam("http.connection.timeout", config.getTimeout() * 1000)
-                .setParam("http.socket.timeout", config.getTimeout() * 1000));
+                .connectionConfig(connectionConfig())
+                .httpClient(httpClientConfig()
+                        .setParam("http.connection.timeout", config.getTimeout() * 1000)
+                        .setParam("http.socket.timeout", config.getTimeout() * 1000));
 
         // Log request details
         requestSpecBuilder.log(LogDetail.ALL);
 
         requestSpec = requestSpecBuilder.build();
     }
-    
+
     /**
      * Initialize response specification with common settings
      */
     private void initializeResponseSpec() {
         LoggerUtil.info("Initializing response specification");
-        
+
         ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder();
         // Log response details
         responseSpecBuilder.log(LogDetail.ALL);
-        
+
         responseSpec = responseSpecBuilder.build();
     }
-    
+
     /**
-     * Set headers for request specification (automatically injects Bearer Auth if present)
+     * Set headers for request specification (automatically injects Bearer Auth if
+     * present)
+     * 
      * @param headers map of headers
      * @return RequestSpecification with headers
      */
     protected RequestSpecification setHeaders(Map<String, String> headers) {
+        return setHeaders(null, headers);
+    }
+
+    /**
+     * Set headers for request specification with custom base URI
+     * 
+     * @param baseUri custom base URI
+     * @param headers map of headers
+     * @return RequestSpecification with headers
+     */
+    protected RequestSpecification setHeaders(String baseUri, Map<String, String> headers) {
         RequestSpecification reqSpec = RestAssured.given().spec(requestSpec);
-        
+
+        if (baseUri != null && !baseUri.trim().isEmpty()) {
+            reqSpec.baseUri(baseUri);
+        }
+
         String token = authToken.get();
         if (token != null && !token.trim().isEmpty()) {
             reqSpec.header("Authorization", "Bearer " + token);
         }
-        
+
         if (headers != null && !headers.isEmpty()) {
             reqSpec.headers(headers);
         }
         return reqSpec;
     }
-    
+
     /**
      * Perform GET request
+     * 
      * @param endpoint API endpoint
-     * @param headers request headers
+     * @param headers  request headers
      * @return Response object
      */
     public Response get(String endpoint, Map<String, String> headers) {
+        return get(null, endpoint, headers);
+    }
+
+    /**
+     * Perform GET request with custom base URI
+     */
+    public Response get(String baseUri, String endpoint, Map<String, String> headers) {
         LoggerUtil.info("Performing GET request to: {}", endpoint);
-        return executeRequest("GET", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("GET", endpoint, () -> setHeaders(baseUri, headers)
                 .when()
                 .get(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform GET request with path parameters
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint   API endpoint
      * @param pathParams path parameters
-     * @param headers request headers
+     * @param headers    request headers
      * @return Response object
      */
     public Response get(String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
+        return get(null, endpoint, pathParams, headers);
+    }
+
+    /**
+     * Perform GET request with custom base URI and path parameters
+     */
+    public Response get(String baseUri, String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
         LoggerUtil.info("Performing GET request to: {} with path params: {}", endpoint, pathParams);
-        return executeRequest("GET", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("GET", endpoint, () -> setHeaders(baseUri, headers)
                 .pathParams(pathParams)
                 .when()
                 .get(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform GET request with query parameters
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint    API endpoint
      * @param queryParams query parameters
-     * @param headers request headers
+     * @param headers     request headers
      * @return Response object
      */
     public Response getWithQueryParams(String endpoint, Map<String, Object> queryParams, Map<String, String> headers) {
+        return getWithQueryParams(null, endpoint, queryParams, headers);
+    }
+
+    /**
+     * Perform GET request with custom base URI and query parameters
+     */
+    public Response getWithQueryParams(String baseUri, String endpoint, Map<String, Object> queryParams, Map<String, String> headers) {
         LoggerUtil.info("Performing GET request to: {} with query params: {}", endpoint, queryParams);
-        return executeRequest("GET", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("GET", endpoint, () -> setHeaders(baseUri, headers)
                 .queryParams(queryParams)
                 .when()
                 .get(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform POST request
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint    API endpoint
      * @param requestBody request body
-     * @param headers request headers
+     * @param headers     request headers
      * @return Response object
      */
     public Response post(String endpoint, Object requestBody, Map<String, String> headers) {
+        return post(null, endpoint, requestBody, headers);
+    }
+
+    /**
+     * Perform POST request with custom base URI
+     */
+    public Response post(String baseUri, String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing POST request to: {}", endpoint);
         return executeRequest("POST", endpoint, () -> {
-            RequestSpecification request = setHeaders(headers);
+            RequestSpecification request = setHeaders(baseUri, headers);
             if (requestBody != null) {
                 request.body(requestBody);
             }
             return request
-                .when()
-                .post(endpoint)
-                .then()
-                .spec(responseSpec)
-                .extract()
-                .response();
+                    .when()
+                    .post(endpoint)
+                    .then()
+                    .spec(responseSpec)
+                    .extract()
+                    .response();
         });
     }
-    
+
     /**
      * Perform PUT request
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint    API endpoint
      * @param requestBody request body
-     * @param headers request headers
+     * @param headers     request headers
      * @return Response object
      */
     public Response put(String endpoint, Object requestBody, Map<String, String> headers) {
+        return put(null, endpoint, requestBody, headers);
+    }
+
+    /**
+     * Perform PUT request with custom base URI
+     */
+    public Response put(String baseUri, String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing PUT request to: {}", endpoint);
-        return executeRequest("PUT", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("PUT", endpoint, () -> setHeaders(baseUri, headers)
                 .body(requestBody)
                 .when()
                 .put(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform PUT request with path parameters
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint    API endpoint
      * @param requestBody request body
-     * @param pathParams path parameters
-     * @param headers request headers
+     * @param pathParams  path parameters
+     * @param headers     request headers
      * @return Response object
      */
-    public Response put(String endpoint, Object requestBody, Map<String, Object> pathParams, Map<String, String> headers) {
+    public Response put(String endpoint, Object requestBody, Map<String, Object> pathParams,
+            Map<String, String> headers) {
+        return put(null, endpoint, requestBody, pathParams, headers);
+    }
+
+    /**
+     * Perform PUT request with custom base URI and path parameters
+     */
+    public Response put(String baseUri, String endpoint, Object requestBody, Map<String, Object> pathParams,
+            Map<String, String> headers) {
         LoggerUtil.info("Performing PUT request to: {} with path params: {}", endpoint, pathParams);
-        return executeRequest("PUT", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("PUT", endpoint, () -> setHeaders(baseUri, headers)
                 .pathParams(pathParams)
                 .body(requestBody)
                 .when()
@@ -255,68 +312,85 @@ public class BaseAPI {
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform DELETE request
+     * 
      * @param endpoint API endpoint
-     * @param headers request headers
+     * @param headers  request headers
      * @return Response object
      */
     public Response delete(String endpoint, Map<String, String> headers) {
+        return delete(null, endpoint, headers);
+    }
+
+    /**
+     * Perform DELETE request with custom base URI
+     */
+    public Response delete(String baseUri, String endpoint, Map<String, String> headers) {
         LoggerUtil.info("Performing DELETE request to: {}", endpoint);
-        return executeRequest("DELETE", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("DELETE", endpoint, () -> setHeaders(baseUri, headers)
                 .when()
                 .delete(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform DELETE request with path parameters
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint   API endpoint
      * @param pathParams path parameters
-     * @param headers request headers
+     * @param headers    request headers
      * @return Response object
      */
     public Response delete(String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
+        return delete(null, endpoint, pathParams, headers);
+    }
+
+    /**
+     * Perform DELETE request with custom base URI and path parameters
+     */
+    public Response delete(String baseUri, String endpoint, Map<String, Object> pathParams, Map<String, String> headers) {
         LoggerUtil.info("Performing DELETE request to: {} with path params: {}", endpoint, pathParams);
-        return executeRequest("DELETE", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("DELETE", endpoint, () -> setHeaders(baseUri, headers)
                 .pathParams(pathParams)
                 .when()
                 .delete(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
-    
+
     /**
      * Perform PATCH request
-     * @param endpoint API endpoint
+     * 
+     * @param endpoint    API endpoint
      * @param requestBody request body
-     * @param headers request headers
+     * @param headers     request headers
      * @return Response object
      */
     public Response patch(String endpoint, Object requestBody, Map<String, String> headers) {
+        return patch(null, endpoint, requestBody, headers);
+    }
+
+    /**
+     * Perform PATCH request with custom base URI
+     */
+    public Response patch(String baseUri, String endpoint, Object requestBody, Map<String, String> headers) {
         LoggerUtil.info("Performing PATCH request to: {}", endpoint);
-        return executeRequest("PATCH", endpoint, () -> 
-            setHeaders(headers)
+        return executeRequest("PATCH", endpoint, () -> setHeaders(baseUri, headers)
                 .body(requestBody)
                 .when()
                 .patch(endpoint)
                 .then()
                 .spec(responseSpec)
                 .extract()
-                .response()
-        );
+                .response());
     }
 }

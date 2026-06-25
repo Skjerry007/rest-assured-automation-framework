@@ -5,7 +5,6 @@ import ui.pages.NaukriProfilePage;
 import ui.pages.PageObjectManager;
 import ui.driver.DriverManager;
 import common.utils.GmailService;
-import common.utils.LoggerUtil;
 import org.openqa.selenium.WebDriver;
 
 public class NaukriSteps {
@@ -38,7 +37,7 @@ public class NaukriSteps {
         loginPage.enterEmail(email);
         loginPage.enterPassword(password);
         loginPage.clickLogin();
-        
+
         String otp = GmailService.getOTPFromEmail("Naukri Login OTP");
         loginPage.enterOtp(otp);
         loginPage.clickVerifyOtp();

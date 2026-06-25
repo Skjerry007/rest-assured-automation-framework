@@ -21,7 +21,7 @@
         <log4j.version>2.23.1</log4j.version>
         <aws.version>2.25.27</aws.version>
         <wiremock.version>3.5.2</wiremock.version>
-        <selenium.version>4.20.0</selenium.version>
+        <selenium.version>4.22.0</selenium.version>
         <framework>all</framework>
         <testng.file>testng.xml</testng.file>
         <gridExecutorCapacity>0</gridExecutorCapacity>

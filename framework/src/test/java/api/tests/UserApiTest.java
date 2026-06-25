@@ -56,41 +56,30 @@ public class UserApiTest {
         LoggerUtil.info("Retrieved user with name: {}", userName);
     }
 
-    @Test(description = "Test creating a new user")
-    public void testCreateUser() {
-        // Create user object
-        User user = User.builder()
-                .name("John Doe")
-                .email("john.doe@example.com")
-                .username("johndoe")
-                .phone("1234567890")
-                .website("johndoe.com")
-                .build();
-
+    @Test(description = "Test creating a new user", dataProvider = "userDataProvider", dataProviderClass = api.providers.UserDataProviders.class)
+    public void testCreateUser(User user) {
         // Create user
         Response response = userAPI.createUser(user);
 
         // Validate response
         ResponseValidator.validateStatusCode(response, StatusCodes.CREATED);
         ResponseValidator.validateFieldExists(response, "id");
-        ResponseValidator.validateFieldValue(response, "name", "John Doe");
-        ResponseValidator.validateFieldValue(response, "email", "john.doe@example.com");
+        ResponseValidator.validateFieldValue(response, "name", user.getName());
+        ResponseValidator.validateFieldValue(response, "email", user.getEmail());
+        ResponseValidator.validateSchema(response, "schemas/user-schema.json");
 
         LoggerUtil.info("Created user with ID: {}", response.jsonPath().getInt("id"));
     }
 
-    @Test(description = "Test updating a user")
-    public void testUpdateUser() {
+    @Test(description = "Test updating a user", dataProvider = "userDataProvider", dataProviderClass = api.providers.UserDataProviders.class)
+    public void testUpdateUser(User updatedUser) {
         int randomId = ThreadLocalRandom.current().nextInt(1, 11); // 1 to 10 inclusive
         LoggerUtil.info("Updating user with ID: {}", randomId);
-        User updatedUser = User.builder()
-                .name("Jane Smith")
-                .email("jane.smith@example.com")
-                .build();
+        
         Response response = userAPI.updateUser(randomId, updatedUser);
         ResponseValidator.validateStatusCode(response, StatusCodes.OK);
-        ResponseValidator.validateFieldValue(response, "name", "Jane Smith");
-        ResponseValidator.validateFieldValue(response, "email", "jane.smith@example.com");
+        ResponseValidator.validateFieldValue(response, "name", updatedUser.getName());
+        ResponseValidator.validateFieldValue(response, "email", updatedUser.getEmail());
         LoggerUtil.info("Updated user with ID: {}", randomId);
     }
 
