@@ -1,6 +1,6 @@
 package api.tests;
 
-import api.endpoints.UserAPI;
+import api.requesthandlers.UserAPI;
 import api.constants.StatusCodes;
 
 import api.models.User;

@@ -1,13 +1,10 @@
-package api.endpoints;
+package api.requesthandlers;
 
 import api.base.BaseAPI;
 import api.constants.Endpoints;
 import api.models.User;
 import common.utils.LoggerUtil;
 import io.restassured.response.Response;
-
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -31,9 +28,7 @@ public class UserAPI extends BaseAPI {
      */
     public Response getUserById(int userId) {
         LoggerUtil.info("Getting user with ID: {}", userId);
-        Map<String, Object> pathParams = new HashMap<>();
-        pathParams.put("id", userId);
-        return get(Endpoints.USER_BY_ID, pathParams, null);
+        return get(Endpoints.USER_BY_ID, Map.of("id", userId), null);
     }
     
     /**
@@ -43,10 +38,10 @@ public class UserAPI extends BaseAPI {
      */
     public Response createUser(User user) {
         LoggerUtil.info("Creating new user: {}", user);
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
-        headers.put("Accept", "application/json");
-        return post(Endpoints.USERS, user, headers);
+        return post(Endpoints.USERS, user, Map.of(
+            "Content-Type", "application/json",
+            "Accept", "application/json"
+        ));
     }
     
     /**
@@ -57,9 +52,7 @@ public class UserAPI extends BaseAPI {
      */
     public Response updateUser(int userId, User user) {
         LoggerUtil.info("Updating user with ID: {}", userId);
-        Map<String, Object> pathParams = new HashMap<>();
-        pathParams.put("id", userId);
-        return put(Endpoints.USER_BY_ID, user, pathParams, null);
+        return put(Endpoints.USER_BY_ID, user, Map.of("id", userId), null);
     }
     
     /**
@@ -69,9 +62,7 @@ public class UserAPI extends BaseAPI {
      */
     public Response deleteUser(int userId) {
         LoggerUtil.info("Deleting user with ID: {}", userId);
-        Map<String, Object> pathParams = new HashMap<>();
-        pathParams.put("id", userId);
-        return delete(Endpoints.USER_BY_ID, pathParams, null);
+        return delete(Endpoints.USER_BY_ID, Map.of("id", userId), null);
     }
     
     /**
@@ -81,8 +72,6 @@ public class UserAPI extends BaseAPI {
      */
     public Response getUserPosts(int userId) {
         LoggerUtil.info("Getting posts for user ID: {}", userId);
-        Map<String, Object> pathParams = new HashMap<>();
-        pathParams.put("id", userId);
-        return get(Endpoints.USER_POSTS, pathParams, null);
+        return get(Endpoints.USER_POSTS, Map.of("id", userId), null);
     }
 }
